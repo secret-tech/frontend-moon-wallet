@@ -1,6 +1,14 @@
-# Frontend static boilerplate
+# MOON Wallet frontend
 
-A simple boilerplate to create frontend applications.
+Lightweight ethereum and ERC20 tokens wallet.
+
+### Key features
+
+* The ability to add users to contacts for faster transfer of funds
+* Import and export of existing wallets
+* User-friendly interface
+* Crossplatform. This is web client, we also plan to create desktop and mobile applications
+* Supports custom ERC20 tokens
 
 ### Commit hooks
 
@@ -40,4 +48,4 @@ To access values inside application call `console.log(process.env)`.
 
 ______________________________
 
-[Jincor Tech](https://github.com/JincorTech)
+[secret_tech](http://secrettech.io/)
