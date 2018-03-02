@@ -1,0 +1,242 @@
+{
+  "name": "frontend-static-boilerplate",
+  "version": "3.0.0",
+  "repository": "https://github.com/JincorTech/frontend-static-boilerplate",
+  "author": "Aidar Ibatullin <amazing.space.invader@gmail.com",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node tools/start.js",
+    "build": "babel-node tools/build.js",
+    "build:clean": "rimraf ./dist && mkdir dist && yarn run build",
+    "serve": "babel-node tools/serveDist.js",
+    "lint:js": "esw src tools --color",
+    "lint:css": "stylelint 'src/**/*.css'",
+    "lint:all": "concurrently \"yarn run lint:js\" \"yarn run lint:css\"",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "analyze": "babel-node tools/analyze.js"
+  },
+  "pre-commit": {
+    "run": "lint:all, test"
+  },
+  "dependencies": {
+    "history": "^4.7.2",
+    "jwt-decode": "^2.2.0",
+    "normalize.css": "^7.0.0",
+    "object-assign": "^4.1.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "redux": "^3.7.2",
+    "redux-form": "^7.2.1",
+    "redux-form-saga": "^0.2.0",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.16.0",
+    "redux-seamless-immutable": "^0.3.2",
+    "seamless-immutable": "^7.1.2",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.1.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "browser-sync": "^2.23.5",
+    "caniuse-lite": "^1.0.30000792",
+    "chalk": "^2.3.0",
+    "concurrently": "^3.5.1",
+    "connect-history-api-fallback": "^1.5.0",
+    "css-loader": "^0.28.9",
+    "dotenv-webpack": "^1.5.4",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.7.0",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-watch": "^3.1.3",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
+    "jest": "^22.1.3",
+    "jest-cli": "^22.1.3",
+    "postcss": "^6.0.16",
+    "postcss-assets": "^5.0.0",
+    "postcss-clearfix": "^2.0.1",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-inline-svg": "^3.0.0",
+    "postcss-loader": "^2.0.10",
+    "postcss-reporter": "^5.0.0",
+    "postcss-short": "^4.1.0",
+    "postcss-use": "^2.3.0",
+    "pre-commit": "^1.2.2",
+    "react-hot-loader": "^3.1.3",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.19.1",
+    "stylelint": "^8.4.0",
+    "stylelint-config-css-modules": "^1.1.0",
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-webpack-plugin": "^0.10.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.9.2",
+    "webpack-dev-middleware": "^2.0.4",
+    "webpack-hot-middleware": "^2.21.0",
+    "webpack-md5-hash": "^0.0.6"
+  },
+  "babel": {
+    "env": {
+      "development": {
+        "presets": [
+          "env",
+          "react",
+          "react-hmre",
+          "stage-1"
+        ]
+      },
+      "production": {
+        "presets": [
+          [
+            "env",
+            {
+              "es2015": {
+                "modules": false
+              },
+              "targets": {
+                "ie": 9,
+                "uglify": true
+              }
+            }
+          ],
+          "react",
+          "stage-1"
+        ],
+        "plugins": [
+          "transform-runtime",
+          "transform-react-jsx",
+          "transform-react-constant-elements",
+          "transform-react-remove-prop-types"
+        ]
+      },
+      "test": {
+        "presets": [
+          "env",
+          "react",
+          "stage-1"
+        ]
+      }
+    }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
+      "\\.(css)$": "<rootDir>/tools/assetsTransformer.js"
+    }
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true,
+      "jest/globals": true
+    },
+    "plugins": [
+      "react",
+      "jest"
+    ],
+    "rules": {
+      "comma-dangle": 0,
+      "import/imports-first": 0,
+      "global-require": 0,
+      "class-methods-use-this": 0,
+      "arrow-body-style": [
+        2,
+        "as-needed"
+      ],
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": true
+        }
+      ],
+      "no-debugger": 0,
+      "no-console": 0,
+      "new-cap": 0,
+      "strict": 0,
+      "no-param-reassign": [
+        "error",
+        {
+          "props": false
+        }
+      ],
+      "no-underscore-dangle": 0,
+      "no-use-before-define": 0,
+      "eol-last": 0,
+      "no-shadow": 0,
+      "quotes": [
+        2,
+        "single"
+      ],
+      "jsx-quotes": [
+        0,
+        "prefer-single"
+      ],
+      "react/jsx-no-undef": 1,
+      "react/jsx-uses-react": 1,
+      "react/jsx-uses-vars": 1
+    }
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-css-modules"
+    ],
+    "rules": {
+      "color-named": "never",
+      "font-family-name-quotes": "always-where-required",
+      "font-weight-notation": "named-where-possible",
+      "function-url-no-scheme-relative": true,
+      "function-url-quotes": "always",
+      "string-quotes": "single",
+      "value-keyword-case": "lower",
+      "unit-blacklist": [],
+      "max-empty-lines": 2,
+      "no-descending-specificity": true,
+      "no-duplicate-selectors": true,
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "use",
+            "for"
+          ]
+        }
+      ]
+    },
+    "ignoreFiles": [
+      "node_modules/*",
+      "src/assets/**"
+    ],
+    "defaultSeverity": "error"
+  }
+}
