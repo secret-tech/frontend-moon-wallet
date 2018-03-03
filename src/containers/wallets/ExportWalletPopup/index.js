@@ -1,23 +1,18 @@
 import React from 'react';
-import { Dialog, Button, Intent } from '@blueprintjs/core';
+import { Dialog } from '@blueprintjs/core';
+
+import ExportWallet from '../../../components/wallets/ExportWallet';
 
 const ExportWalletPopup = (props) => (
   <Dialog
+    style={{ width: '800px' }}
     title="Export wallet"
     className="pt-dark"
     {...props}>
 
     <div className="pt-dialog-body">
-      Export {props.walletAddress} form
+      <ExportWallet walletAddress={props.walletAddress}/>
     </div>
-
-    <div className="pt-dialog-footer">
-      <div className="pt-dialog-footer-actions">
-        <Button text="Cancel" onClick={() => props.onClose()}/>
-        <Button intent={Intent.PRIMARY} text="Import"/>
-      </div>
-    </div>
-
   </Dialog>
 );
 
