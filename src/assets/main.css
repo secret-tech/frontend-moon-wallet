@@ -1,1 +1,9 @@
-
+.pt-dark,
+.pt-dark h1,
+.pt-dark h2,
+.pt-dark h3,
+.pt-dark h4,
+.pt-dark h5,
+.pt-dark h6 {
+  color: #f5f8fa;
+}

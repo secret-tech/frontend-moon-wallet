@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import classnames from 'classnames/bind';
 
 import namedRoutes from '../../../routes';
 
@@ -12,11 +13,13 @@ import Help from '../../../components/help/Help';
 
 import s from './styles.css';
 
+const cx = classnames.bind(s);
+
 class App extends Component {
   render() {
     return (
-      <div className={s.app}>
-        <Nav/>
+      <div className={cx(s.app, 'pt-dark')}>
+        <div className={s.nav}><Nav/></div>
         <Switch>
           <Route exact path={namedRoutes.wallets} component={Wallets}/>
           <Route exact path={namedRoutes.wallet} component={Wallet}/>

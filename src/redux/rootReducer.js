@@ -3,6 +3,8 @@ import { reducer as form } from 'redux-form';
 
 import app from './modules/app/app';
 
+import walletsList from './modules/wallets/walletsList';
+
 export default combineReducers({
   routing,
   form,
@@ -12,7 +14,12 @@ export default combineReducers({
   }),
 
   auth: combineReducers({}),
-  wallets: combineReducers({}),
+
+  wallets: combineReducers({
+    walletsList
+  }),
+
   singleWallet: combineReducers({}),
+
   settings: combineReducers({})
 });
