@@ -25,6 +25,7 @@
     "@blueprintjs/core": "1.35.5",
     "@blueprintjs/icons": "^2.0.0-rc.2",
     "classnames": "^2.2.5",
+    "date-fns": "^1.29.0",
     "history": "^4.7.2",
     "jwt-decode": "^2.2.0",
     "normalize.css": "^7.0.0",

@@ -86,11 +86,40 @@ const walletsList = [
   }
 ];
 
+const transactionsList = [
+  {
+    direction: 'in',
+    value: '19',
+    symbol: 'ETH',
+    txHash: '0x0123456789ababab1235758ab2',
+    status: 'pending',
+    date: 1520086973
+  },
+  {
+    direction: 'out',
+    value: '234',
+    symbol: 'JCR',
+    txHash: '0x0123456789ababab1235758ab3',
+    status: 'success',
+    date: 1519479863
+  },
+  {
+    direction: 'out',
+    value: '1240000000',
+    symbol: 'XNN',
+    txHash: '0x0123456789ababab1235758ab4',
+    status: 'failure',
+    date: 1516041312
+  }
+];
+
 const getMock = (path) => {
   console.log(`GET ${path}`);
   switch (path) {
     case '/user/wallets':
       return walletsList;
+    case '/wallet/transactions':
+      return transactionsList;
     default:
       return 'mock for this GET route not specified';
   }

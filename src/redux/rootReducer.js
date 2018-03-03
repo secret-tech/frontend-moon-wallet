@@ -9,6 +9,8 @@ import editWallet from './modules/wallets/editWallet';
 import exportWallet from './modules/wallets/exportWallet';
 import importWallet from './modules/wallets/importWallet';
 
+import txs from './modules/wallet/txs';
+
 export default combineReducers({
   routing,
   form,
@@ -27,7 +29,9 @@ export default combineReducers({
     importWallet
   }),
 
-  singleWallet: combineReducers({}),
+  wallet: combineReducers({
+    txs
+  }),
 
   settings: combineReducers({})
 });
