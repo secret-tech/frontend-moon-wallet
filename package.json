@@ -22,11 +22,14 @@
     "run": "lint:all, test"
   },
   "dependencies": {
+    "@blueprintjs/core": "1.35.5",
+    "@blueprintjs/icons": "^2.0.0-rc.2",
     "history": "^4.7.2",
     "jwt-decode": "^2.2.0",
     "normalize.css": "^7.0.0",
     "object-assign": "^4.1.1",
     "react": "^16.2.0",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",

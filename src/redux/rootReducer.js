@@ -9,5 +9,10 @@ export default combineReducers({
 
   app: combineReducers({
     app
-  })
+  }),
+
+  auth: combineReducers({}),
+  wallets: combineReducers({}),
+  singleWallet: combineReducers({}),
+  settings: combineReducers({})
 });

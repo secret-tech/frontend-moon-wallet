@@ -1,11 +1,25 @@
 import React from 'react';
+import { Navbar, NavbarGroup, NavbarHeading, Button, Popover, Position } from '@blueprintjs/core';
 import { Link } from 'react-router-dom';
 
-import { namedRoutes } from '../../../routes';
+import NavMenuDropdown from '../NavMenuDropdown';
+import NavWalletDropdown from '../NavWalletDropdown';
 
-export default () => (
-  <nav>
-    <Link to={namedRoutes.dashboard}>Dashboard</Link>
-    <Link to={namedRoutes.settings}>Settings</Link>
-  </nav>
+const Nav = () => (
+  <Navbar className="pt-dark">
+    <NavbarGroup>
+      <NavbarHeading><Link to="/">MOON</Link></NavbarHeading>
+    </NavbarGroup>
+
+    <NavbarGroup className="pt-align-right">
+      <Popover content={<NavWalletDropdown/>} position={Position.BOTTOM_RIGHT}>
+        <Button className="pt-minimal" iconName="expand-all" text="My Awesome Wallet 0x0qb...ab12a" />
+      </Popover>
+      <Popover content={<NavMenuDropdown/>} position={Position.BOTTOM_RIGHT}>
+        <Button className="pt-minimal" iconName="cog" />
+      </Popover>
+    </NavbarGroup>
+  </Navbar>
 );
+
+export default Nav;
