@@ -22,7 +22,7 @@ class App extends Component {
         <div className={s.nav}><Nav/></div>
         <Switch>
           <Route exact path={namedRoutes.wallets} component={Wallets}/>
-          <Route exact path={namedRoutes.wallet} component={Wallet}/>
+          <Route exact path={`${namedRoutes.wallet}/:walletId`} component={Wallet}/>
           <Route exact path={namedRoutes.settings} component={Settings}/>
           <Route exact path={namedRoutes.help} component={Help}/>
         </Switch>
