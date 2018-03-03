@@ -4,6 +4,10 @@ import { reducer as form } from 'redux-form';
 import app from './modules/app/app';
 
 import walletsList from './modules/wallets/walletsList';
+import createWallet from './modules/wallets/createWallet';
+import editWallet from './modules/wallets/editWallet';
+import exportWallet from './modules/wallets/exportWallet';
+import importWallet from './modules/wallets/importWallet';
 
 export default combineReducers({
   routing,
@@ -16,7 +20,11 @@ export default combineReducers({
   auth: combineReducers({}),
 
   wallets: combineReducers({
-    walletsList
+    walletsList,
+    createWallet,
+    editWallet,
+    exportWallet,
+    importWallet
   }),
 
   singleWallet: combineReducers({}),

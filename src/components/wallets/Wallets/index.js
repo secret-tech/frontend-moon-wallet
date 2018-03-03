@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button } from '@blueprintjs/core';
 
 import WalletsList from '../../../containers/wallets/WalletsList';
+import WalletsPopups from '../../../containers/wallets/WalletsPopups';
+import WalletsControls from '../../../containers/wallets/WalletsControls';
 
 import s from './styles.css';
 
@@ -10,15 +11,14 @@ const Wallets = () => (
     <div className={s.title}>
       <h1>Wallets</h1>
 
-      <div className={s.buttons}>
-        <Button iconName="import" text="Import wallet" />
-        <Button iconName="add" text="Create new wallet" />
-      </div>
+      <WalletsControls/>
     </div>
 
     <div className={s.body}>
       <WalletsList/>
     </div>
+
+    <WalletsPopups/>
   </div>
 );
 

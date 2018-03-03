@@ -12,21 +12,24 @@ const WalletTile = (props) => {
     name,
     address,
     color,
-    icon
+    icon,
+
+    onClickExport,
+    onClickEdit
   } = props;
 
   const balances = getBalances(props.balances);
 
   const exportFn = (e) => {
+    onClickExport(address);
     e.preventDefault();
     e.stopPropagation();
-    console.log('callin export');
   };
 
   const settingsFn = (e) => {
+    onClickEdit(address);
     e.preventDefault();
     e.stopPropagation();
-    console.log('callin settings');
   };
 
   return (
