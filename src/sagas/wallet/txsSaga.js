@@ -5,7 +5,7 @@ import { fetchTxs } from '../../redux/modules/wallet/txs';
 
 function* fetchTxsIterator() {
   try {
-    const data = yield call(get, '/wallet/transactions');
+    const data = yield call(get, '/wallet/transactionsEmpty');
     yield put(fetchTxs.success(data));
   } catch (e) {
     yield put(fetchTxs.failure(e));

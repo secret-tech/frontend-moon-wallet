@@ -3,10 +3,10 @@ import { Spinner } from '@blueprintjs/core';
 
 import s from './styles.css';
 
-const TxsPreloader = () => (
+const Preloader = (props) => (
   <div className={s.preloader}>
-    <Spinner className="pt-large"/>
+    <Spinner className="pt-large" {...props}/>
   </div>
 );
 
-export default TxsPreloader;
+export default Preloader;

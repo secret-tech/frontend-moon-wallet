@@ -120,6 +120,8 @@ const getMock = (path) => {
       return walletsList;
     case '/wallet/transactions':
       return transactionsList;
+    case '/wallet/transactionsEmpty':
+      return [];
     default:
       return 'mock for this GET route not specified';
   }
