@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter, Redirect } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
 import namedRoutes from '../../../routes';
@@ -18,7 +18,6 @@ class App extends Component {
       <div className={cx(s.app, 'pt-dark')}>
         <Route path={namedRoutes.app} component={AppWrapper}/>
         <Route path={namedRoutes.auth} component={AuthWrapper}/>
-        <Redirect from={namedRoutes.base} to={namedRoutes.wallets}/>
       </div>
     );
   }

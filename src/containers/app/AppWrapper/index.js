@@ -14,7 +14,7 @@ import s from './styles.css';
 class AppWrapper extends Component {
   render() {
     return (
-      <div>
+      <div className={s.wrapper}>
         <div className={s.nav}><Nav/></div>
         <Switch>
           <Route exact path={namedRoutes.wallets} component={Wallets}/>

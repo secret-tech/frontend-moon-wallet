@@ -8,8 +8,9 @@ const namedRoutes = {
   help: '/app/help',
 
   auth: '/auth/',
-  signIn: '/auth/signIn',
-  signUp: '/auth/signUp'
+  signIn: '/auth/sign-in',
+  signUp: '/auth/sign-up',
+  resetPassword: '/auth/reset-password'
 };
 
 export default namedRoutes;
