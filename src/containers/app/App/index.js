@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Redirect } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
 import namedRoutes from '../../../routes';
 
-import Nav from '../../../components/app/Nav';
-import Wallets from '../../../components/wallets/Wallets';
-import Wallet from '../../../components/wallet/Wallet';
-import Settings from '../../../components/app/Settings';
-import Help from '../../../components/help/Help';
+import AuthWrapper from '../AuthWrapper';
+import AppWrapper from '../AppWrapper';
 
 import s from './styles.css';
 
@@ -19,13 +16,9 @@ class App extends Component {
   render() {
     return (
       <div className={cx(s.app, 'pt-dark')}>
-        <div className={s.nav}><Nav/></div>
-        <Switch>
-          <Route exact path={namedRoutes.wallets} component={Wallets}/>
-          <Route exact path={`${namedRoutes.wallet}/:walletId`} component={Wallet}/>
-          <Route exact path={namedRoutes.settings} component={Settings}/>
-          <Route exact path={namedRoutes.help} component={Help}/>
-        </Switch>
+        <Route path={namedRoutes.app} component={AppWrapper}/>
+        <Route path={namedRoutes.auth} component={AuthWrapper}/>
+        <Redirect from={namedRoutes.base} to={namedRoutes.wallets}/>
       </div>
     );
   }
