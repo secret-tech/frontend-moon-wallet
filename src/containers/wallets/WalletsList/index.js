@@ -6,6 +6,8 @@ import { openExportWalletPopup } from '../../../redux/modules/wallets/exportWall
 import { openEditWalletPopup } from '../../../redux/modules/wallets/editWallet';
 
 import WalletTile from '../../../components/wallets/WalletTile';
+import Preloader from '../../../components/common/Preloader';
+import EmptyState from '../../../components/common/EmptyState';
 
 class WalletsList extends Component {
   componentDidMount() {
@@ -13,12 +15,26 @@ class WalletsList extends Component {
   }
 
   render() {
-    return this.props.wallets.map((wallet) =>
-      <WalletTile
-        key={wallet.address}
-        {...wallet}
-        onClickExport={this.props.openExportWalletPopup}
-        onClickEdit={this.props.openEditWalletPopup}/>);
+    const {
+      wallets,
+      fetching
+    } = this.props;
+
+    if (fetching) return <Preloader/>;
+
+    if (wallets.length > 1) {
+      return wallets.map((wallet) =>
+        <WalletTile
+          key={wallet.address}
+          {...wallet}
+          onClickExport={this.props.openExportWalletPopup}
+          onClickEdit={this.props.openEditWalletPopup}/>);
+    }
+
+    return <EmptyState
+      title="No wallets here"
+      description="Let's try to create or import new one"
+      visual="pt-icon-cross"/>;
   }
 }
 
