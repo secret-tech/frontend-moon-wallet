@@ -13,7 +13,7 @@ const CreateWalletForm = (props) => {
     handleSubmit,
     invalid,
     // error, // TODO handle errors
-    // fetching
+    fetching
   } = props;
 
   // const renderButton = () =>
@@ -33,7 +33,12 @@ const CreateWalletForm = (props) => {
         validate={required}/>
 
       <div className={s.buttons}>
-        <Button intent={Intent.PRIMARY} text="Create" disabled={invalid}/>
+        <Button
+          type="submit"
+          intent={Intent.PRIMARY}
+          text="Create"
+          disabled={invalid}
+          loading={fetching}/>
       </div>
     </form>
   );

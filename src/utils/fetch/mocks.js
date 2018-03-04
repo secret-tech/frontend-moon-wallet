@@ -114,7 +114,7 @@ const transactionsList = [
 ];
 
 const getMock = (path) => {
-  console.log(`GET ${path}`);
+  console.log(`[GET] ${path}`);
   switch (path) {
     case '/user/wallets':
       return walletsList;
@@ -123,24 +123,24 @@ const getMock = (path) => {
     case '/wallet/transactionsEmpty':
       return [];
     default:
-      return 'mock for this GET route not specified';
+      throw new Error('[ERR] mock for this route not specified');
   }
 };
 
 const postMock = (path, body) => {
-  console.log(`POST ${path}`, body);
-  switch (path) {
-    default:
-      return 'mock for this POST route not specified';
-  }
+  console.log('[POST]', path, body);
+  // switch (path) {
+  //   default:
+  //     throw new Error('[ERR] mock for this route not specified');
+  // }
 };
 
 
 const putMock = (path, body) => {
-  console.log(`PUT ${path}`, body);
+  console.log(`[PUT] ${path}`, body);
   switch (path) {
     default:
-      return 'mock fot this PUT route not specified';
+      throw new Error('[ERR] mock fot this route not specified');
   }
 };
 
@@ -148,19 +148,19 @@ export const get = (basePath) =>
   new Promise((resolve) => {
     setTimeout(() => {
       resolve(getMock(basePath));
-    }, 1000);
+    }, 2500);
   });
 
-export const post = (basePath, path, body) =>
+export const post = (basePath, body) =>
   new Promise((resolve) => {
     setTimeout(() => {
-      resolve(postMock(path, body));
-    }, 1000);
+      resolve(postMock(basePath, body));
+    }, 2500);
   });
 
-export const put = (path, body) =>
+export const put = (basePath, body) =>
   new Promise((resolve) => {
     setTimeout(() => {
-      resolve(putMock(path, body));
-    }, 1000);
+      resolve(putMock(basePath, body));
+    }, 2500);
   });

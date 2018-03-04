@@ -14,27 +14,37 @@ const RenderInput = (props) => {
     error,
     invalid,
     active,
-    visited
+    dirty
   } = meta;
 
-  const isValid = () => {
-    if (!active && invalid && visited) return false;
-    if (!invalid) return true;
+  const isInvalid = () => {
+    if (!active && invalid && dirty) return true;
+    if (!invalid) return false;
 
-    return false;
+    return null;
   };
 
   const inputClassName = classnames(
     'pt-input',
     'pt-fill',
-    // !isValid() ? 'pt-intent-danger' : null
+    isInvalid() ? 'pt-intent-danger' : null
+  );
+
+  const formGroupClassName = classnames(
+    'pt-form-group',
+    isInvalid() ? 'pt-intent-danger' : null
   );
 
   return (
-    <label className="pt-label">
-      {label}
-      <input className={inputClassName} {...input} {...restProps}/>
-    </label>
+    <div className={formGroupClassName}>
+      <label className="pt-label">
+        {label}
+      </label>
+      <div className="pt-form-content">
+        <input className={inputClassName} {...input} {...restProps}/>
+        {isInvalid() ? <div className="pt-form-helper-text">{error}</div> : null}
+      </div>
+    </div>
   );
 };
 

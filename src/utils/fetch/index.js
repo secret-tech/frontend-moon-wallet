@@ -1,9 +1,9 @@
 import 'whatwg-fetch';
 import { pathCreator, checkHttpStatus, parseJSON, authHeader } from './helpers';
 
-import { get } from './mocks';
+import { get, post } from './mocks';
 
-export { get };
+export { get, post };
 
 /**
  * Fetch wrapper function
@@ -44,11 +44,11 @@ const apiFetch = (path, options = {}) => fetch(pathCreator(path), {
  * @return     - promise
  */
 
-export const post = (path, body) =>
-  (apiFetch(path, {
-    method: 'POST',
-    body: JSON.stringify(body)
-  }));
+// export const post = (path, body) =>
+//   (apiFetch(path, {
+//     method: 'POST',
+//     body: JSON.stringify(body)
+//   }));
 
 /**
  * Fetch wrapper for PUT requests
