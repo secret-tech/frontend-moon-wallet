@@ -1,0 +1,18 @@
+.tx {
+  margin: 20px 0;
+
+  & > h4 {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+
+    & > a {
+      margin: 0 20px;
+      font-weight: 300;
+    }
+  }
+
+  & > div {
+    font-weight: 300;
+  }
+}

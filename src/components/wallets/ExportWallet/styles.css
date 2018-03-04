@@ -1,0 +1,12 @@
+.alert {
+  text-align: center;
+}
+
+.field {
+  text-align: center;
+  margin: 40px 0;
+
+  & > h6 {
+    margin-bottom: 20px;
+  }
+}

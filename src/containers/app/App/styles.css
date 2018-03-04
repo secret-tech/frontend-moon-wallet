@@ -1,0 +1,14 @@
+body,
+html {
+  background-color: #293742;
+}
+
+.app {
+  width: 980px;
+  padding: 50px 0;
+  margin: 0 auto;
+}
+
+.nav {
+  margin-bottom: 40px;
+}
