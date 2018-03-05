@@ -1,0 +1,11 @@
+.auth {
+  padding: 225px 0 0 0;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 0 auto 100px;
+  border-radius: 50%;
+}

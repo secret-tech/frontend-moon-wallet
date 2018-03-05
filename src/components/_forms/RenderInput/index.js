@@ -37,9 +37,11 @@ const RenderInput = (props) => {
 
   return (
     <div className={formGroupClassName}>
-      <label className="pt-label">
-        {label}
-      </label>
+      {label
+        ? (<label className="pt-label">
+          {label}
+        </label>)
+        : null}
       <div className="pt-form-content">
         <input className={inputClassName} {...input} {...restProps}/>
         {isInvalid() ? <div className="pt-form-helper-text">{error}</div> : null}
