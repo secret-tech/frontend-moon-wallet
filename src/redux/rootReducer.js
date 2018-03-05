@@ -13,6 +13,7 @@ import exportWallet from './modules/wallets/exportWallet';
 import importWallet from './modules/wallets/importWallet';
 
 import txs from './modules/wallet/txs';
+import balances from './modules/wallet/balances';
 import selectedWallet from './modules/wallet/selectedWallet';
 
 export default combineReducers({
@@ -38,6 +39,7 @@ export default combineReducers({
 
   wallet: combineReducers({
     txs,
+    balances,
     selectedWallet
   }),
 

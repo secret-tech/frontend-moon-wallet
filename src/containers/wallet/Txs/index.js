@@ -25,8 +25,6 @@ class Txs extends Component {
       fetching
     } = this.props;
 
-    console.log(txs);
-
     if (fetching) return <Preloader/>;
     if (txs.length >= 1) return txs.map((tx) => <Tx key={tx.txHash} {...tx}/>);
     return (

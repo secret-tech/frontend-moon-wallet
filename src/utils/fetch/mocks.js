@@ -145,6 +145,65 @@ const txsList3 = [
 
 const txsList4 = [];
 
+const balances1 = [
+  {
+    symbol: 'ETH',
+    value: '14.123456789123456789'
+  },
+  {
+    symbol: 'JCR',
+    value: '192938.987654321123456789'
+  },
+  {
+    symbol: 'XNN',
+    value: '19000000'
+  },
+  {
+    symbol: 'B2B',
+    value: '123.123123123123'
+  },
+  {
+    symbol: 'STAR',
+    value: '102384.1238390483'
+  },
+  {
+    symbol: 'LTC',
+    value: '38848.3838238487598'
+  },
+  {
+    symbol: 'BTC',
+    value: '1.39485923823903'
+  },
+  {
+    symbol: 'DASH',
+    value: '1238.48457493'
+  }
+];
+
+const balances2 = [
+  {
+    symbol: 'LTC',
+    value: '38848.3838238487598'
+  },
+  {
+    symbol: 'BTC',
+    value: '1.39485923823903'
+  },
+  {
+    symbol: 'DASH',
+    value: '1238.48457493'
+  }
+];
+
+const balances3 = [
+  {
+    symbol: 'DASH',
+    value: '1238.48457493'
+  }
+];
+
+const balances4 = [];
+
 const initSignIn = {
   accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNhYTQzMzA0LTNhMTEtNDNkNy05NjNhLTRmNDA0OTY2MDVmMyIsImxvZ2luIjoidGVzdEB0ZXN0LmNvbSIsImRldmljZUlkIjoiZGV2aWNlIiwianRpIjoiM2FhNDMzMDQtM2ExMS00M2Q3LTk2M2EtNGY0MDQ5NjYwNWYzZGV2aWNlMTUwNzcxOTg1MzcwNiIsImlhdCI6MTUwNzcxOTg1MzcwNiwic3ViIjoiNWJiMzg5NzEtMWYyMi00Zjk5LWE5MDQtNjJmYjQ0NDMwYWI0IiwiYXVkIjoiamluY29yLmNvbSIsImV4cCI6MTUwNzcyMDQ1ODUwNn0.vaZtMpPlPZDSLCVpMMC2dpCvbSram9mXNBPAaxSupKc',
   isVerified: false,
@@ -188,6 +247,14 @@ const getMock = (path) => {
       return txsList3;
     case '/wallet/transactions/0xb0c8beb8571b911cabf0159be13758b546607de9':
       return txsList4;
+    case '/wallet/balances/0xa27d9c3959db67a4f608650b491C0c157e627091':
+      return balances1;
+    case '/wallet/balances/0xba770c7e4f9d6535b0f56ead596e3791c9cca4f6':
+      return balances2;
+    case '/wallet/balances/0x4bc7a1dbafa927017d584d155f677cd22cf27f69':
+      return balances3;
+    case '/wallet/balances/0xb0c8beb8571b911cabf0159be13758b546607de9':
+      return balances4;
     case '/wallet/transactionsEmpty':
       return [];
     default:
