@@ -4,7 +4,7 @@ const walletsList = [
   {
     id: '0x001',
     name: 'My awesome wallet',
-    address: '0x2AE99c889ea685F314fE8Bfb80787F1E500f31D1',
+    address: '0xa27d9c3959db67a4f608650b491C0c157e627091',
     color: 1,
     icon: 1,
     balances: [
@@ -45,7 +45,7 @@ const walletsList = [
   {
     id: '0x002',
     name: 'My another wallet',
-    address: '0x2AE99c889ea685F314fE8Bfb80787F1E500f31D2',
+    address: '0xba770c7e4f9d6535b0f56ead596e3791c9cca4f6',
     color: 2,
     icon: 2,
     balances: [
@@ -66,7 +66,7 @@ const walletsList = [
   {
     id: '0x003',
     name: 'Untitled wallet',
-    address: '0x2AE99c889ea685F314fE8Bfb80787F1E500f31D3',
+    address: '0x4bc7a1dbafa927017d584d155f677cd22cf27f69',
     color: 3,
     icon: 3,
     balances: [
@@ -79,7 +79,7 @@ const walletsList = [
   {
     id: '0x003',
     name: 'Empty wallet',
-    address: '0x2AE99c889ea685F314fE8Bfb80787F1E500f31D4',
+    address: '0xb0c8beb8571b911cabf0159be13758b546607de9',
     color: 4,
     icon: 4,
     balances: []

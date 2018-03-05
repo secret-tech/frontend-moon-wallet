@@ -1,6 +1,8 @@
 import React from 'react';
-import { Icon, Button } from '@blueprintjs/core';
+import { Button } from '@blueprintjs/core';
 import { Link } from 'react-router-dom';
+import Identicon from 'identicon.js';
+import hexToRgb from 'hex-to-rgb';
 
 import { getWalletColorPair, getWalletIcon } from './variants';
 import getBalances from './balances';
@@ -12,7 +14,6 @@ const WalletTile = (props) => {
     name,
     address,
     color,
-    icon,
 
     onClickExport,
     onClickEdit
@@ -32,12 +33,27 @@ const WalletTile = (props) => {
     e.stopPropagation();
   };
 
+  const identiconOptions = {
+    foreground: [255, 255, 255, 255],
+    background: [
+      hexToRgb(getWalletIcon).r,
+      hexToRgb(getWalletIcon).g,
+      hexToRgb(getWalletIcon).b,
+      hexToRgb(getWalletIcon).a
+    ],
+    margin: 0.2,
+    size: 50,
+    format: 'svg'
+  };
+
+  const identionBase64 = new Identicon(address, identiconOptions).toString();
+
   return (
     <Link to={`/wallet/${address}`} className={s.wallet}>
       <div className="pt-card pt-interactive" style={{ backgroundColor: getWalletColorPair(color).bg }}>
         <div className={s.top}>
           <div className={s.pic} style={{ backgroundColor: getWalletColorPair(color).icon }}>
-            <Icon iconName={getWalletIcon(icon)}/>
+            <img src={`data:image/svg+xml;base64,${identionBase64}`}/>
           </div>
           <div className={s.info}>
             <h3>{name}</h3>
