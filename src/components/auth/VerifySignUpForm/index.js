@@ -8,7 +8,7 @@ import RenderInput from '../../_forms/RenderInput';
 
 import s from './styles.css';
 
-const VerifySignInForm = (props) => {
+const VerifySignUpForm = (props) => {
   const {
     handleSubmit,
     invalid,
@@ -18,17 +18,10 @@ const VerifySignInForm = (props) => {
 
   const renderTip = () => {
     if (!method) return null;
-    if (method === 'google') {
-      return (
-        <div className={s.tip}>
-          To verify signing in - enter PIN code from Google Authenticator
-        </div>
-      );
-    }
 
     return (
       <div className={s.tip}>
-        To verify signing in - enter PIN code from email
+        To activate account - enter PIN code from email
       </div>
     );
   };
@@ -53,7 +46,7 @@ const VerifySignInForm = (props) => {
           type="submit"
           className="pt-large pt-fill"
           intent={Intent.PRIMARY}
-          text="Verify sign in"
+          text="Verify sign up"
           disabled={invalid}
           loading={fetching}/>
       </div>
@@ -62,13 +55,13 @@ const VerifySignInForm = (props) => {
 };
 
 const FormComponent = reduxForm({
-  form: 'verifySignIn',
+  form: 'verifySignUp',
   initialValues: {
     verification: {
       code: '',
       verificationId: ''
     }
   }
-})(VerifySignInForm);
+})(VerifySignUpForm);
 
 export default FormComponent;

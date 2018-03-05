@@ -6,6 +6,7 @@ import createWalletSaga from './wallets/createWalletSaga';
 import txsSaga from './wallet/txsSaga';
 
 import signInSaga from './auth/signInSaga';
+import signUpSaga from './auth/signUpSaga';
 
 export default function* () {
   yield all([
@@ -15,6 +16,7 @@ export default function* () {
     fork(createWalletSaga),
     fork(txsSaga),
 
-    fork(signInSaga)
+    fork(signInSaga),
+    fork(signUpSaga)
   ]);
 }

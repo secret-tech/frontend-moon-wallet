@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 455px);
+}
+
+.form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.bottomLink {
+  margin-top: auto;
+  text-align: center;
+  font-weight: 200;
+}

@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import namedRoutes from '../../../routes';
 
 import SignIn from '../../auth/SingIn';
-import SignUp from '../../../components/auth/SignUp';
+import SignUp from '../../auth/SignUp';
 
 import s from './styles.css';
 
@@ -13,8 +13,8 @@ class AuthWrapper extends Component {
     return (
       <div className={s.auth}>
         <div className={s.logo}></div>
-        <Route exact path={namedRoutes.signIn} component={SignIn}/>
-        <Route exact path={namedRoutes.signUp} component={SignUp}/>
+        <Route path={namedRoutes.signIn} component={SignIn}/>
+        <Route path={namedRoutes.signUp} component={SignUp}/>
       </div>
     );
   }

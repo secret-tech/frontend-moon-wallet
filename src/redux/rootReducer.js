@@ -4,6 +4,7 @@ import { reducer as form } from 'redux-form';
 import app from './modules/app/app';
 
 import signIn from './modules/auth/signIn';
+import signUp from './modules/auth/signUp';
 
 import walletsList from './modules/wallets/walletsList';
 import createWallet from './modules/wallets/createWallet';
@@ -22,7 +23,8 @@ export default combineReducers({
   }),
 
   auth: combineReducers({
-    signIn
+    signIn,
+    signUp
   }),
 
   wallets: combineReducers({
