@@ -86,7 +86,7 @@ const walletsList = [
   }
 ];
 
-const transactionsList = [
+const txsList1 = [
   {
     direction: 'in',
     value: '19',
@@ -112,6 +112,38 @@ const transactionsList = [
     date: 1516041312
   }
 ];
+
+const txsList2 = [
+  {
+    direction: 'out',
+    value: '1240000000',
+    symbol: 'XNN',
+    txHash: '0x0123456789ababab1235758ab4',
+    status: 'failure',
+    date: 1516041312
+  }
+];
+
+const txsList3 = [
+  {
+    direction: 'in',
+    value: '19',
+    symbol: 'ETH',
+    txHash: '0x0123456789ababab1235758ab2',
+    status: 'pending',
+    date: 1520086973
+  },
+  {
+    direction: 'out',
+    value: '234',
+    symbol: 'JCR',
+    txHash: '0x0123456789ababab1235758ab3',
+    status: 'success',
+    date: 1519479863
+  }
+];
+
+const txsList4 = [];
 
 const initSignIn = {
   accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNhYTQzMzA0LTNhMTEtNDNkNy05NjNhLTRmNDA0OTY2MDVmMyIsImxvZ2luIjoidGVzdEB0ZXN0LmNvbSIsImRldmljZUlkIjoiZGV2aWNlIiwianRpIjoiM2FhNDMzMDQtM2ExMS00M2Q3LTk2M2EtNGY0MDQ5NjYwNWYzZGV2aWNlMTUwNzcxOTg1MzcwNiIsImlhdCI6MTUwNzcxOTg1MzcwNiwic3ViIjoiNWJiMzg5NzEtMWYyMi00Zjk5LWE5MDQtNjJmYjQ0NDMwYWI0IiwiYXVkIjoiamluY29yLmNvbSIsImV4cCI6MTUwNzcyMDQ1ODUwNn0.vaZtMpPlPZDSLCVpMMC2dpCvbSram9mXNBPAaxSupKc',
@@ -148,8 +180,14 @@ const getMock = (path) => {
   switch (path) {
     case '/user/wallets':
       return walletsList;
-    case '/wallet/transactions':
-      return transactionsList;
+    case '/wallet/transactions/0xa27d9c3959db67a4f608650b491C0c157e627091':
+      return txsList1;
+    case '/wallet/transactions/0xba770c7e4f9d6535b0f56ead596e3791c9cca4f6':
+      return txsList2;
+    case '/wallet/transactions/0x4bc7a1dbafa927017d584d155f677cd22cf27f69':
+      return txsList3;
+    case '/wallet/transactions/0xb0c8beb8571b911cabf0159be13758b546607de9':
+      return txsList4;
     case '/wallet/transactionsEmpty':
       return [];
     default:
@@ -186,19 +224,19 @@ export const get = (basePath) =>
   new Promise((resolve) => {
     setTimeout(() => {
       resolve(getMock(basePath));
-    }, 2500);
+    }, 1500);
   });
 
 export const post = (basePath, body) =>
   new Promise((resolve) => {
     setTimeout(() => {
       resolve(postMock(basePath, body));
-    }, 2500);
+    }, 1500);
   });
 
 export const put = (basePath, body) =>
   new Promise((resolve) => {
     setTimeout(() => {
       resolve(putMock(basePath, body));
-    }, 2500);
+    }, 1500);
   });

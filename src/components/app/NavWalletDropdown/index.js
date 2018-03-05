@@ -6,6 +6,18 @@ import { shortAddress } from '../../../utils/numbers';
 const NavWalletDropdown = (props) => {
   const renderMenu = () => props.wallets.map(({ address, name }) => {
     const text = `${name} ${shortAddress(address)}`;
+    if (address === props.selectedWallet) {
+      return (
+        <Link
+          key={address}
+          onClick={() => props.selectWallet(address)}
+          to={`/app/wallet/${address}`}
+          className="pt-menu-item pt-disabled">
+          {text}
+        </Link>
+      );
+    }
+
     return (
       <Link
         key={address}

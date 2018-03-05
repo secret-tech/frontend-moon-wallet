@@ -13,14 +13,18 @@ import { shortAddress } from '../../../utils/numbers';
 const Nav = (props) => {
   const { wallets, selectedWallet, selectWallet } = props;
   const currentWallet = wallets.filter((wallet) => wallet.address === selectedWallet)[0];
-  const otherWallets = wallets.filter((wallet) => wallet.address !== selectedWallet);
 
   const renderWalletsDropdown = () => {
     if (currentWallet) {
       const text = `${currentWallet.name} ${shortAddress(currentWallet.address)}`;
       return (
         <Popover
-          content={<NavWalletDropdown wallets={otherWallets} selectWallet={selectWallet}/>}
+          content={
+            <NavWalletDropdown
+              wallets={wallets}
+              selectedWallet={selectedWallet}
+              selectWallet={selectWallet}/>
+          }
           position={Position.BOTTOM_RIGHT}>
           <Button className="pt-minimal" iconName="expand-all" text={text} />
         </Popover>
