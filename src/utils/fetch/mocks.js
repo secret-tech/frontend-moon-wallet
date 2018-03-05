@@ -113,6 +113,20 @@ const transactionsList = [
   }
 ];
 
+const initSignIn = {
+  accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNhYTQzMzA0LTNhMTEtNDNkNy05NjNhLTRmNDA0OTY2MDVmMyIsImxvZ2luIjoidGVzdEB0ZXN0LmNvbSIsImRldmljZUlkIjoiZGV2aWNlIiwianRpIjoiM2FhNDMzMDQtM2ExMS00M2Q3LTk2M2EtNGY0MDQ5NjYwNWYzZGV2aWNlMTUwNzcxOTg1MzcwNiIsImlhdCI6MTUwNzcxOTg1MzcwNiwic3ViIjoiNWJiMzg5NzEtMWYyMi00Zjk5LWE5MDQtNjJmYjQ0NDMwYWI0IiwiYXVkIjoiamluY29yLmNvbSIsImV4cCI6MTUwNzcyMDQ1ODUwNn0.vaZtMpPlPZDSLCVpMMC2dpCvbSram9mXNBPAaxSupKc',
+  isVerified: false,
+  verification: {
+    verificationId: '7fa96769-7bcc-4705-b544-02a83707cfc8',
+    method: 'email'
+  }
+};
+
+const verifySignIn = {
+  accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNhYTQzMzA0LTNhMTEtNDNkNy05NjNhLTRmNDA0OTY2MDVmMyIsImxvZ2luIjoidGVzdEB0ZXN0LmNvbSIsImRldmljZUlkIjoiZGV2aWNlIiwianRpIjoiM2FhNDMzMDQtM2ExMS00M2Q3LTk2M2EtNGY0MDQ5NjYwNWYzZGV2aWNlMTUwNzcxOTg1MzcwNiIsImlhdCI6MTUwNzcxOTg1MzcwNiwic3ViIjoiNWJiMzg5NzEtMWYyMi00Zjk5LWE5MDQtNjJmYjQ0NDMwYWI0IiwiYXVkIjoiamluY29yLmNvbSIsImV4cCI6MTUwNzcyMDQ1ODUwNn0.vaZtMpPlPZDSLCVpMMC2dpCvbSram9mXNBPAaxSupKc',
+  isVerified: false
+};
+
 const getMock = (path) => {
   console.log(`[GET] ${path}`);
   switch (path) {
@@ -129,10 +143,14 @@ const getMock = (path) => {
 
 const postMock = (path, body) => {
   console.log('[POST]', path, body);
-  // switch (path) {
-  //   default:
-  //     throw new Error('[ERR] mock for this route not specified');
-  // }
+  switch (path) {
+    case '/user/signIn/initiate':
+      return initSignIn;
+    case '/user/signIn/verify':
+      return verifySignIn;
+    default:
+      return null;
+  }
 };
 
 
