@@ -1,14 +1,29 @@
 import React from 'react';
-import { Menu, MenuItem, MenuDivider } from '@blueprintjs/core';
+import { Link } from 'react-router-dom';
+import { Menu, MenuDivider } from '@blueprintjs/core';
+import { shortAddress } from '../../../utils/numbers';
 
-const NavWalletDropdown = () => (
-  <Menu>
-    <MenuItem text="My awesome wallet 0xa01...123ba" />
-    <MenuItem text="Another wallet 0xb01...ab123" />
-    <MenuItem text="Untitled 0x001...12311" />
-    <MenuDivider />
-    <MenuItem text="Wallets..."/>
-  </Menu>
-);
+const NavWalletDropdown = (props) => {
+  const renderMenu = () => props.wallets.map(({ address, name }) => {
+    const text = `${name} ${shortAddress(address)}`;
+    return (
+      <Link
+        key={address}
+        onClick={() => props.selectWallet(address)}
+        to={`/app/wallet/${address}`}
+        className="pt-menu-item">
+        {text}
+      </Link>
+    );
+  });
+
+  return (
+    <Menu className="pt-popover-dismiss">
+      {renderMenu()}
+      <MenuDivider />
+      <Link to="/app/wallets" className="pt-menu-item">Wallets...</Link>
+    </Menu>
+  );
+};
 
 export default NavWalletDropdown;

@@ -49,7 +49,7 @@ const WalletTile = (props) => {
   const identionBase64 = new Identicon(address, identiconOptions).toString();
 
   return (
-    <Link to={`/wallet/${address}`} className={s.wallet}>
+    <Link to={`/app/wallet/${address}`} className={s.wallet}>
       <div className="pt-card pt-interactive" style={{ backgroundColor: getWalletColorPair(color).bg }}>
         <div className={s.top}>
           <div className={s.pic} style={{ backgroundColor: getWalletColorPair(color).icon }}>

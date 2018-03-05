@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchWallets } from '../../../redux/modules/wallets/walletsList';
 import { openExportWalletPopup } from '../../../redux/modules/wallets/exportWallet';
 import { openEditWalletPopup } from '../../../redux/modules/wallets/editWallet';
 
@@ -10,10 +9,6 @@ import Preloader from '../../../components/common/Preloader';
 import EmptyState from '../../../components/common/EmptyState';
 
 class WalletsList extends Component {
-  componentDidMount() {
-    this.props.fetchWallets();
-  }
-
   render() {
     const {
       wallets,
@@ -43,7 +38,6 @@ const ConnectedComponent = connect(
     ...state.wallets.walletsList
   }),
   {
-    fetchWallets,
     openExportWalletPopup,
     openEditWalletPopup
   }
