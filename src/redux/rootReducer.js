@@ -5,6 +5,7 @@ import app from './modules/app/app';
 
 import signIn from './modules/auth/signIn';
 import signUp from './modules/auth/signUp';
+import resetPassword from './modules/auth/resetPassword';
 
 import walletsList from './modules/wallets/walletsList';
 import createWallet from './modules/wallets/createWallet';
@@ -26,7 +27,8 @@ export default combineReducers({
 
   auth: combineReducers({
     signIn,
-    signUp
+    signUp,
+    resetPassword
   }),
 
   wallets: combineReducers({

@@ -8,6 +8,7 @@ import balancesSaga from './wallet/balancesSaga';
 
 import signInSaga from './auth/signInSaga';
 import signUpSaga from './auth/signUpSaga';
+import resetPasswordSaga from './auth/resetPasswordSaga';
 
 export default function* () {
   yield all([
@@ -19,6 +20,7 @@ export default function* () {
     fork(balancesSaga),
 
     fork(signInSaga),
-    fork(signUpSaga)
+    fork(signUpSaga),
+    fork(resetPasswordSaga)
   ]);
 }

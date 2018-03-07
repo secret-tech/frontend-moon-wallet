@@ -5,6 +5,7 @@ import namedRoutes from '../../../routes';
 
 import SignIn from '../../auth/SingIn';
 import SignUp from '../../auth/SignUp';
+import ResetPassword from '../../auth/ResetPassword';
 
 import s from './styles.css';
 
@@ -15,6 +16,7 @@ class AuthWrapper extends Component {
         <div className={s.logo}></div>
         <Route path={namedRoutes.signIn} component={SignIn}/>
         <Route path={namedRoutes.signUp} component={SignUp}/>
+        <Route path={namedRoutes.resetPassword} component={ResetPassword}/>
       </div>
     );
   }
