@@ -204,6 +204,13 @@ const balances3 = [
 
 const balances4 = [];
 
+const initTransferFunds = {
+  verification: {
+    verificationId: '7fa96769-7bcc-4705-b544-02a83707cfc8',
+    method: 'google'
+  }
+};
+
 const initSignIn = {
   accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNhYTQzMzA0LTNhMTEtNDNkNy05NjNhLTRmNDA0OTY2MDVmMyIsImxvZ2luIjoidGVzdEB0ZXN0LmNvbSIsImRldmljZUlkIjoiZGV2aWNlIiwianRpIjoiM2FhNDMzMDQtM2ExMS00M2Q3LTk2M2EtNGY0MDQ5NjYwNWYzZGV2aWNlMTUwNzcxOTg1MzcwNiIsImlhdCI6MTUwNzcxOTg1MzcwNiwic3ViIjoiNWJiMzg5NzEtMWYyMi00Zjk5LWE5MDQtNjJmYjQ0NDMwYWI0IiwiYXVkIjoiamluY29yLmNvbSIsImV4cCI6MTUwNzcyMDQ1ODUwNn0.vaZtMpPlPZDSLCVpMMC2dpCvbSram9mXNBPAaxSupKc',
   isVerified: false,
@@ -273,6 +280,8 @@ const postMock = (path, body) => {
       return initSignUp;
     case '/user/signUp/verify':
       return verifySignUp;
+    case '/wallet/transfer/initiate':
+      return initTransferFunds;
     default:
       return null;
   }
