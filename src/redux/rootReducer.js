@@ -16,6 +16,7 @@ import importWallet from './modules/wallets/importWallet';
 import txs from './modules/wallet/txs';
 import balances from './modules/wallet/balances';
 import selectedWallet from './modules/wallet/selectedWallet';
+import depositFunds from './modules/wallet/depositFunds';
 
 export default combineReducers({
   routing,
@@ -42,7 +43,8 @@ export default combineReducers({
   wallet: combineReducers({
     txs,
     balances,
-    selectedWallet
+    selectedWallet,
+    depositFunds
   }),
 
   settings: combineReducers({})

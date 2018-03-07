@@ -6,6 +6,7 @@ import { selectWallet } from '../../../redux/modules/wallet/selectedWallet';
 
 import Balances from '../../../containers/wallet/Balances';
 import Txs from '../../../containers/wallet/Txs';
+import DepositFunds from '../DepositFunds';
 
 import s from './styles.css';
 
@@ -26,6 +27,8 @@ class Wallet extends Component {
             <Balances/>
           </aside>
         </div>
+
+        <DepositFunds/>
       </div>
     );
   }

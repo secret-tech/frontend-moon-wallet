@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Card, Button } from '@blueprintjs/core';
 
 import { fetchBalances } from '../../../redux/modules/wallet/balances';
+import { openDepositFundsPopup } from '../../../redux/modules/wallet/depositFunds';
 
 import Preloader from '../../../components/common/Preloader';
 
@@ -24,7 +25,8 @@ class Balances extends Component {
   render() {
     const {
       fetching,
-      balances
+      balances,
+      openDepositFundsPopup
     } = this.props;
 
     const renderBalances = () => {
@@ -61,7 +63,10 @@ class Balances extends Component {
           </div>
 
           <div className={s.depositButton}>
-            <Button text="Deposit funds" className="pt-intent-primary"/>
+            <Button
+              text="Deposit funds"
+              className="pt-intent-primary"
+              onClick={() => openDepositFundsPopup()}/>
           </div>
         </Card>
       </div>
@@ -72,7 +77,8 @@ class Balances extends Component {
 const ConnectedComponent = connect(
   (state) => ({ ...state.wallet.balances }),
   {
-    fetchBalances
+    fetchBalances,
+    openDepositFundsPopup
   }
 )(Balances);
 const ComponentWithRouter = withRouter(ConnectedComponent);
