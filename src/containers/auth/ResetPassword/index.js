@@ -16,6 +16,8 @@ const ResetPassword = (props) => {
   const {
     step,
     fetching,
+    email,
+    resetId,
     verification: {
       verificationId,
       method
@@ -32,7 +34,8 @@ const ResetPassword = (props) => {
           fetching={fetching}
           method={method}
           initialValues={{
-            verification: { verificationId }
+            email,
+            resetId
           }}/>
       );
     }
@@ -43,6 +46,7 @@ const ResetPassword = (props) => {
           onSubmit={verifyResetPassword}
           fetching={fetching}
           initialValues={{
+            email,
             verification: {
               verificationId: qp.verificationId,
               code: qp.code
@@ -65,6 +69,7 @@ const ResetPassword = (props) => {
         fetching={fetching}
         method={method}
         initialValues={{
+          email,
           verification: { verificationId }
         }}/>
     );

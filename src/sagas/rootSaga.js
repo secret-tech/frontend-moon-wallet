@@ -1,6 +1,8 @@
 import { all, fork } from 'redux-saga/effects';
 import { formActionSaga } from 'redux-form-saga';
 
+import appSaga from './app/appSaga';
+
 import walletsListSaga from './wallets/walletsListSaga';
 import createWalletSaga from './wallets/createWalletSaga';
 
@@ -15,6 +17,8 @@ import resetPasswordSaga from './auth/resetPasswordSaga';
 export default function* () {
   yield all([
     fork(formActionSaga),
+
+    fork(appSaga),
 
     fork(walletsListSaga),
     fork(createWalletSaga),

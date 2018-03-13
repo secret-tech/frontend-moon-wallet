@@ -64,6 +64,7 @@ const VerifyResetPasswordForm = (props) => {
 const FormComponent = reduxForm({
   form: 'verifyResetPassword',
   initialValues: {
+    email: '',
     verification: {
       code: '',
       verificationId: ''

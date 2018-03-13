@@ -1,11 +1,20 @@
 import { all, takeLatest, call, put, fork } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
 import { post } from '../../utils/fetch';
+import { namedRoutes } from '../../routes';
+
 import { initSignUp, verifySignUp, changeStep, resetStore } from '../../redux/modules/auth/signUp';
+import { login } from '../../redux/modules/app/app';
 
 
 function* initSignUpIterator({ payload }) {
   try {
-    const data = yield call(post, '/user/signUp/initiate', payload);
+    const body = {
+      agreeTos: true,
+      paymentPassword: '12345678', // TODO dont forget delete that shit :)
+      ...payload
+    };
+    const data = yield call(post, '/user', body);
     yield put(initSignUp.success(data.verification));
     yield put(changeStep('verifySignUp'));
   } catch (e) {
@@ -23,9 +32,11 @@ function* initSignUpSaga() {
 
 function* verifySignUpIterator({ payload }) {
   try {
-    yield call(post, '/user/signUp/verify', payload);
+    const data = yield call(post, '/user/activate', payload);
     yield put(verifySignUp.success());
+    yield put(login(data.accessToken));
     yield put(resetStore());
+    yield put(push(namedRoutes.dashboard));
   } catch (e) {
     yield put(verifySignUp.failure(e));
   }

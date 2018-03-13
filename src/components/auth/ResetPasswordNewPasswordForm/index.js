@@ -39,7 +39,9 @@ const ResetPasswordNewPasswordForm = (props) => {
 const FormComponent = reduxForm({
   form: 'resetPasswordNewPasswordEmail',
   initialValues: {
-    password: ''
+    password: '',
+    email: '',
+    resetId: ''
   }
 })(ResetPasswordNewPasswordForm);
 
