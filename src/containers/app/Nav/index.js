@@ -9,6 +9,7 @@ import NavMenuDropdown from '../../../components/app/NavMenuDropdown';
 import NavWalletDropdown from '../../../components/app/NavWalletDropdown';
 
 import { shortAddress } from '../../../utils/numbers';
+import s from './styles.css';
 
 const Nav = (props) => {
   const { wallets, selectedWallet, selectWallet } = props;
@@ -16,7 +17,7 @@ const Nav = (props) => {
 
   const renderWalletsDropdown = () => {
     if (currentWallet) {
-      const text = `${currentWallet.name} ${shortAddress(currentWallet.address)}`;
+      const text = `${shortAddress(currentWallet.address)}`;
       return (
         <Popover
           content={
@@ -37,7 +38,12 @@ const Nav = (props) => {
   return (
     <Navbar className="pt-dark">
       <NavbarGroup>
-        <NavbarHeading><Link to="/">MOON</Link></NavbarHeading>
+        <NavbarHeading>
+          <Link to="/app/wallets" className={s.logo}>
+            <img src={require('../../../assets/images/logo.svg')}/>
+            <span>MOON Wallet</span>
+          </Link>
+        </NavbarHeading>
       </NavbarGroup>
 
       <NavbarGroup className="pt-align-right">
@@ -52,7 +58,7 @@ const Nav = (props) => {
 
 const ConnectedComponent = connect(
   (state) => ({
-    ...state.wallets.walletsList,
+    wallets: state.app.user.wallets,
     selectedWallet: state.wallet.selectedWallet
   }),
   {

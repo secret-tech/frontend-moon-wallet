@@ -4,8 +4,8 @@ import { Menu, MenuDivider } from '@blueprintjs/core';
 import { shortAddress } from '../../../utils/numbers';
 
 const NavWalletDropdown = (props) => {
-  const renderMenu = () => props.wallets.map(({ address, name }) => {
-    const text = `${name} ${shortAddress(address)}`;
+  const renderMenu = () => props.wallets.map(({ address }) => {
+    const text = `${shortAddress(address)}`;
     if (address === props.selectedWallet) {
       return (
         <Link

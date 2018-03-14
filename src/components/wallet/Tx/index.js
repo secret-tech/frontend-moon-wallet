@@ -37,7 +37,7 @@ const Tx = (props) => {
     <div className={s.tx}>
       <h4>
         <span>{amount} {symbol()} {dir()} </span>
-        <a href={`http://etherscan.com/tx/${transactionHash}`}>{shortAddress(transactionHash)}</a>
+        <a target="_blank" href={`http://etherscan.com/tx/${transactionHash}`}>{shortAddress(transactionHash)}</a>
         {renderStatus()}
       </h4>
       <div className="pt-text-muted">{format(timestamp * 1000, 'DD MMMM YYYY HH:mm:ss')}</div>

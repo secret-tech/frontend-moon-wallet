@@ -13,7 +13,9 @@ class AuthWrapper extends Component {
   render() {
     return (
       <div className={s.auth}>
-        <div className={s.logo}></div>
+        <div className={s.logo}>
+          <img src={require('../../../assets/images/logo.svg')}/>
+        </div>
         <Route path={namedRoutes.signIn} component={SignIn}/>
         <Route path={namedRoutes.signUp} component={SignUp}/>
         <Route path={namedRoutes.resetPassword} component={ResetPassword}/>

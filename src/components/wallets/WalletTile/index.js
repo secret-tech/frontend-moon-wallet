@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@blueprintjs/core';
+// import { Button } from '@blueprintjs/core';
 import { Link } from 'react-router-dom';
 import Identicon from 'identicon.js';
 import hexToRgb from 'hex-to-rgb';
@@ -15,25 +15,25 @@ const WalletTile = (props) => {
     address,
     // color,
 
-    onClickExport,
-    onClickEdit
+    // onClickExport,
+    // onClickEdit
   } = props;
 
   const color = 1;
 
   // const balances = getBalances(props.balances);
 
-  const exportFn = (e) => {
-    onClickExport(address);
-    e.preventDefault();
-    e.stopPropagation();
-  };
-
-  const settingsFn = (e) => {
-    onClickEdit(address);
-    e.preventDefault();
-    e.stopPropagation();
-  };
+  // const exportFn = (e) => {
+  //   onClickExport(address);
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  // };
+  //
+  // const settingsFn = (e) => {
+  //   onClickEdit(address);
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  // };
 
   const identiconOptions = {
     foreground: [255, 255, 255, 255],
@@ -73,10 +73,10 @@ const WalletTile = (props) => {
             : null}
         </div> */}
 
-        <div className={s.control}>
+        {/* <div className={s.control}>
           <Button type="button" className="pt-minimal" iconName="export" onClick={exportFn}/>
           <Button type="button" className="pt-minimal" iconName="cog" onClick={settingsFn}/>
-        </div>
+        </div> */}
       </div>
     </Link>
   );
