@@ -2,6 +2,7 @@ import { combineReducers, routerReducer as routing } from 'redux-seamless-immuta
 import { reducer as form } from 'redux-form';
 
 import app from './modules/app/app';
+import user from './modules/app/user';
 
 import signIn from './modules/auth/signIn';
 import signUp from './modules/auth/signUp';
@@ -24,7 +25,8 @@ export default combineReducers({
   form,
 
   app: combineReducers({
-    app
+    app,
+    user
   }),
 
   auth: combineReducers({

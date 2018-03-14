@@ -17,7 +17,7 @@ class WalletsList extends Component {
 
     if (fetching) return <Preloader/>;
 
-    if (wallets.length > 1) {
+    if (wallets.length > 0) {
       return wallets.map((wallet) =>
         <WalletTile
           key={wallet.address}
@@ -35,7 +35,7 @@ class WalletsList extends Component {
 
 const ConnectedComponent = connect(
   (state) => ({
-    ...state.wallets.walletsList
+    ...state.app.user
   }),
   {
     openExportWalletPopup,

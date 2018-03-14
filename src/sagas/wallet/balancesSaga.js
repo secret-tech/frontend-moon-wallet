@@ -5,7 +5,7 @@ import { fetchBalances } from '../../redux/modules/wallet/balances';
 
 function* fetchBalancesIterator({ payload }) {
   try {
-    const data = yield call(get, `/wallet/balances/${payload}`);
+    const data = yield call(get, `/dashboard?walletAddress=${payload}`);
     yield put(fetchBalances.success(data));
   } catch (e) {
     yield put(fetchBalances.failure(e));

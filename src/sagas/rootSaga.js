@@ -2,6 +2,7 @@ import { all, fork } from 'redux-saga/effects';
 import { formActionSaga } from 'redux-form-saga';
 
 import appSaga from './app/appSaga';
+import userSaga from './app/userSaga';
 
 import walletsListSaga from './wallets/walletsListSaga';
 import createWalletSaga from './wallets/createWalletSaga';
@@ -19,6 +20,7 @@ export default function* () {
     fork(formActionSaga),
 
     fork(appSaga),
+    fork(userSaga),
 
     fork(walletsListSaga),
     fork(createWalletSaga),

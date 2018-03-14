@@ -26,7 +26,7 @@ class Txs extends Component {
     } = this.props;
 
     if (fetching) return <Preloader/>;
-    if (txs.length >= 1) return txs.map((tx) => <Tx key={tx.txHash} {...tx}/>);
+    if (txs.length > 0) return txs.map((tx) => <Tx key={tx.transactionHash} {...tx}/>);
     return (
       <EmptyState
         title="No transactions here"

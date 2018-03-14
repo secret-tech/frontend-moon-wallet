@@ -26,7 +26,8 @@ class Balances extends Component {
   render() {
     const {
       fetching,
-      balances,
+      ethBalance,
+      erc20TokensBalance,
       openDepositFundsPopup,
       openTransferFundsPopup
     } = this.props;
@@ -36,21 +37,27 @@ class Balances extends Component {
         return (<Preloader/>);
       }
 
-      if (balances.length < 1) {
-        return (
+      return (
+        <div>
           <div className={s.item}>
-            <h2>0</h2>
+            <h2>{ethBalance}</h2>
             <div className="pt-text-muted">ETH balance</div>
           </div>
-        );
-      }
-
-      return balances.map(({ value, symbol }) => (
-        <div key={symbol} className={s.item}>
-          <h2>{bigNum(value)}</h2>
-          <div className="pt-text-muted">{symbol} balance</div>
+          {erc20TokensBalance.map(({ balance, symbol }) => (
+            <div key={symbol} className={s.item}>
+              <h2>{bigNum(balance)}</h2>
+              <div className="pt-text-muted">{symbol} balance</div>
+            </div>
+          ))}
         </div>
-      ));
+      );
+
+      // return erc20TokensBalance.map(({ value, symbol }) => (
+      //   <div key={symbol} className={s.item}>
+      //     <h2>{bigNum(value)}</h2>
+      //     <div className="pt-text-muted">{symbol} balance</div>
+      //   </div>
+      // ));
     };
 
     return (

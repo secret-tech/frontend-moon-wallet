@@ -1,31 +1,33 @@
 import { from } from 'seamless-immutable';
 import { createReducer, createAsyncAction } from '../../../utils/actions';
 
-export const FETCH_BALANCES = 'wallet/balances/FETCH_BALANCES';
+export const FETCH_USER = 'app/user/FETCH_USER';
 
-export const fetchBalances = createAsyncAction(FETCH_BALANCES);
+export const fetchUser = createAsyncAction(FETCH_USER);
 
 const initialState = from({
   fetching: false,
-  ethBalance: '0',
-  erc20TokensBalance: []
+  wallets: [],
+  email: '',
+  name: '',
+  defaultVerificationMethod: 'email'
 });
 
 export default createReducer({
-  [fetchBalances.REQUEST]: (state) => (
+  [fetchUser.REQUEST]: (state) => (
     state.merge({
       fetching: true
     })
   ),
 
-  [fetchBalances.SUCCESS]: (state, { payload }) => (
+  [fetchUser.SUCCESS]: (state, { payload }) => (
     state.merge({
       fetching: false,
       ...payload
     })
   ),
 
-  [fetchBalances.FAILURE]: (state) => (
+  [fetchUser.FAILURE]: (state) => (
     state.merge({
       fetching: false
     })

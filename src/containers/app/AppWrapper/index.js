@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
-import { fetchWallets } from '../../../redux/modules/wallets/walletsList';
+import { fetchUser } from '../../../redux/modules/app/user';
 
 import Nav from '../Nav';
 import Wallets from '../../../components/wallets/Wallets';
@@ -15,7 +15,7 @@ import s from './styles.css';
 
 class AppWrapper extends Component {
   componentDidMount() {
-    this.props.fetchWallets();
+    this.props.fetchUser();
   }
 
   render() {
@@ -39,7 +39,7 @@ class AppWrapper extends Component {
 const ConnectedComponent = connect(
   null,
   {
-    fetchWallets
+    fetchUser
   }
 )(AppWrapper);
 const ComponentWithRouter = withRouter(ConnectedComponent);
