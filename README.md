@@ -28,6 +28,22 @@ For more info check [**API DOCS**](https://jincortech.github.io/backend-token-wa
 1. Webpack
 1. socket.io
 
+## Changelog
+**Closed issues**
+
+- Notification system [\#22](https://github.com/JincorTech/frontend-moon-wallet/issues/22)
+- SW: balances in sidebar [\#14](https://github.com/JincorTech/frontend-moon-wallet/issues/14)
+- SW: transactions list [\#12](https://github.com/JincorTech/frontend-moon-wallet/issues/12)
+- Single wallet layout [\#11](https://github.com/JincorTech/frontend-moon-wallet/issues/11)
+- Export wallet popup and form [\#9](https://github.com/JincorTech/frontend-moon-wallet/issues/9)
+- Create wallet popup [\#7](https://github.com/JincorTech/frontend-moon-wallet/issues/7)
+- Wallets list [\#6](https://github.com/JincorTech/frontend-moon-wallet/issues/6)
+- Sign In layout and forms [\#3](https://github.com/JincorTech/frontend-moon-wallet/issues/3)
+- Sign Up layout and forms [\#2](https://github.com/JincorTech/frontend-moon-wallet/issues/2)
+- Integration with blueprintJS [\#1](https://github.com/JincorTech/frontend-moon-wallet/issues/1)
+
+Full changelog available [**here**](/CHANGELOG.md)
+
 ## How start application loacally in development mode?
 
 1. Clone this repo.
