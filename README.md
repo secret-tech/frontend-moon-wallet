@@ -75,6 +75,8 @@ To access values inside application call `console.log(process.env)`.
 
 ``yarn analyze`` - analyze webpack bundle
 
+## [Contributing](https://github.com/JincorTech/frontend-moon-wallet/blob/develop/CONTRIBUTING.md)
+
 ______________________________
 
 [LICENSE](https://github.com/JincorTech/frontend-moon-wallet/blob/develop/LICENSE) @ [secret_tech](http://secrettech.io/)
