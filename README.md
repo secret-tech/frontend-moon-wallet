@@ -8,6 +8,8 @@ This web client can be used to connect MOON's backend.
 
 For more info check [**API DOCS**](https://jincortech.github.io/backend-token-wallets)
 
+![Moon Wallet Screenshot](https://monosnap.com/file/ju7HjvPDg0csEeInRo11JrudDAJDc3.png)
+
 ## Technology stack
 
 1. React & Redux.
@@ -60,8 +62,6 @@ To access values inside application call `console.log(process.env)`.
 ``yarn test:watch`` - jest in watch mode
 
 ``yarn analyze`` - analyze webpack bundle
-
-![Moon Wallet Screenshot](https://monosnap.com/file/ju7HjvPDg0csEeInRo11JrudDAJDc3.png)
 
 ______________________________
 
