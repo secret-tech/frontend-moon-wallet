@@ -2,7 +2,7 @@
 
 This is frontend module of [Moon Wallet](https://moonwallet.tech/). Checkout backend [here](https://github.com/JincorTech/backend-token-wallets).
 
-![Alt text](https://monosnap.com/file/AWvzmQe6IvNezvjIhYwkSDWbiKB5en.png)
+![MOON Wallet](https://monosnap.com/file/AWvzmQe6IvNezvjIhYwkSDWbiKB5en.png)
 
 This web client can be used to connect MOON's backend. 
 
