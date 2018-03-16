@@ -4,7 +4,19 @@ This is frontend module of [Moon Wallet](https://moonwallet.tech/). Checkout bac
 
 ![MOON Wallet](https://monosnap.com/file/AWvzmQe6IvNezvjIhYwkSDWbiKB5en.png)
 
-This web client can be used to connect MOON's backend. 
+This web client can be used to connect MOON's backend. Currently it has the following functionality:
+
+1. Registration & Authorization
+1. Register any Token by specified contract address
+1. Generate and manage **multiple** Ethereum wallets by one account
+1. Transfer ETH / ERC-20 
+1. Transferring is protected by payment password
+1. Displaying transaction history for ETH/ERC-20
+1. Notification management
+1. All important actions are protected with 2FA (email or google authenticator) 
+by integration with 
+[Jincor Backend Verify](https://github.com/JincorTech/backend-verify) 
+   You can disable some kind of verifications as well.
 
 For more info check [**API DOCS**](https://jincortech.github.io/backend-token-wallets)
 
