@@ -49,7 +49,7 @@ function* checkAuthSaga() {
 function* logoutIterator() {
   yield call(removeToken);
   yield put(setAuthState({ authorized: false, token: '' }));
-  yield put(push('/auth/signin'));
+  yield put(push('/auth/sign-in'));
 }
 
 function* logoutSaga() {

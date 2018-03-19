@@ -2,25 +2,25 @@ import React from 'react';
 import { Menu, MenuItem, MenuDivider } from '@blueprintjs/core';
 import { NavLink } from 'react-router-dom';
 
-const NavMenuDropdown = ({ openRegisterTokenPopup }) => (
+const NavMenuDropdown = ({ openRegisterTokenPopup, logout }) => (
   <Menu>
-    <MenuItem
+    {/* <MenuItem
       iconName="duplicate"
-      text="Copy address"/>
+      text="Copy address"/> */}
 
     <MenuItem
       iconName="add"
       text="Register token"
       onClick={() => openRegisterTokenPopup()}/>
 
-    <li>
+    {/* <li>
       <NavLink
         to="/app/help"
         className="pt-popover-dismiss pt-menu-item pt-icon-help"
         tabIndex="0">
         Help...
       </NavLink>
-    </li>
+    </li> */}
 
     <MenuDivider />
 
@@ -37,7 +37,8 @@ const NavMenuDropdown = ({ openRegisterTokenPopup }) => (
 
     <MenuItem
       iconName="pt-icon-log-out"
-      text="Logout"/>
+      text="Logout"
+      onClick={() => logout()}/>
   </Menu>
 );
 

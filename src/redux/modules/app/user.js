@@ -7,20 +7,7 @@ export const fetchUser = createAsyncAction(FETCH_USER);
 
 const initialState = from({
   fetching: false,
-  wallets: [
-    {
-      address: '',
-      ticker: '',
-      tokens: [
-        {
-          contractAddress: '',
-          decimals: '',
-          symbol: '',
-          name: ''
-        }
-      ]
-    }
-  ],
+  wallets: [],
   email: '',
   name: '',
   defaultVerificationMethod: 'email'
