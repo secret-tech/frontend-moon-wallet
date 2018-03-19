@@ -21,6 +21,7 @@ import depositFunds from './modules/wallet/depositFunds';
 import transferFunds from './modules/wallet/transferFunds';
 
 import changePassword from './modules/settings/changePassword';
+import registerCustomToken from './modules/settings/registerCustomToken';
 
 export default combineReducers({
   routing,
@@ -54,6 +55,7 @@ export default combineReducers({
   }),
 
   settings: combineReducers({
-    changePassword
+    changePassword,
+    registerCustomToken
   })
 });

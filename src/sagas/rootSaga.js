@@ -16,6 +16,7 @@ import signUpSaga from './auth/signUpSaga';
 import resetPasswordSaga from './auth/resetPasswordSaga';
 
 import changePasswordSaga from './settings/changePasswordSaga';
+import registerTokenSaga from './settings/registerTokenSaga';
 
 export default function* () {
   yield all([
@@ -35,6 +36,7 @@ export default function* () {
     fork(signUpSaga),
     fork(resetPasswordSaga),
 
-    fork(changePasswordSaga)
+    fork(changePasswordSaga),
+    fork(registerTokenSaga)
   ]);
 }
