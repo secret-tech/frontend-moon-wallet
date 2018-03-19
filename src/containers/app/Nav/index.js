@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { selectWallet } from '../../../redux/modules/wallet/selectedWallet';
 import { openRegisterTokenPopup } from '../../../redux/modules/settings/registerCustomToken';
+import { logout } from '../../../redux/modules/app/app';
 
 import NavMenuDropdown from '../../../components/app/NavMenuDropdown';
 import NavWalletDropdown from '../../../components/app/NavWalletDropdown';
@@ -17,7 +18,8 @@ const Nav = (props) => {
     wallets,
     selectedWallet,
     selectWallet,
-    openRegisterTokenPopup
+    openRegisterTokenPopup,
+    logout
   } = props;
 
   const currentWallet = wallets.filter((wallet) => wallet.address === selectedWallet)[0];
@@ -58,7 +60,8 @@ const Nav = (props) => {
         <Popover
           content={
             <NavMenuDropdown
-              openRegisterTokenPopup={openRegisterTokenPopup}/>
+              openRegisterTokenPopup={openRegisterTokenPopup}
+              logout={logout}/>
           }
           position={Position.BOTTOM_RIGHT}>
           <Button className="pt-minimal" iconName="cog" />
@@ -75,7 +78,8 @@ const ConnectedComponent = connect(
   }),
   {
     selectWallet,
-    openRegisterTokenPopup
+    openRegisterTokenPopup,
+    logout
   }
 )(Nav);
 const ComponentWithRouter = withRouter(ConnectedComponent);

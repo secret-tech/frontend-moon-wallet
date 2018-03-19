@@ -22,7 +22,8 @@ class TransferFundsForm extends Component {
     const {
       handleSubmit,
       invalid,
-      fetching
+      fetching,
+      currencies
     } = this.props;
 
     const { extend } = this.state;
@@ -33,7 +34,7 @@ class TransferFundsForm extends Component {
         <Field
           component={RenderInput}
           label="Recepient address"
-          name="recepient"
+          name="to"
           type="text"
           validate={required}/>
 
@@ -47,13 +48,8 @@ class TransferFundsForm extends Component {
         <Field
           component={RenderSelect}
           label="Token"
-          name="token"
-          options={[
-            { label: 'Select token...', value: '' },
-            { label: 'Ethereum', value: 'ETH' },
-            { label: 'Jincor Token', value: 'JCR' },
-            { label: 'XNN Token', value: 'XNN' }
-          ]}
+          name="currency"
+          options={currencies}
           validate={required}/>
 
         {extend
@@ -103,11 +99,12 @@ class TransferFundsForm extends Component {
 const FormComponent = reduxForm({
   form: 'transferFunds',
   initialValues: {
-    wallet: '',
-    recepient: '',
+    from: '',
+    to: '',
     amount: '',
-    token: '',
+    currency: '',
     gasAmount: 5,
+    paymentPassword: '',
     gasPrice: 21000
   }
 })(TransferFundsForm);
