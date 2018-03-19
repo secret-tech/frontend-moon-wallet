@@ -20,6 +20,7 @@ const walletIcons = {
   8: 'pt-icon-heatmap'
 };
 
-export const getWalletColorPair = (number) => colorPairs[number];
+export const getWalletColorPair = (number) =>
+  (number !== undefined ? colorPairs[number] : colorPairs[0]);
 
 export const getWalletIcon = (number) => walletIcons[number];

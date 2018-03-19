@@ -7,35 +7,40 @@ import s from './styles.css';
 
 const Tx = (props) => {
   const {
+    type,
     direction,
-    value,
-    symbol,
-    txHash,
+    amount,
+    transactionHash,
     status,
-    date
+    timestamp
   } = props;
 
-  const dir = () => (direction === 'in' ? 'Income' : 'Withdraw');
+  const dir = () => (direction === 'out' ? 'withdraw' : 'Income');
 
   const renderStatus = () => {
     switch (status) {
       case 'pending':
         return (<Tag className="pt-minimal" intent={Intent.PRIMARY}>Pending</Tag>);
-      case 'success':
+      case 'confirmed':
         return (<Tag className="pt-minimal" intent={Intent.SUCCESS}>Success</Tag>);
       default:
         return (<Tag className="pt-minimal" intent={Intent.DANGER}>Failure</Tag>);
     }
   };
 
+  const symbol = () => {
+    if (type === 'eth_transfer') return 'ETH';
+    return props.token.symbol;
+  };
+
   return (
     <div className={s.tx}>
       <h4>
-        <span>{dir()} {value} {symbol}</span>
-        <a href={`http://etherscan.com/tx/${txHash}`}>{shortAddress(txHash)}</a>
+        <span>{amount} {symbol()} {dir()} </span>
+        <a target="_blank" href={`http://etherscan.com/tx/${transactionHash}`}>{shortAddress(transactionHash)}</a>
         {renderStatus()}
       </h4>
-      <div className="pt-text-muted">{format(date * 1000, 'DD MMMM YYYY HH:mm:ss')}</div>
+      <div className="pt-text-muted">{format(timestamp * 1000, 'DD MMMM YYYY HH:mm:ss')}</div>
     </div>
   );
 };

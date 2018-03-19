@@ -1,0 +1,18 @@
+.logo {
+  display: flex;
+  align-items: center;
+
+  & > img {
+    height: 30px;
+    width: 30px;
+  }
+
+  & > span {
+    color: #fff;
+    margin-left: 10px;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}

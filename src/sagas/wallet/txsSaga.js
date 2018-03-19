@@ -3,9 +3,9 @@ import { get } from '../../utils/fetch';
 import { fetchTxs } from '../../redux/modules/wallet/txs';
 
 
-function* fetchTxsIterator() {
+function* fetchTxsIterator({ payload }) {
   try {
-    const data = yield call(get, '/wallet/transactions');
+    const data = yield call(get, `/dashboard/transactions?walletAddress=${payload}`);
     yield put(fetchTxs.success(data));
   } catch (e) {
     yield put(fetchTxs.failure(e));

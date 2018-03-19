@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { fetchTxs } from '../../../redux/modules/wallet/txs';
 
@@ -9,7 +10,13 @@ import EmptyState from '../../../components/common/EmptyState';
 
 class Txs extends Component {
   componentDidMount() {
-    this.props.fetchTxs();
+    this.props.fetchTxs(this.props.match.params.walletId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.walletId !== nextProps.match.params.walletId) {
+      this.props.fetchTxs(nextProps.match.params.walletId);
+    }
   }
 
   render() {
@@ -19,8 +26,13 @@ class Txs extends Component {
     } = this.props;
 
     if (fetching) return <Preloader/>;
-    if (txs.length > 1) return txs.map((tx) => <Tx key={tx.txHash} {...tx}/>);
-    return <EmptyState title="No transactions here" description="Let's try to create new one" visual="pt-icon-cross"/>;
+    if (txs.length > 0) return txs.map((tx) => <Tx key={tx.transactionHash} {...tx}/>);
+    return (
+      <EmptyState
+        title="No transactions here"
+        description="Let's try to create new one"
+        visual="pt-icon-cross"/>
+    );
   }
 }
 
@@ -30,4 +42,5 @@ const ConnectedComponent = connect(
     fetchTxs
   }
 )(Txs);
-export default ConnectedComponent;
+const ComponentWithRouter = withRouter(ConnectedComponent);
+export default ComponentWithRouter;

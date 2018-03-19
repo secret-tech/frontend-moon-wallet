@@ -6,11 +6,12 @@ import { initCreateWallet } from '../../redux/modules/wallets/createWallet';
 
 function* initCreateWalletIterator({ payload }) {
   try {
-    yield call(post, '/user/wallets', payload);
+    yield call(post, '/user/me/wallets', payload);
     yield put(initCreateWallet.success());
     yield call([Toast, Toast.green], { message: 'Wallet created!' });
   } catch (e) {
-    yield put(initCreateWallet.failure(e));
+    yield call([Toast, Toast.red], { message: e });
+    yield call(console.log, e);
   }
 }
 

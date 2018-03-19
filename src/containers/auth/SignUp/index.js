@@ -16,7 +16,7 @@ const SignUp = (props) => {
     step,
     fetching,
     verification: {
-      id,
+      verificationId,
       method
     }
   } = props;
@@ -52,7 +52,7 @@ const SignUp = (props) => {
         fetching={fetching}
         method={method}
         initialValues={{
-          verification: { verificationId: id }
+          verification: { verificationId }
         }}/>
     );
   };

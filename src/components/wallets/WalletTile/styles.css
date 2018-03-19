@@ -35,6 +35,10 @@
   background-color: #fff;
   margin-right: 20px;
   color: #bfccd6;
+
+  & > img {
+    width: 100%;
+  }
 }
 
 .balances {
