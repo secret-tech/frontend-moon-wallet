@@ -4,6 +4,7 @@ import { Navbar, NavbarGroup, NavbarHeading, Button, Popover, Position } from '@
 import { Link, withRouter } from 'react-router-dom';
 
 import { selectWallet } from '../../../redux/modules/wallet/selectedWallet';
+import { openRegisterTokenPopup } from '../../../redux/modules/settings/registerCustomToken';
 
 import NavMenuDropdown from '../../../components/app/NavMenuDropdown';
 import NavWalletDropdown from '../../../components/app/NavWalletDropdown';
@@ -12,7 +13,13 @@ import { shortAddress } from '../../../utils/numbers';
 import s from './styles.css';
 
 const Nav = (props) => {
-  const { wallets, selectedWallet, selectWallet } = props;
+  const {
+    wallets,
+    selectedWallet,
+    selectWallet,
+    openRegisterTokenPopup
+  } = props;
+
   const currentWallet = wallets.filter((wallet) => wallet.address === selectedWallet)[0];
 
   const renderWalletsDropdown = () => {
@@ -48,7 +55,12 @@ const Nav = (props) => {
 
       <NavbarGroup className="pt-align-right">
         {renderWalletsDropdown()}
-        <Popover content={<NavMenuDropdown/>} position={Position.BOTTOM_RIGHT}>
+        <Popover
+          content={
+            <NavMenuDropdown
+              openRegisterTokenPopup={openRegisterTokenPopup}/>
+          }
+          position={Position.BOTTOM_RIGHT}>
           <Button className="pt-minimal" iconName="cog" />
         </Popover>
       </NavbarGroup>
@@ -62,7 +74,8 @@ const ConnectedComponent = connect(
     selectedWallet: state.wallet.selectedWallet
   }),
   {
-    selectWallet
+    selectWallet,
+    openRegisterTokenPopup
   }
 )(Nav);
 const ComponentWithRouter = withRouter(ConnectedComponent);
