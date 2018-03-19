@@ -14,11 +14,29 @@ const TransferFunds = (props) => {
     popupIsOpen,
     step,
     fetching,
+    wallets,
+    selectedWallet,
     verification: {
       verificationId,
       method
     }
   } = props;
+
+  // find current wallet and get their tokens for select
+  const tokensAccumulator = [
+    { value: '', label: 'Select currency' },
+    { value: 'eth_transfer', label: 'ETH' }
+  ];
+
+  const tokensReduce = (acc, { contractAddress, symbol }) =>
+    acc.concat({ value: contractAddress, label: symbol });
+
+  const walletsReduce = (acc, wallet) =>
+    (wallet.address === selectedWallet
+      ? wallet.tokens.reduce(tokensReduce, tokensAccumulator)
+      : acc);
+
+  const currencies = wallets.reduce(walletsReduce, []);
 
   const renderStep = (s) => {
     switch (s) {
@@ -27,8 +45,9 @@ const TransferFunds = (props) => {
           <TransferFundsForm
             onSubmit={initTransferFunds}
             fetching={fetching}
+            currencies={currencies}
             initialValues={{
-              wallet: props.match.params.walletId
+              from: selectedWallet
             }}/>
         );
       case 'verifyTransferFunds':
@@ -64,7 +83,9 @@ const TransferFunds = (props) => {
 const ComponentWithRouter = withRouter(TransferFunds);
 const ConnectedComponent = connect(
   (state) => ({
-    ...state.wallet.transferFunds
+    ...state.wallet.transferFunds,
+    wallets: state.app.user.wallets,
+    selectedWallet: state.wallet.selectedWallet
   }),
   {
     closeTransferFundsPopup
