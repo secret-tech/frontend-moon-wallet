@@ -7,7 +7,7 @@ import { fetchUser } from '../../../redux/modules/app/user';
 import Nav from '../Nav';
 import Wallets from '../../../components/wallets/Wallets';
 import Wallet from '../../wallet/Wallet';
-import Settings from '../../../components/app/Settings';
+import Settings from '../../../components/settings/Settings';
 import Help from '../../../components/help/Help';
 
 import namedRoutes from '../../../routes';

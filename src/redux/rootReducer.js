@@ -20,6 +20,8 @@ import selectedWallet from './modules/wallet/selectedWallet';
 import depositFunds from './modules/wallet/depositFunds';
 import transferFunds from './modules/wallet/transferFunds';
 
+import changePassword from './modules/settings/changePassword';
+
 export default combineReducers({
   routing,
   form,
@@ -51,5 +53,7 @@ export default combineReducers({
     transferFunds
   }),
 
-  settings: combineReducers({})
+  settings: combineReducers({
+    changePassword
+  })
 });

@@ -33,7 +33,7 @@ const FormComponent = reduxForm({
   form: 'createWallet',
   initialValues: {
     type: 'ETH',
-    paymentPassword: '12312344'
+    paymentPassword: '12345678'
   }
 })(CreateWalletForm);
 

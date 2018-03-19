@@ -15,6 +15,8 @@ import signInSaga from './auth/signInSaga';
 import signUpSaga from './auth/signUpSaga';
 import resetPasswordSaga from './auth/resetPasswordSaga';
 
+import changePasswordSaga from './settings/changePasswordSaga';
+
 export default function* () {
   yield all([
     fork(formActionSaga),
@@ -31,6 +33,8 @@ export default function* () {
 
     fork(signInSaga),
     fork(signUpSaga),
-    fork(resetPasswordSaga)
+    fork(resetPasswordSaga),
+
+    fork(changePasswordSaga)
   ]);
 }
