@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
+import { FocusStyleManager } from '@blueprintjs/core';
 
 import 'normalize.css';
+import '@blueprintjs/core/dist/blueprint.css';
 import './assets/main.css';
 import './assets/fonts/Roboto/stylesheet.css';
 
 import configureStore, { history } from './redux/configureStore';
-import routes from './routes';
+import App from './containers/app/App';
 
 const store = configureStore({});
 
@@ -18,7 +20,7 @@ const render = () => {
     <AppContainer>
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          {routes}
+          <App/>
         </ConnectedRouter>
       </Provider>
     </AppContainer>,
@@ -28,8 +30,10 @@ const render = () => {
 
 render();
 
+FocusStyleManager.onlyShowFocusOnTabs();
+
 if (module.hot) {
-  module.hot.accept('./routes', () => {
-    render(require('./routes').default);
+  module.hot.accept('./containers/app/App', () => {
+    render(require('./containers/app/App').default);
   });
 }

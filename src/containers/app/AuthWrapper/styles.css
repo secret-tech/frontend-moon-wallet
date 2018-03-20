@@ -1,0 +1,13 @@
+.auth {
+  padding: 225px 0 0 0;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 100px;
+
+  & > img {
+    width: 100%;
+  }
+}

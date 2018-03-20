@@ -1,17 +1,16 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+const namedRoutes = {
+  base: '/',
 
-import App from './containers/app/App';
-import AppWrapper from './containers/app/AppWrapper';
+  app: '/app/',
+  wallets: '/app/wallets',
+  wallet: '/app/wallet',
+  settings: '/app/settings',
+  help: '/app/help',
 
-export const namedRoutes = {
-  app: '/app',
-  dashboard: '/app/dashboard',
-  settings: '/app/settings'
+  auth: '/auth/',
+  signIn: '/auth/sign-in',
+  signUp: '/auth/sign-up',
+  resetPassword: '/auth/reset-password'
 };
 
-export default (
-  <App>
-    <Route path={namedRoutes.app} component={AppWrapper}/>
-  </App>
-);
+export default namedRoutes;

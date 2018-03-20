@@ -2,27 +2,72 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
-import { namedRoutes } from '../../../routes';
+import { fetchUser } from '../../../redux/modules/app/user';
+import { closeRegisterTokenPopup } from '../../../redux/modules/settings/registerCustomToken';
 
-import Nav from '../../../components/app/Nav';
-import Dashboard from '../../../components/app/Dashboard';
-import Settings from '../../../components/app/Settings';
+import Nav from '../Nav';
+import Wallets from '../../../components/wallets/Wallets';
+import Wallet from '../../wallet/Wallet';
+import Settings from '../../../components/settings/Settings';
+import Help from '../../../components/help/Help';
+
+import RegisterCustomTokenPopup from '../../settings/RegisterCustomTokenPopup';
+
+import namedRoutes from '../../../routes';
+import s from './styles.css';
 
 class AppWrapper extends Component {
+  componentDidMount() {
+    this.props.fetchUser();
+  }
+
   render() {
+    const {
+      registerCustomToken,
+      closeRegisterTokenPopup
+    } = this.props;
+
     return (
-      <div className="app">
-        <Nav/>
+      <div className={s.wrapper}>
+        <div className={s.nav}>
+          <Nav/>
+
+          <div className={s.alert}>
+            <div className="pt-callout pt-intent-danger">
+              <h5 className="pt-callout-title">TEST MODE - DO NOT SEND REAL FUNDS</h5>
+              Currently application working in test mode, so
+              do not send real funds to MOON wallets.<br/>
+              You can get test ETHs here: <a href="http://faucet.ropsten.be:3001/" target="_blank">http://faucet.ropsten.be:3001/</a> Ropsten etherscan: <a href="https://ropsten.etherscan.io/" target="_blank">https://ropsten.etherscan.io/</a>
+              <br/><br/>
+              If you found bug or error you may <a href="https://github.com/JincorTech/frontend-moon-wallet/issues" target="_blank">create issue in github</a><br/>
+              Join our <a href="https://t.me/MoonWallet" target="_blank">Telegram group</a>!
+            </div>
+          </div>
+        </div>
         <Switch>
-          <Route exact path={namedRoutes.dashboard} component={Dashboard}/>
-          <Route exact path={namedRoutes.settings} component={Settings}/>
-          <Redirect from={namedRoutes.app} to={namedRoutes.dashboard}/>
+          <Route exact path={namedRoutes.wallets} component={Wallets}/>
+          <Route path={`${namedRoutes.wallet}/:walletId`} component={Wallet}/>
+          <Route path={namedRoutes.settings} component={Settings}/>
+          <Route path={namedRoutes.help} component={Help}/>
+          <Redirect from={namedRoutes.app} to={namedRoutes.wallets}/>
         </Switch>
+
+        <RegisterCustomTokenPopup
+          isOpen={registerCustomToken.popupIsOpen}
+          onClose={() => closeRegisterTokenPopup()}/>
       </div>
     );
   }
 }
 
-const ConnectedComponent = connect(null)(AppWrapper);
+const ConnectedComponent = connect(
+  (state) => ({
+    registerCustomToken: state.settings.registerCustomToken
+  }),
+  {
+    fetchUser,
+    closeRegisterTokenPopup
+  }
+)(AppWrapper);
 const ComponentWithRouter = withRouter(ConnectedComponent);
 export default ComponentWithRouter;

@@ -1,6 +1,10 @@
 import 'whatwg-fetch';
 import { pathCreator, checkHttpStatus, parseJSON, authHeader } from './helpers';
 
+// import { get, post } from './mocks';
+
+// export { get, post };
+
 /**
  * Fetch wrapper function
  *

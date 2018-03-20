@@ -1,0 +1,23 @@
+.body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.main {
+  width: calc(100% - 350px - 40px);
+
+  & > h1 {
+    margin-bottom: 40px;
+  }
+}
+
+.sidebar {
+  width: 350px;
+}
+
+.item {
+  & > h2 {
+    margin-bottom: 10px;
+  }
+}

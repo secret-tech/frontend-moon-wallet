@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 455px);
+}
+
+.form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.fp {
+  margin-top: 40px;
+  text-align: center;
+  font-weight: 200;
+}
+
+.bottomLink {
+  margin-top: auto;
+  text-align: center;
+  font-weight: 200;
+}
