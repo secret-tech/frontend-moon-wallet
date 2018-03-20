@@ -17,3 +17,5 @@ export const bigNum = (num, limit = 6) => {
 
   return array[0];
 };
+
+export const etherscanLink = (type, hash) => `${process.env.ETHERSCAN_URL}/${type}/${hash}`;
