@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import namedRoutes from '../../../routes';
-
 import SignIn from '../../auth/SingIn';
 import SignUp from '../../auth/SignUp';
 import ResetPassword from '../../auth/ResetPassword';
