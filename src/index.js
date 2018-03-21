@@ -11,7 +11,7 @@ import './assets/main.css';
 import './assets/fonts/Roboto/stylesheet.css';
 
 import configureStore, { history } from './redux/configureStore';
-import App from './containers/app/App';
+import Main from './containers/app/Main';
 
 const store = configureStore({});
 
@@ -20,7 +20,7 @@ const render = () => {
     <AppContainer>
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <App/>
+          <Main/>
         </ConnectedRouter>
       </Provider>
     </AppContainer>,
@@ -33,7 +33,7 @@ render();
 FocusStyleManager.onlyShowFocusOnTabs();
 
 if (module.hot) {
-  module.hot.accept('./containers/app/App', () => {
-    render(require('./containers/app/App').default);
+  module.hot.accept('./containers/app/Main', () => {
+    render(require('./containers/app/Main').default);
   });
 }

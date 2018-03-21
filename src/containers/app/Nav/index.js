@@ -48,7 +48,7 @@ const Nav = (props) => {
     <Navbar className="pt-dark">
       <NavbarGroup>
         <NavbarHeading>
-          <Link to="/app/wallets" className={s.logo}>
+          <Link to="/wallets" className={s.logo}>
             <img src={require('../../../assets/images/logo.svg')}/>
             <span>MOON Wallet</span>
           </Link>
