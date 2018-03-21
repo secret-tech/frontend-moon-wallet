@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import { fetchUser } from '../../../redux/modules/app/user';
 import { closeRegisterTokenPopup } from '../../../redux/modules/settings/registerCustomToken';
@@ -10,6 +10,7 @@ import Wallets from '../../../components/wallets/Wallets';
 import Wallet from '../../wallet/Wallet';
 import Settings from '../../../components/settings/Settings';
 import Help from '../../../components/help/Help';
+import Error404 from '../../../components/common/Error404';
 
 import RegisterCustomTokenPopup from '../../settings/RegisterCustomTokenPopup';
 
@@ -26,6 +27,10 @@ class AppWrapper extends Component {
       registerCustomToken,
       closeRegisterTokenPopup
     } = this.props;
+
+    const e404 = () => (
+      <div className={s.e404}><Error404/></div>
+    );
 
     return (
       <div className={s.wrapper}>
@@ -49,7 +54,7 @@ class AppWrapper extends Component {
           <Route path={`${namedRoutes.wallet}/:walletId`} component={Wallet}/>
           <Route path={namedRoutes.settings} component={Settings}/>
           <Route path={namedRoutes.help} component={Help}/>
-          <Redirect from={namedRoutes.app} to={namedRoutes.wallets}/>
+          <Route component={e404}/>
         </Switch>
 
         <RegisterCustomTokenPopup
