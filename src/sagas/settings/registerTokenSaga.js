@@ -1,7 +1,9 @@
 import { all, takeLatest, call, fork, put } from 'redux-saga/effects';
 import { get, post } from '../../utils/fetch';
+import Toast from '../../utils/toaster';
 
 import { fetchTokenInfo, registerToken, changeStep, resetStore } from '../../redux/modules/settings/registerCustomToken';
+import { fetchBalances } from '../../redux/modules/wallet/balances';
 
 
 function* fetchTokenInfoIterator({ payload }) {
@@ -10,7 +12,19 @@ function* fetchTokenInfoIterator({ payload }) {
     yield put(fetchTokenInfo.success(data));
     yield put(changeStep('registerToken'));
   } catch (e) {
-    yield call(console.log, e);
+    if (e.status === 404) {
+      yield put(fetchTokenInfo.success(payload));
+      yield put(changeStep('registerToken'));
+    } else {
+      // eslint-disable-next-line
+      if (e.error.isJoi) {
+        yield call([Toast, Toast.red], { message: e.error.details[0].message });
+        yield put(fetchTokenInfo.failure());
+      } else {
+        yield call([Toast, Toast.red], { message: e.message });
+        yield put(fetchTokenInfo.failure());
+      }
+    }
   }
 }
 
@@ -27,8 +41,16 @@ function* registerTokenIterator({ payload }) {
     yield call(post, '/user/me/erc20token/register', payload);
     yield put(registerToken.success());
     yield put(resetStore());
+    yield put(fetchBalances(payload.walletAddress));
+    yield call([Toast, Toast.green], { message: 'Token registered' });
   } catch (e) {
-    yield call(console.log, e);
+    if (e.error.isJoi) {
+      yield call([Toast, Toast.red], { message: e.error.details[0].message });
+      yield put(registerToken.failure());
+    } else {
+      yield call([Toast, Toast.red], { message: e.message });
+      yield put(registerToken.failure());
+    }
   }
 }
 
