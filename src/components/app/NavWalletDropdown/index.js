@@ -11,7 +11,7 @@ const NavWalletDropdown = (props) => {
         <Link
           key={address}
           onClick={() => props.selectWallet(address)}
-          to={`/app/wallet/${address}`}
+          to={`/wallet/${address}`}
           className="pt-menu-item pt-disabled">
           {text}
         </Link>
@@ -22,7 +22,7 @@ const NavWalletDropdown = (props) => {
       <Link
         key={address}
         onClick={() => props.selectWallet(address)}
-        to={`/app/wallet/${address}`}
+        to={`/wallet/${address}`}
         className="pt-menu-item">
         {text}
       </Link>
@@ -33,7 +33,7 @@ const NavWalletDropdown = (props) => {
     <Menu className="pt-popover-dismiss">
       {renderMenu()}
       <MenuDivider />
-      <Link to="/app/wallets" className="pt-menu-item">Wallets...</Link>
+      <Link to="/wallets" className="pt-menu-item">Wallets...</Link>
     </Menu>
   );
 };

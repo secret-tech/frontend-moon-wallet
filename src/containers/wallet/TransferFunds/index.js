@@ -47,7 +47,9 @@ const TransferFunds = (props) => {
             fetching={fetching}
             currencies={currencies}
             initialValues={{
-              from: selectedWallet
+              from: selectedWallet,
+              gasPrice: 5,
+              gasAmount: 21000
             }}/>
         );
       case 'verifyTransferFunds':

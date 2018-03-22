@@ -34,11 +34,7 @@ export default createReducer({
     })
   ),
 
-  [CLOSE_REGISTER_TOKEN_POPUP]: (state) => (
-    state.merge({
-      popupIsOpen: false
-    })
-  ),
+  [CLOSE_REGISTER_TOKEN_POPUP]: (state) => state.merge(initialState),
 
   [fetchTokenInfo.REQUEST]: (state) => (
     state.merge({

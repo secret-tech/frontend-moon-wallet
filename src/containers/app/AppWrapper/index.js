@@ -6,14 +6,15 @@ import { fetchUser } from '../../../redux/modules/app/user';
 import { closeRegisterTokenPopup } from '../../../redux/modules/settings/registerCustomToken';
 
 import Nav from '../Nav';
+import Alert from '../../../components/common/Alert';
 import Wallets from '../../../components/wallets/Wallets';
 import Wallet from '../../wallet/Wallet';
 import Settings from '../../../components/settings/Settings';
 import Help from '../../../components/help/Help';
+import Error404 from '../../../components/common/Error404';
 
 import RegisterCustomTokenPopup from '../../settings/RegisterCustomTokenPopup';
 
-import namedRoutes from '../../../routes';
 import s from './styles.css';
 
 class AppWrapper extends Component {
@@ -31,25 +32,15 @@ class AppWrapper extends Component {
       <div className={s.wrapper}>
         <div className={s.nav}>
           <Nav/>
-
-          <div className={s.alert}>
-            <div className="pt-callout pt-intent-danger">
-              <h5 className="pt-callout-title">TEST MODE - DO NOT SEND REAL FUNDS</h5>
-              Currently application working in test mode, so
-              do not send real funds to MOON wallets.<br/>
-              You can get test ETHs here: <a href="http://faucet.ropsten.be:3001/" target="_blank">http://faucet.ropsten.be:3001/</a> Ropsten etherscan: <a href="https://ropsten.etherscan.io/" target="_blank">https://ropsten.etherscan.io/</a>
-              <br/><br/>
-              If you found bug or error you may <a href="https://github.com/JincorTech/frontend-moon-wallet/issues" target="_blank">create issue in github</a><br/>
-              Join our <a href="https://t.me/MoonWallet" target="_blank">Telegram group</a>!
-            </div>
-          </div>
+          <Alert/>
         </div>
         <Switch>
-          <Route exact path={namedRoutes.wallets} component={Wallets}/>
-          <Route path={`${namedRoutes.wallet}/:walletId`} component={Wallet}/>
-          <Route path={namedRoutes.settings} component={Settings}/>
-          <Route path={namedRoutes.help} component={Help}/>
-          <Redirect from={namedRoutes.app} to={namedRoutes.wallets}/>
+          <Route exact path="/wallets" component={Wallets}/>
+          <Route path="/wallet/:walletId" component={Wallet}/>
+          <Route exact path="/settings" component={Settings}/>
+          <Route path="/help" component={Help}/>
+          <Redirect exact from="/" to="/wallets"/>
+          <Route component={Error404}/>
         </Switch>
 
         <RegisterCustomTokenPopup
