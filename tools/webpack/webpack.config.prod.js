@@ -58,7 +58,7 @@ const rules = [
   {
     test: /\.css?$/,
     include: /src/,
-    exclude: /src\/assets/,
+    exclude: /(src\/assets|node_modules)/,
     use: ExtractTextPlugin.extract({
       fallback: 'style-loader',
       use: [
