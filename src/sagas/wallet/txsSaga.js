@@ -2,6 +2,7 @@ import { all, takeLatest, call, put, fork, select, take, race } from 'redux-saga
 import { delay } from 'redux-saga';
 import { get } from '../../utils/fetch';
 import { fetchTxs, START_TXS_POLL, END_TXS_POLL } from '../../redux/modules/wallet/txs';
+import { verifyTransferFunds } from '../../redux/modules/wallet/transferFunds';
 
 
 function* fetchTxsIterator({ payload }) {
@@ -15,7 +16,10 @@ function* fetchTxsIterator({ payload }) {
 
 function* fetchTxsSaga() {
   yield takeLatest(
-    fetchTxs.REQUEST,
+    [
+      fetchTxs.REQUEST,
+      verifyTransferFunds.SUCCESS
+    ],
     fetchTxsIterator
   );
 }

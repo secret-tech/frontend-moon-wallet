@@ -1,5 +1,6 @@
 import { all, takeLatest, call, put, fork } from 'redux-saga/effects';
 import { post } from '../../utils/fetch';
+import Toast from '../../utils/toaster';
 import { initTransferFunds, verifyTransferFunds, changeStep, resetStore } from '../../redux/modules/wallet/transferFunds';
 
 
@@ -36,7 +37,13 @@ function* initTransferFundsIterator({ payload }) {
     yield put(initTransferFunds.success(data));
     yield put(changeStep('verifyTransferFunds'));
   } catch (e) {
-    yield put(initTransferFunds.failure(e));
+    if (e.error.isJoi) {
+      yield call([Toast, Toast.red], { message: e.error.details[0].message });
+      yield put(initTransferFunds.failure());
+    } else {
+      yield call([Toast, Toast.red], { message: e.message });
+      yield put(initTransferFunds.failure());
+    }
   }
 }
 
@@ -54,7 +61,13 @@ function* verifyTransferFundsIterator({ payload }) {
     yield put(verifyTransferFunds.success());
     yield put(resetStore());
   } catch (e) {
-    yield put(verifyTransferFunds.failure(e));
+    if (e.error.isJoi) {
+      yield call([Toast, Toast.red], { message: e.error.details[0].message });
+      yield put(verifyTransferFunds.failure());
+    } else {
+      yield call([Toast, Toast.red], { message: e.message });
+      yield put(verifyTransferFunds.failure());
+    }
   }
 }
 
