@@ -30,7 +30,7 @@ function* verifySignInIterator({ payload }) {
     yield put(verifySignIn.success());
     yield put(login(data.accessToken));
     yield put(resetStore());
-    yield put(push('/app/wallets'));
+    yield put(push('/wallets'));
   } catch (e) {
     yield put(verifySignIn.failure(e));
   }
