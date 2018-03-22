@@ -2,12 +2,12 @@ import { from } from 'seamless-immutable';
 import { createReducer, createAction, createAsyncAction } from '../../../utils/actions';
 
 export const FETCH_TXS = 'wallet/txs/FETCH_TXS';
-export const START_TXS_POLLING = 'wallet/txs/START_TXS_POLLING';
-export const END_TXS_POLLING = 'wallet/txs/END_TXS_POLLING';
+export const START_TXS_POLL = 'wallet/txs/START_TXS_POLL';
+export const END_TXS_POLL = 'wallet/txs/END_TXS_POLL';
 
 export const fetchTxs = createAsyncAction(FETCH_TXS);
-export const startTxsPolling = createAction(START_TXS_POLLING);
-export const endTxsPolling = createAction(END_TXS_POLLING);
+export const startTxsPoll = createAction(START_TXS_POLL);
+export const endTxsPoll = createAction(END_TXS_POLL);
 
 const initialState = from({
   fetching: false,
@@ -35,13 +35,13 @@ export default createReducer({
     })
   ),
 
-  [START_TXS_POLLING]: (state) => (
+  [START_TXS_POLL]: (state) => (
     state.merge({
       polling: true
     })
   ),
 
-  [END_TXS_POLLING]: (state) => (
+  [END_TXS_POLL]: (state) => (
     state.merge({
       polling: false
     })

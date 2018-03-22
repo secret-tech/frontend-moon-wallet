@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { fetchTxs, startTxsPolling, endTxsPolling } from '../../../redux/modules/wallet/txs';
+import { fetchTxs, startTxsPoll, endTxsPoll } from '../../../redux/modules/wallet/txs';
 
 import Tx from '../../../components/wallet/Tx';
 import Preloader from '../../../components/common/Preloader';
@@ -11,7 +11,7 @@ import EmptyState from '../../../components/common/EmptyState';
 class Txs extends Component {
   componentDidMount() {
     this.props.fetchTxs(this.props.match.params.walletId);
-    this.props.startTxsPolling();
+    this.props.startTxsPoll();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -21,7 +21,7 @@ class Txs extends Component {
   }
 
   componentWillUnmount() {
-    this.props.endTxsPolling();
+    this.props.endTxsPoll();
   }
 
   render() {
@@ -45,8 +45,8 @@ const ConnectedComponent = connect(
   (state) => ({ ...state.wallet.txs }),
   {
     fetchTxs,
-    startTxsPolling,
-    endTxsPolling
+    startTxsPoll,
+    endTxsPoll
   }
 )(Txs);
 const ComponentWithRouter = withRouter(ConnectedComponent);
