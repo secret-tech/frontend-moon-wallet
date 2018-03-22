@@ -26,21 +26,21 @@ const RegisterTokenForm = (props) => {
 
       <Field
         component={RenderInput}
-        placeholder="Contact address"
+        placeholder="Name"
         name="name"
         className="pt-input pt-fill"
         validate={required}/>
 
       <Field
         component={RenderInput}
-        placeholder="Contact address"
+        placeholder="Symbol"
         name="symbol"
         className="pt-input pt-fill"
         validate={required}/>
 
       <Field
         component={RenderInput}
-        placeholder="Contact address"
+        placeholder="Decimals"
         name="decimals"
         className="pt-input pt-fill"
         validate={required}/>

@@ -6,8 +6,8 @@ export class RequestError extends Error {
   constructor(error) {
     super(error.error);
 
-    this.errors = error.errors;
-    this.status = error.status_code;
+    this.error = error.error;
+    this.status = error.status;
   }
 }
 

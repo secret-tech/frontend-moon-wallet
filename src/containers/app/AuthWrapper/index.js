@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-
-import namedRoutes from '../../../routes';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import SignIn from '../../auth/SingIn';
 import SignUp from '../../auth/SignUp';
@@ -16,9 +14,12 @@ class AuthWrapper extends Component {
         <div className={s.logo}>
           <img src={require('../../../assets/images/logo.svg')}/>
         </div>
-        <Route path={namedRoutes.signIn} component={SignIn}/>
-        <Route path={namedRoutes.signUp} component={SignUp}/>
-        <Route path={namedRoutes.resetPassword} component={ResetPassword}/>
+        <Switch>
+          <Route exact path="/auth/sign-in" component={SignIn}/>
+          <Route exact path="/auth/sign-up" component={SignUp}/>
+          <Route exact path="/auth/reset-password" component={ResetPassword}/>
+          <Redirect from="*" to="/auth/sign-in"/>
+        </Switch>
       </div>
     );
   }

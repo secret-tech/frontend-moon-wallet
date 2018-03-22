@@ -15,7 +15,7 @@ const NavMenuDropdown = ({ openRegisterTokenPopup, logout }) => (
 
     {/* <li>
       <NavLink
-        to="/app/help"
+        to="/help"
         className="pt-popover-dismiss pt-menu-item pt-icon-help"
         tabIndex="0">
         Help...
@@ -26,7 +26,7 @@ const NavMenuDropdown = ({ openRegisterTokenPopup, logout }) => (
 
     <li>
       <NavLink
-        to="/app/settings"
+        to="/settings"
         className="pt-popover-dismiss pt-menu-item pt-icon-cog"
         tabIndex="0">
         Settings...

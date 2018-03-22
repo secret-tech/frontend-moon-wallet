@@ -20,11 +20,11 @@ const transformTransferTokensData = (req) => {
   }
 
   if (req.gas) {
-    res.gas = req.gas;
+    res.gas = String(req.gasAmount);
   }
 
   if (req.gasPrice) {
-    res.gasPrice = req.gasPrice;
+    res.gasPrice = String(req.gasPrice);
   }
 
   return res;

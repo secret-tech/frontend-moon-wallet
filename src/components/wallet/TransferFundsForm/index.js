@@ -6,6 +6,8 @@ import { required } from '../../../utils/validators';
 
 import RenderInput from '../../_forms/RenderInput';
 import RenderSelect from '../../_forms/RenderSelect';
+import RenderNumber from '../../_forms/RenderNumber';
+import RenderSlider from '../../_forms/RenderSlider';
 
 import s from './styles.css';
 
@@ -56,18 +58,22 @@ class TransferFundsForm extends Component {
           ? (
             <div>
               <Field
-                component={RenderInput}
-                label="Gas price"
-                name="gasPrice"
-                type="text"
-                validate={required}/>
-
-              <Field
-                component={RenderInput}
+                component={RenderSlider}
+                min={0}
+                max={64000}
+                stepSize={1000}
+                labelStepSize={64000}
+                renderLabel={(val) => (val >= 1000 ? (`${val / 1000}K`) : val)}
                 label="Gas amount"
                 name="gasAmount"
-                type="text"
-                validate={required}/>
+                type="text"/>
+
+              <Field
+                component={RenderNumber}
+                min={1}
+                label="Gas price"
+                name="gasPrice"
+                type="text"/>
             </div>
           )
           : null}
@@ -98,14 +104,15 @@ class TransferFundsForm extends Component {
 
 const FormComponent = reduxForm({
   form: 'transferFunds',
+  enableReinitialize: true,
   initialValues: {
     from: '',
     to: '',
     amount: '',
     currency: '',
-    gasAmount: 5,
-    paymentPassword: '',
-    gasPrice: 21000
+    gasAmount: '',
+    gasPrice: '',
+    paymentPassword: ''
   }
 })(TransferFundsForm);
 
