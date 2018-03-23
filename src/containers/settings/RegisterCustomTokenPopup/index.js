@@ -12,8 +12,14 @@ const RegisterCustomTokenPopup = (props) => {
     step,
     fetching,
     walletAddress,
-    token
+    token,
+    wallets
   } = props;
+
+  const walletsOptions = wallets.map((wallet) => ({
+    value: wallet.address,
+    label: wallet.address
+  }));
 
   const renderStep = () => {
     switch (step) {
@@ -28,6 +34,7 @@ const RegisterCustomTokenPopup = (props) => {
           <RegisterTokenForm
             onSubmit={registerToken}
             fetching={fetching}
+            walletsOptions={walletsOptions}
             initialValues={{
               walletAddress,
               ...token
@@ -54,5 +61,6 @@ const RegisterCustomTokenPopup = (props) => {
 
 export default connect((state) => ({
   ...state.settings.registerCustomToken,
-  walletAddress: state.wallet.selectedWallet
+  walletAddress: state.wallet.selectedWallet,
+  wallets: state.app.user.wallets
 }))(RegisterCustomTokenPopup);
