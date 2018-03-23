@@ -1,0 +1,30 @@
+sudo: required
+services:
+- docker
+branches:
+  only:
+  - master
+  - develop
+script:
+- export ENV_FILE=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "prod"; else echo
+  "stage"; fi`
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ];  then echo "production"; elif [
+  "$TRAVIS_BRANCH" == "develop" ]; then echo "stage"; else echo "dev-$(git rev-parse
+  --short HEAD)"; fi`
+- docker build --no-cache -t jincort/frontend-moon-wallet-develop:${TAG} .
+- docker run --rm -v $(pwd):/usr/src/app jincort/frontend-moon-wallet-develop:${TAG}
+  /bin/sh -c "yarn && cp -r .env.${ENV_FILE} .env && yarn build && yarn run lint:all"
+after_success:
+- export DOCKERFILE=`if [ "$TRAVIS_BRANCH" == "develop" ]; then echo "Dockerfile.stage";
+  else echo "Dockerfile.prod" ; fi`
+- docker build -f $DOCKERFILE --no-cache -t jincort/frontend-moon-wallet:${TAG} .
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- docker push jincort/frontend-moon-wallet-develop:${TAG}
+- docker push jincort/frontend-moon-wallet:${TAG}
+notifications:
+  slack:
+    secure: JgbatLuzcg2k4DT1wvKGs4hlRZLCILQwKBkXYNHYRx2+JZVzP98uP2upgrEjmufOuM7+cmXu75fN2RyCHv5bVhX6pIweI5PYSYpQ9w19OlCefRW8IrqtPhYx7ROwOYA/u1hzvWu0FiFdh+1Z+MYuerF+ZSsU4XqSgDK3s6B2lhnB7BFVoy1tyQmTOo7Scfr7wKqTwXNUNIuwQ9Ph1xeG5zwXjeU1jMpF63NYPt/AKQCYYqH80DgRSsZI4tPRlW6ranriFLTFGECxtv0SXzClpAWqIjMSO+35+zHPlb+HozMrvqwy5/L8xAnBeVmDMY7vwWmZQe7SOUAr2uBrVq3JiE0BLVzYb51girjvcbwnvol0EOYwMsf2QYXlV5GJUDregJJUNr7MI+9eN3vdvvLzSU51x/+7rlAxOE7zgFFbyRrANrPbk0Kk6sv9Ih0Ubj05/kTkiPb6S9gWRfTF4EylOWh8IsT6BFtwgk4nwIKVOicSCn5ZLcA+4fO1wOXP1bFWHP/2/uDlYGgs/FEU4dpLP5u57UZf70ZyXa4JN3BDRF2eBXW5BMpDHtUY8VNbMbpgZKPHCQ+p37AOb574m8GufrOTaJfkNWtyLkly1l6zlhIDwgLjA9tWRwvn+lt1a9Q6+LgFAzACCg4F0sqVHu+zMktqseysYkNSGm8XIagVKqw=
+env:
+  global:
+  - secure: eFzMox6YGl9RWseZ3D4QC1g+rBUA2aqS3soqQT46NCq87eO6AVlREYYOADj4elrdBffT/q26LPY982AxfPqN+jGlsRyRbqxgSv+zoER2YiwCCdKN1QcvySQYS/pngMoeTYkuQ0cbXTAWAeDMVSIL3AFaPA6VWE7ULbZClctwJflXoqLAqtQB5srFBKPZhzxuBS+b80iZcQkYAx+I2UbbPJ5V2nW7zL+aS5d7djxG8MdV75ihUwIQgZFO03ieJvIoKfiDub+67xLJZDgllm+uZne5St9oqz791znb6BKv5CJgfLTFD6ytmwF02O/hIHdKomyuMFaAt8JdnmH/5TAxC9x8EXknPboS4/GXs2rAwlfAhEUlO+7S57t6bSZbHdCttQdpi+3Kg9KamXieuEJ4K+TZFJ3XEcugLFfq9LNUDgSt7KthtkCnsoM/DNNuV5qsrN6G4ZlPpJMiODjnvH3pFbuaNm29EJB0bXx7pkqZu24kZVHEFovh0S6g1nfkCSfbI2JpXs2vvDdveUMxWftCO9fFlqsymZ+aPHBBkzZRtCcC4Kh0JKGjXY1wGYHHTLVNTMvBhPMi0D/7C7GVVyB3UZwnDe2hVWr0IqM3opXWcGtXm9BbJ6hJQNx63oLj4VkL2D71ZtbqqS745WVRKuHO+9DAcAVvAc1ttBpSylhShok=
+  - secure: JR2TIPnFpmj0/6/4+oensJg01D2v2roI3WufoKVSaK3GAOYy8JKMxz8kAgoQB+PG6Lv0PSX6qkPvVd48N2jLEbRJtQo8tDLsFSSKsXWS6H6XD08KQG7DXWUiXNDRjPrug14Xts6UpO2/dXuJrSuZerhZTJJVMOgVO9MjrubvPBQKBLbAXsoSUj5CzuDlPOX+SRQihl7gaXC4ZzIiRevWdIHE3EhRnyeSU6AADzthtA8+8mu134cRC6x5/hs1LOP84JtS5g69YdK1BKLtdIjqhSeVzCjV7xrTIcgRMNvdcj2n1W0Il28/MWO5nmZ8Wwq6rwO9sHoAdXqODFEw/x7NAhbavS2MJdDxDRQgvEcih0dzBYwc4fEzPmFwwMEvqg4Mn4om7gBHSVvfXwZhuYqy4enNKs9whj0Mvw1e5E9WP2/Bx55uYDRjwTVzGrlbBog6X4DrH7uvzkHgE8GBrNtgczLyFAkMVePimud+MBB66XZx22r8GjefQPSlLs713y8lCxPD9hl96dXiEwkc5Vqb6eNGxPem5Jt5X4p5VXwxZ9P3eNPi0M5q5MqVscjE7czev6K5bu0QRmQ836cIqRrIDV7NQ9FmSzWK28p1p+ztGN9EWW6Fe2cJQLcMeGBhfs3Adb5US+bO2q6NS5amUkkyOI+9mpQWP4sv9pazJ9APM6w=

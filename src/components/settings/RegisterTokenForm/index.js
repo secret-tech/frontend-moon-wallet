@@ -5,19 +5,29 @@ import { Button, Intent } from '@blueprintjs/core';
 import { required } from '../../../utils/validators';
 
 import RenderInput from '../../_forms/RenderInput';
+import RenderSelect from '../../_forms/RenderSelect';
 
 const RegisterTokenForm = (props) => {
   const {
     handleSubmit,
     invalid,
-    fetching
+    fetching,
+    walletsOptions
   } = props;
 
   return (
     <form onSubmit={handleSubmit}>
 
       <Field
+        component={RenderSelect}
+        label="Choose wallet"
+        name="walletAddress"
+        options={[{ value: '', label: 'Select wallet...' }].concat(walletsOptions)}
+        validate={required}/>
+
+      <Field
         component={RenderInput}
+        label="Contract address"
         placeholder="Contact address"
         name="contractAddress"
         className="pt-input pt-fill"
@@ -26,6 +36,7 @@ const RegisterTokenForm = (props) => {
 
       <Field
         component={RenderInput}
+        label="name"
         placeholder="Name"
         name="name"
         className="pt-input pt-fill"
@@ -33,6 +44,7 @@ const RegisterTokenForm = (props) => {
 
       <Field
         component={RenderInput}
+        label="symbol"
         placeholder="Symbol"
         name="symbol"
         className="pt-input pt-fill"
@@ -40,6 +52,7 @@ const RegisterTokenForm = (props) => {
 
       <Field
         component={RenderInput}
+        label="decimals"
         placeholder="Decimals"
         name="decimals"
         className="pt-input pt-fill"

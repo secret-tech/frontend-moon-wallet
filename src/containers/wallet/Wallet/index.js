@@ -16,6 +16,10 @@ class Wallet extends Component {
     this.props.selectWallet(this.props.match.params.walletId);
   }
 
+  componentWillUnmount() {
+    this.props.selectWallet(''); // reset selected wallet
+  }
+
   render() {
     return (
       <div className={s.container}>
