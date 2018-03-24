@@ -15,6 +15,7 @@ import s from './styles.css';
 
 const Nav = (props) => {
   const {
+    theme,
     wallets,
     selectedWallet,
     selectWallet,
@@ -45,7 +46,7 @@ const Nav = (props) => {
   };
 
   return (
-    <Navbar className="pt-dark">
+    <Navbar className={theme}>
       <NavbarGroup>
         <NavbarHeading>
           <Link to="/wallets" className={s.logo}>
@@ -74,7 +75,8 @@ const Nav = (props) => {
 const ConnectedComponent = connect(
   (state) => ({
     wallets: state.app.user.wallets,
-    selectedWallet: state.wallet.selectedWallet
+    selectedWallet: state.wallet.selectedWallet,
+    ...state.app.theme
   }),
   {
     selectWallet,

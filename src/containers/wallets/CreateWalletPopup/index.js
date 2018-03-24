@@ -10,7 +10,6 @@ const CreateWalletPopup = (props) => (
   <Dialog
     style={{ width: '400px', paddingBottom: '0px' }}
     title="Create wallet"
-    className="pt-dark"
     {...props}>
 
     <div className="pt-dialog-body">
@@ -22,5 +21,6 @@ const CreateWalletPopup = (props) => (
 );
 
 export default connect((state) => ({
-  fetching: state.wallets.createWallet.fetching
+  fetching: state.wallets.createWallet.fetching,
+  ...state.app.theme
 }))(CreateWalletPopup);

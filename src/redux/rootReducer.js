@@ -3,6 +3,7 @@ import { reducer as form } from 'redux-form';
 
 import app from './modules/app/app';
 import user from './modules/app/user';
+import theme from './modules/app/theme';
 
 import signIn from './modules/auth/signIn';
 import signUp from './modules/auth/signUp';
@@ -29,7 +30,8 @@ export default combineReducers({
 
   app: combineReducers({
     app,
-    user
+    user,
+    theme
   }),
 
   auth: combineReducers({

@@ -4,7 +4,6 @@ import { Dialog, Button, Intent } from '@blueprintjs/core';
 const ImportWalletPopup = (props) => (
   <Dialog
     title="Import wallet"
-    className="pt-dark"
     {...props}>
 
     <div className="pt-dialog-body">

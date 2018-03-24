@@ -3,6 +3,7 @@ import React from 'react';
 import s from './styles.css';
 
 import ChangePassword from '../../../containers/settings/ChangePassword';
+import ChangeTheme from '../../../containers/settings/ChangeTheme';
 
 const Settings = () => (
   <div className={s.wallets}>
@@ -11,7 +12,15 @@ const Settings = () => (
     </div>
 
     <div className={s.body}>
-      <ChangePassword/>
+      <div className={s.changePassword}>
+        <ChangePassword/>
+      </div>
+
+      <div className={s.changeTheme}>
+        <ChangeTheme/>
+
+        <div className={s.tip}>Light theme may contain some errors. Dark - preferred.</div>
+      </div>
     </div>
   </div>
 );

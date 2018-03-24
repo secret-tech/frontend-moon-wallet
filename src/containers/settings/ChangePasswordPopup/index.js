@@ -9,6 +9,7 @@ import VerifyChangePasswordForm from '../../../components/settings/VerifyChangeP
 
 const ChangePasswordPopup = (props) => {
   const {
+    theme,
     step,
     fetching,
     verification: {
@@ -42,7 +43,7 @@ const ChangePasswordPopup = (props) => {
     <Dialog
       style={{ width: '300px', paddingBottom: '0px' }}
       title="Change password"
-      className="pt-dark"
+      className={theme}
       {...props}>
 
       <div className="pt-dialog-body">
@@ -53,5 +54,6 @@ const ChangePasswordPopup = (props) => {
 };
 
 export default connect((state) => ({
-  ...state.settings.changePassword
+  ...state.settings.changePassword,
+  ...state.app.theme
 }))(ChangePasswordPopup);
