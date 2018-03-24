@@ -9,6 +9,7 @@ import s from './styles.css';
 
 const DepositFunds = (props) => {
   const {
+    theme,
     closeDepositFundsPopup,
     popupIsOpen
   } = props;
@@ -17,7 +18,7 @@ const DepositFunds = (props) => {
     <Dialog
       style={{ width: '700px', paddingBottom: '0px' }}
       title="Deposit funds"
-      className="pt-dark"
+      className={theme}
       onClose={closeDepositFundsPopup}
       isOpen={popupIsOpen}>
 
@@ -33,7 +34,8 @@ const DepositFunds = (props) => {
 const ComponentWithRouter = withRouter(DepositFunds);
 const ConnectedComponent = connect(
   (state) => ({
-    ...state.wallet.depositFunds
+    ...state.wallet.depositFunds,
+    ...state.app.theme
   }),
   {
     closeDepositFundsPopup

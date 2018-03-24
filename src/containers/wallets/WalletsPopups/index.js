@@ -13,6 +13,8 @@ import EditWalletPopup from '../EditWalletPopup';
 
 const WalletsPopups = (props) => {
   const {
+    theme,
+
     closeCreateWalletPopup,
     createWallet,
 
@@ -29,19 +31,23 @@ const WalletsPopups = (props) => {
   return [
     <CreateWalletPopup
       key="create-wallet-popup"
+      className={theme}
       isOpen={createWallet.popupIsOpen}
       onClose={() => closeCreateWalletPopup()}/>,
     <ImportWalletPopup
       key="import-wallet-popup"
+      className={theme}
       isOpen={importWallet.popupIsOpen}
       onClose={() => closeImportWalletPopup()}/>,
     <ExportWalletPopup
       key="export-wallet-popup"
+      className={theme}
       isOpen={exportWallet.popupIsOpen}
       onClose={() => closeExportWalletPopup()}
       walletAddress={exportWallet.walletAddress}/>,
     <EditWalletPopup
       key="edit-wallet-popup"
+      className={theme}
       isOpen={editWallet.popupIsOpen}
       onClose={() => closeEditWalletPopup()}
       walletAddress={editWallet.walletAddress}/>,
@@ -49,7 +55,10 @@ const WalletsPopups = (props) => {
 };
 
 const ConnectedComponent = connect(
-  (state) => ({ ...state.wallets }),
+  (state) => ({
+    ...state.wallets,
+    ...state.app.theme
+  }),
   {
     closeCreateWalletPopup,
     closeImportWalletPopup,

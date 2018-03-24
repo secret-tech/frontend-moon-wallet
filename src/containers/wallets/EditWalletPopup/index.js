@@ -4,7 +4,6 @@ import { Dialog, Button, Intent } from '@blueprintjs/core';
 const EditWalletPopup = (props) => (
   <Dialog
     title="Edit wallet"
-    className="pt-dark"
     {...props}>
 
     <div className="pt-dialog-body">

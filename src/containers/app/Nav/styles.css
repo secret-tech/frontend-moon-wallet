@@ -1,3 +1,13 @@
+:global(.pt-dark) .logo > span {
+  color: #f5f8fa;
+  margin-left: 10px;
+}
+
+:global(.pt-light) .logo > span {
+  color: #182026;
+  margin-left: 10px;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -5,11 +15,6 @@
   & > img {
     height: 30px;
     width: 30px;
-  }
-
-  & > span {
-    color: #fff;
-    margin-left: 10px;
   }
 
   &:hover {

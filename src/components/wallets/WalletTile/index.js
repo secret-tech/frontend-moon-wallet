@@ -59,7 +59,7 @@ const WalletTile = (props) => {
           </div>
           <div className={s.info}>
             {/* <h3>{name}</h3> */}
-            <div className="pt-text-muted">{address}</div>
+            <div className={s.address}>{address}</div>
           </div>
         </div>
 

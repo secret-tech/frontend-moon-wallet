@@ -9,6 +9,7 @@ import RegisterTokenForm from '../../../components/settings/RegisterTokenForm';
 
 const RegisterCustomTokenPopup = (props) => {
   const {
+    theme,
     step,
     fetching,
     walletAddress,
@@ -49,7 +50,7 @@ const RegisterCustomTokenPopup = (props) => {
     <Dialog
       style={{ width: '300px', paddingBottom: '0px' }}
       title="Register custom token"
-      className="pt-dark"
+      className={theme}
       {...props}>
 
       <div className="pt-dialog-body">
@@ -62,5 +63,6 @@ const RegisterCustomTokenPopup = (props) => {
 export default connect((state) => ({
   ...state.settings.registerCustomToken,
   walletAddress: state.wallet.selectedWallet,
-  wallets: state.app.user.wallets
+  wallets: state.app.user.wallets,
+  ...state.app.theme
 }))(RegisterCustomTokenPopup);
