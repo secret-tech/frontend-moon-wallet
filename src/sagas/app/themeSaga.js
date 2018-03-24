@@ -2,8 +2,8 @@ import { all, takeLatest, call, fork, put } from 'redux-saga/effects';
 import { getThemeFromStorage, setThemeToStorage } from '../../utils/theme';
 
 import {
-  changeTheme, checkThemeState, setThemeState, setTheme,
-  CHANGE_THEME, CHECK_THEME_STATE, SET_THEME_STATE, SET_THEME
+  setThemeState, setTheme,
+  CHANGE_THEME, CHECK_THEME_STATE, SET_THEME
 } from '../../redux/modules/app/theme';
 
 
