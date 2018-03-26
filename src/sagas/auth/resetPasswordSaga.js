@@ -1,8 +1,9 @@
 import { all, takeLatest, call, put, fork } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
-import { SubmissionError } from 'redux-form';
+
 import { post } from '../../utils/fetch';
 import { namedRoutes } from '../../routes';
+import Toast from '../../utils/toaster';
 
 import {
   initResetPassword,
@@ -21,13 +22,11 @@ function* initResetPasswordIterator({ payload }) {
     yield put(changeStep('verifyResetPassword'));
   } catch (e) {
     if (e.error.isJoi) {
-      yield put(initResetPassword.failure(new SubmissionError({
-        _error: e.error.details[0].message
-      })));
+      yield call([Toast, Toast.red], { message: e.error.details[0].message });
+      yield put(initResetPassword.failure());
     } else {
-      yield put(initResetPassword.failure(new SubmissionError({
-        _error: e.message
-      })));
+      yield call([Toast, Toast.red], { message: e.message });
+      yield put(initResetPassword.failure());
     }
   }
 }
@@ -47,13 +46,11 @@ function* verifyResetPasswordIterator({ payload }) {
     yield put(changeStep('setNewPassword'));
   } catch (e) {
     if (e.error.isJoi) {
-      yield put(verifyResetPassword.failure(new SubmissionError({
-        _error: e.error.details[0].message
-      })));
+      yield call([Toast, Toast.red], { message: e.error.details[0].message });
+      yield put(verifyResetPassword.failure());
     } else {
-      yield put(verifyResetPassword.failure(new SubmissionError({
-        _error: e.message
-      })));
+      yield call([Toast, Toast.red], { message: e.message });
+      yield put(verifyResetPassword.failure());
     }
   }
 }
@@ -72,15 +69,14 @@ function* setNewPasswordIterator({ payload }) {
     yield put(setNewPassword.success());
     yield put(resetStore());
     yield put(push(namedRoutes.signIn));
+    yield call([Toast, Toast.green], { message: 'Password was changed successfully!' });
   } catch (e) {
     if (e.error.isJoi) {
-      yield put(setNewPassword.failure(new SubmissionError({
-        _error: e.error.details[0].message
-      })));
+      yield call([Toast, Toast.red], { message: e.error.details[0].message });
+      yield put(setNewPassword.failure());
     } else {
-      yield put(setNewPassword.failure(new SubmissionError({
-        _error: e.message
-      })));
+      yield call([Toast, Toast.red], { message: e.message });
+      yield put(setNewPassword.failure());
     }
   }
 }

@@ -59,6 +59,7 @@ function* verifyTransferFundsIterator({ payload }) {
   try {
     yield call(post, '/dashboard/transaction/verify', payload);
     yield put(verifyTransferFunds.success());
+    yield call([Toast, Toast.red], { message: 'Transaction successfully created!' });
     yield put(resetStore());
   } catch (e) {
     if (e.error.isJoi) {

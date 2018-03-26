@@ -3,6 +3,7 @@ import { delay } from 'redux-saga';
 import { get } from '../../utils/fetch';
 import { fetchTxs, START_TXS_POLL, END_TXS_POLL } from '../../redux/modules/wallet/txs';
 import { verifyTransferFunds } from '../../redux/modules/wallet/transferFunds';
+import Toast from '../../utils/toaster';
 
 
 function* fetchTxsIterator({ payload }) {
@@ -10,7 +11,9 @@ function* fetchTxsIterator({ payload }) {
     const data = yield call(get, `/dashboard/transactions?walletAddress=${payload}`);
     yield put(fetchTxs.success(data));
   } catch (e) {
+    yield call([Toast, Toast.red], { message: 'Looks like server is down. Try again later' });
     yield put(fetchTxs.failure(e));
+    yield call(console.log, e);
   }
 }
 

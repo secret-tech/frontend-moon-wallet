@@ -1,18 +1,21 @@
 import React from 'react';
 import { format } from 'date-fns';
-import { Tag, Intent } from '@blueprintjs/core';
+import { Tag, Intent, Button } from '@blueprintjs/core';
 
 import { shortAddress, etherscanLink } from '../../../utils/numbers';
 import s from './styles.css';
 
 const Tx = (props) => {
   const {
-    type,
-    direction,
-    amount,
-    transactionHash,
-    status,
-    timestamp
+    tx: {
+      type,
+      direction,
+      amount,
+      transactionHash,
+      status,
+      timestamp,
+    },
+    openTxDetailsPopup
   } = props;
 
   const dir = () => (direction === 'out' ? 'withdraw' : 'Income');
@@ -30,17 +33,30 @@ const Tx = (props) => {
 
   const symbol = () => {
     if (type === 'eth_transfer') return 'ETH';
-    return props.token.symbol;
+    return props.tx.token.symbol;
   };
 
   return (
     <div className={s.tx}>
       <h4>
-        <span>{amount} {symbol()} {dir()} </span>
+        <span>{amount} {symbol()} {dir()}</span>
         <a target="_blank" href={etherscanLink('tx', transactionHash)}>{shortAddress(transactionHash)}</a>
         {renderStatus()}
+        <div className={s.details}>
+          <Button
+            className="pt-small pt-minimal"
+            text="Details..."
+            onClick={() => openTxDetailsPopup({
+              dir: dir(),
+              symbol: symbol(),
+              datetime: format(timestamp * 1000, 'DD MMMM YYYY HH:mm:ss'),
+              ...props.tx
+            })}/>
+        </div>
       </h4>
-      <div className="pt-text-muted">{format(timestamp * 1000, 'DD MMMM YYYY HH:mm:ss')}</div>
+      <div className="pt-text-muted">
+        {format(timestamp * 1000, 'DD MMMM YYYY HH:mm:ss')}
+      </div>
     </div>
   );
 };
