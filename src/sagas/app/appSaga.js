@@ -2,6 +2,7 @@ import { all, takeLatest, call, fork, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import { removeToken, setToken, getToken, isAuth } from '../../utils/auth';
 import { get } from '../../utils/fetch';
+import Toast from '../../utils/toaster';
 
 import {
   login,
@@ -68,7 +69,9 @@ function* fetchUserIterator() {
     if (e.status === 401) {
       yield put(logout());
     } else {
+      yield call([Toast, Toast.red], { message: 'Looks like server is down. Try again later' });
       yield call(console.log, e);
+      yield put(fetchUser.failure());
     }
   }
 }

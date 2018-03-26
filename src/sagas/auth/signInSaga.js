@@ -4,6 +4,7 @@ import { post } from '../../utils/fetch';
 
 import { initSignIn, verifySignIn, changeStep, resetStore } from '../../redux/modules/auth/signIn';
 import { login } from '../../redux/modules/app/app';
+import Toast from '../../utils/toaster';
 
 
 function* initSignInIterator({ payload }) {
@@ -12,7 +13,13 @@ function* initSignInIterator({ payload }) {
     yield put(initSignIn.success(data.verification));
     yield put(changeStep('verifySignIn'));
   } catch (e) {
-    yield put(initSignIn.failure(e));
+    if (e.error.isJoi) {
+      yield call([Toast, Toast.red], { message: e.error.details[0].message });
+      yield put(initSignIn.failure());
+    } else {
+      yield call([Toast, Toast.red], { message: e.message });
+      yield put(initSignIn.failure());
+    }
   }
 }
 
@@ -32,7 +39,13 @@ function* verifySignInIterator({ payload }) {
     yield put(resetStore());
     yield put(push('/wallets'));
   } catch (e) {
-    yield put(verifySignIn.failure(e));
+    if (e.error.isJoi) {
+      yield call([Toast, Toast.red], { message: e.error.details[0].message });
+      yield put(verifySignIn.failure());
+    } else {
+      yield call([Toast, Toast.red], { message: e.message });
+      yield put(verifySignIn.failure());
+    }
   }
 }
 
