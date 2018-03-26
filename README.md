@@ -1,8 +1,12 @@
+![MOON Wallet](https://monosnap.com/file/AWvzmQe6IvNezvjIhYwkSDWbiKB5en.png)
+
 # Moon Wallet Frontend module
 
-This is frontend module of [Moon Wallet](https://moonwallet.tech/). Checkout backend [here](https://github.com/JincorTech/backend-token-wallets).
+![GitHub (pre-)release](https://img.shields.io/github/release/JincorTech/frontend-moon-wallet/all.svg)
+![Travis](https://img.shields.io/travis/JincorTech/frontend-moon-wallet.svg)
+![license](https://img.shields.io/github/license/JincorTech/frontend-moon-wallet.svg)
 
-![MOON Wallet](https://monosnap.com/file/AWvzmQe6IvNezvjIhYwkSDWbiKB5en.png)
+This is frontend module of [Moon Wallet](https://moonwallet.tech/). Checkout backend [here](https://github.com/JincorTech/backend-token-wallets).
 
 This web client can be used to connect MOON's backend. Currently it has the following functionality:
 
@@ -24,48 +28,31 @@ For more info check [**API DOCS**](https://jincortech.github.io/backend-token-wa
 
 ## Technology stack
 
-1. React & Redux.
+1. React & Redux & Saga.
 1. Webpack
 1. socket.io
 
-## Changelog
-**Closed issues**
-
-- Notification system [\#22](https://github.com/JincorTech/frontend-moon-wallet/issues/22)
-- SW: balances in sidebar [\#14](https://github.com/JincorTech/frontend-moon-wallet/issues/14)
-- SW: transactions list [\#12](https://github.com/JincorTech/frontend-moon-wallet/issues/12)
-- Single wallet layout [\#11](https://github.com/JincorTech/frontend-moon-wallet/issues/11)
-- Export wallet popup and form [\#9](https://github.com/JincorTech/frontend-moon-wallet/issues/9)
-- Create wallet popup [\#7](https://github.com/JincorTech/frontend-moon-wallet/issues/7)
-- Wallets list [\#6](https://github.com/JincorTech/frontend-moon-wallet/issues/6)
-- Sign In layout and forms [\#3](https://github.com/JincorTech/frontend-moon-wallet/issues/3)
-- Sign Up layout and forms [\#2](https://github.com/JincorTech/frontend-moon-wallet/issues/2)
-- Integration with blueprintJS [\#1](https://github.com/JincorTech/frontend-moon-wallet/issues/1)
-
-Full changelog available [**here**](/CHANGELOG.md)
-
-## How start application loacally in development mode?
+## How start application loacally?
 
 1. Clone this repo.
-1. Download deps `$ yarn`
-1. Run `$ cp .env.example .env` - specify backend address
-1. Run `$ yarn start` browser sync automatically open application after build
+1. `$ yarn`
+1. `$ cp .env.example .env`
+1. `$ yarn start`
+1. Go to `localhost:3000/auth/sign-in`
 
 ## How to build application for production?
 
 Webpack generate static `dist` directory with production build of app. You just need serve it with your server like nginx.
 
-## Commit hooks
-
-That boilerplate uses pre-commit hooks and run some scripts before making git commit. To see what is started before commit check package.json pre-commit block. Default - `yarn lint:all` and `yarn test`. To ignore the check, use `-n` e.g `git commit -n -m 'Your amazing commit msg'`.
+1. `$ yarn`
+1. `$ cp .env.prod .env`
+1. `$ yarn build`
 
 ## Environment variables
 
 ``cp .env.example .env`` - copy example dotenv file and specify your own values in `.env`
 
 You can use different environment variables. Create `.env.stage`, `.env.prod` and `.env.dev` and copy the file you need.
-
-To access values inside application call `console.log(process.env)`.
 
 ## Scripts
 
@@ -76,20 +63,6 @@ To access values inside application call `console.log(process.env)`.
 ``yarn build:clean`` - remove prev `/dist` and build application
 
 ``yarn serve`` - serve `/dist` directory. Requires build application before run
-
-``yarn lint:js`` - run eslint
-
-``yarn lint:css`` - run stylelint
-
-``yarn lint:all`` - run eslint and stylelint concurrently
-
-``yarn test`` - run jest
-
-``yarn test:coverage`` - jest coverage
-
-``yarn test:watch`` - jest in watch mode
-
-``yarn analyze`` - analyze webpack bundle
 
 ## [Contributing](https://github.com/JincorTech/frontend-moon-wallet/blob/develop/CONTRIBUTING.md)
 

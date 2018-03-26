@@ -10,6 +10,7 @@ import VerifyTransferFundsForm from '../../../components/wallet/VerifyTransferFu
 
 const TransferFunds = (props) => {
   const {
+    theme,
     closeTransferFundsPopup,
     popupIsOpen,
     step,
@@ -71,7 +72,7 @@ const TransferFunds = (props) => {
     <Dialog
       style={{ width: '320px', paddingBottom: '0px' }}
       title="Transfer funds"
-      className="pt-dark"
+      className={theme}
       onClose={closeTransferFundsPopup}
       isOpen={popupIsOpen}>
 
@@ -86,6 +87,7 @@ const ComponentWithRouter = withRouter(TransferFunds);
 const ConnectedComponent = connect(
   (state) => ({
     ...state.wallet.transferFunds,
+    ...state.app.theme,
     wallets: state.app.user.wallets,
     selectedWallet: state.wallet.selectedWallet
   }),

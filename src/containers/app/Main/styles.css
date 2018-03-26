@@ -2,9 +2,12 @@
   -webkit-font-smoothing: antialiased;
 }
 
-body,
-html {
-  background-color: #293742;
+body {
+  background-color: #f5f8fa;
+
+  &:global(.pt-dark) {
+    background-color: #293742;
+  }
 }
 
 .app {

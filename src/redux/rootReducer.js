@@ -3,6 +3,7 @@ import { reducer as form } from 'redux-form';
 
 import app from './modules/app/app';
 import user from './modules/app/user';
+import theme from './modules/app/theme';
 
 import signIn from './modules/auth/signIn';
 import signUp from './modules/auth/signUp';
@@ -19,6 +20,7 @@ import balances from './modules/wallet/balances';
 import selectedWallet from './modules/wallet/selectedWallet';
 import depositFunds from './modules/wallet/depositFunds';
 import transferFunds from './modules/wallet/transferFunds';
+import txDetails from './modules/wallet/txDetails';
 
 import changePassword from './modules/settings/changePassword';
 import registerCustomToken from './modules/settings/registerCustomToken';
@@ -29,7 +31,8 @@ export default combineReducers({
 
   app: combineReducers({
     app,
-    user
+    user,
+    theme
   }),
 
   auth: combineReducers({
@@ -51,7 +54,8 @@ export default combineReducers({
     balances,
     selectedWallet,
     depositFunds,
-    transferFunds
+    transferFunds,
+    txDetails
   }),
 
   settings: combineReducers({

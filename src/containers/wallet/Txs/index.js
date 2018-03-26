@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { fetchTxs, startTxsPoll, endTxsPoll } from '../../../redux/modules/wallet/txs';
+import { openTxDetailsPopup } from '../../../redux/modules/wallet/txDetails';
 
 import Tx from '../../../components/wallet/Tx';
 import Preloader from '../../../components/common/Preloader';
@@ -27,11 +28,20 @@ class Txs extends Component {
   render() {
     const {
       txs,
-      fetching
+      fetching,
+      openTxDetailsPopup
     } = this.props;
 
     if (fetching) return <Preloader/>;
-    if (txs.length > 0) return txs.map((tx) => <Tx key={tx.transactionHash} {...tx}/>);
+
+    if (txs.length > 0) {
+      return txs.map((tx) =>
+        <Tx
+          key={tx.transactionHash}
+          openTxDetailsPopup={openTxDetailsPopup}
+          tx={tx}/>);
+    }
+
     return (
       <EmptyState
         title="No transactions here"
@@ -46,7 +56,8 @@ const ConnectedComponent = connect(
   {
     fetchTxs,
     startTxsPoll,
-    endTxsPoll
+    endTxsPoll,
+    openTxDetailsPopup
   }
 )(Txs);
 const ComponentWithRouter = withRouter(ConnectedComponent);
