@@ -15,4 +15,16 @@
   & > div {
     font-weight: 300;
   }
+
+  & .details {
+    margin-left: auto;
+    opacity: 0;
+    transition: 0.1s linear all;
+  }
+
+  &:hover {
+    & .details {
+      opacity: 1;
+    }
+  }
 }

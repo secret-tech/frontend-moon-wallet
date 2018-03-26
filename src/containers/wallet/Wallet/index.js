@@ -8,6 +8,7 @@ import Balances from '../../../containers/wallet/Balances';
 import Txs from '../../../containers/wallet/Txs';
 import DepositFunds from '../DepositFunds';
 import TransferFunds from '../TransferFunds';
+import TxDetails from '../TxDetails';
 
 import s from './styles.css';
 
@@ -35,6 +36,7 @@ class Wallet extends Component {
 
         <DepositFunds/>
         <TransferFunds/>
+        <TxDetails/>
       </div>
     );
   }
