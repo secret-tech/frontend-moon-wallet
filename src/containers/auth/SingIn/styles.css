@@ -10,13 +10,13 @@
 }
 
 .fp {
-  margin-top: 40px;
+  margin: 40px 0 40px;
   text-align: center;
   font-weight: 200;
 }
 
 .bottomLink {
-  margin-top: auto;
+  margin: auto 0 40px;
   text-align: center;
   font-weight: 200;
 }
