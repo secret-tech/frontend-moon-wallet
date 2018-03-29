@@ -1,7 +1,9 @@
 import { all, takeLatest, call, put, fork } from 'redux-saga/effects';
 import { get } from '../../utils/fetch';
-import { fetchUser } from '../../redux/modules/app/user';
 import Toast from '../../utils/toaster';
+
+import { fetchUser } from '../../redux/modules/app/user';
+import { initCreateWallet } from '../../redux/modules/wallets/createWallet';
 
 
 function* fetchUserIterator() {
@@ -17,7 +19,10 @@ function* fetchUserIterator() {
 
 function* fetchUserSaga() {
   yield takeLatest(
-    fetchUser.REQUEST,
+    [
+      fetchUser.REQUEST,
+      initCreateWallet.SUCCESS
+    ],
     fetchUserIterator
   );
 }
