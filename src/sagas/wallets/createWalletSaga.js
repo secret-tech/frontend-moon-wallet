@@ -1,6 +1,7 @@
 import { all, takeLatest, call, put, fork } from 'redux-saga/effects';
 import { post } from '../../utils/fetch';
 import Toast from '../../utils/toaster';
+
 import { initCreateWallet } from '../../redux/modules/wallets/createWallet';
 
 

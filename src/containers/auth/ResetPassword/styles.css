@@ -6,17 +6,17 @@
 
 .form {
   width: 300px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
 }
 
 .fp {
-  margin-top: 40px;
+  margin: 0 0 40px;
   text-align: center;
   font-weight: 200;
 }
 
 .bottomLink {
-  margin-top: auto;
+  margin: auto 0 40px;
   text-align: center;
   font-weight: 200;
 }

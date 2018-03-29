@@ -1,7 +1,8 @@
 import { all, takeLatest, call, put, fork } from 'redux-saga/effects';
 import { get } from '../../utils/fetch';
-import { fetchWallets } from '../../redux/modules/wallets/walletsList';
 import Toast from '../../utils/toaster';
+
+import { fetchWallets } from '../../redux/modules/wallets/walletsList';
 
 
 function* fetchWalletsIterator() {

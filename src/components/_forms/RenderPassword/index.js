@@ -3,6 +3,8 @@ import classnames from 'classnames/bind';
 
 import { Button } from '@blueprintjs/core';
 
+import s from './styles.css';
+
 class RenderPassword extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +19,7 @@ class RenderPassword extends Component {
       meta,
       icon,
       size,
+      tip,
       ...restProps
     } = this.props;
 
@@ -85,6 +88,12 @@ class RenderPassword extends Component {
           </div>
           {renderButton()}
         </div>
+
+        {!tip ? null : (<div className={s.tip}>
+          Password must be at least 8 characters length, contain at
+          least one number, one capital letter, one small letter.
+          Special characters are allowed.
+        </div>)}
       </div>
     );
   }

@@ -28,6 +28,7 @@ const InitChangePasswordForm = (props) => {
         placeholder="New password"
         name="newPassword"
         className="pt-input pt-fill"
+        tip={true}
         validate={required}/>
 
       <div>
