@@ -6,9 +6,12 @@ import { verifyTransferFunds } from '../../redux/modules/wallet/transferFunds';
 import Toast from '../../utils/toaster';
 
 
+const getSelectedWallet = (state) => state.wallet.selectedWallet;
+
 function* fetchBalancesIterator({ payload }) {
   try {
-    const data = yield call(get, `/dashboard?walletAddress=${payload}`);
+    const selectedWallet = yield select(getSelectedWallet);
+    const data = yield call(get, `/dashboard?walletAddress=${payload || selectedWallet}`);
     yield put(fetchBalances.success(data));
   } catch (e) {
     yield call([Toast, Toast.red], { message: 'Looks like server is down. Try again later' });
@@ -27,8 +30,6 @@ function* fetchBalancesSaga() {
   );
 }
 
-
-const getSelectedWallet = (state) => state.wallet.selectedWallet;
 
 function* pollBalancesIterator() {
   while (true) {
