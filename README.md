@@ -3,7 +3,7 @@
 # Moon Wallet Frontend module
 
 ![GitHub (pre-)release](https://img.shields.io/github/release/JincorTech/frontend-moon-wallet/all.svg)
-![Travis](https://img.shields.io/travis/JincorTech/frontend-moon-wallet.svg)
+[![Build Status](https://travis-ci.org/secret-tech/frontend-moon-wallet.svg?branch=master)](https://travis-ci.org/secret-tech/frontend-moon-wallet)
 ![license](https://img.shields.io/github/license/JincorTech/frontend-moon-wallet.svg)
 
 This is frontend module of [Moon Wallet](https://moonwallet.tech/). Checkout backend [here](https://github.com/JincorTech/backend-token-wallets).

@@ -40,6 +40,7 @@ const SignUpForm = (props) => {
         type="password"
         className="pt-input pt-large pt-fill"
         size="pt-large"
+        tip={true}
         validate={required}/>
 
       <div>
