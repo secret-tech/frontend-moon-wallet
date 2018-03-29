@@ -21,6 +21,7 @@ const ResetPasswordNewPasswordForm = (props) => {
         placeholder="New password"
         name="password"
         className="pt-input pt-large pt-fill"
+        tip={true}
         validate={required}/>
 
       <div>
