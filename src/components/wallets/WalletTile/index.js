@@ -1,4 +1,5 @@
 import React from 'react';
+import windowSize from 'react-window-size';
 // import { Button } from '@blueprintjs/core';
 import { Link } from 'react-router-dom';
 import Identicon from 'identicon.js';
@@ -6,7 +7,7 @@ import hexToRgb from 'hex-to-rgb';
 
 import { getWalletColorPair, getWalletIcon } from './variants';
 // import getBalances from './balances';
-// import { bigNum } from '../../../utils/numbers';
+import { shortAddress } from '../../../utils/numbers';
 import s from './styles.css';
 
 const WalletTile = (props) => {
@@ -14,6 +15,7 @@ const WalletTile = (props) => {
     // name,
     address,
     // color,
+    windowWidth,
 
     // onClickExport,
     // onClickEdit
@@ -58,8 +60,8 @@ const WalletTile = (props) => {
             <img src={`data:image/svg+xml;base64,${identionBase64}`}/>
           </div>
           <div className={s.info}>
-            {/* <h3>{name}</h3> */}
-            <div className={s.address}>{address}</div>
+            {/* <h3>Very long name untitled wallet raz dva tree</h3> */}
+            <div className={s.address}>{windowWidth < 500 ? shortAddress(address) : address}</div>
           </div>
         </div>
 
@@ -82,4 +84,4 @@ const WalletTile = (props) => {
   );
 };
 
-export default WalletTile;
+export default windowSize(WalletTile);
