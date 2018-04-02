@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import windowSize from 'react-window-size';
 import { Navbar, NavbarGroup, NavbarHeading, Button, Popover, Position } from '@blueprintjs/core';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -20,7 +21,8 @@ const Nav = (props) => {
     selectedWallet,
     selectWallet,
     openRegisterTokenPopup,
-    logout
+    logout,
+    windowWidth
   } = props;
 
   const currentWallet = wallets.filter((wallet) => wallet.address === selectedWallet)[0];
@@ -37,7 +39,7 @@ const Nav = (props) => {
               selectWallet={selectWallet}/>
           }
           position={Position.BOTTOM_RIGHT}>
-          <Button className="pt-minimal" iconName="expand-all" text={text} />
+          <Button className="pt-minimal" iconName="expand-all" text={windowWidth < 500 ? null : text} />
         </Popover>
       );
     }
@@ -85,4 +87,5 @@ const ConnectedComponent = connect(
   }
 )(Nav);
 const ComponentWithRouter = withRouter(ConnectedComponent);
-export default ComponentWithRouter;
+const ComponentWithSize = windowSize(ComponentWithRouter);
+export default ComponentWithSize;
