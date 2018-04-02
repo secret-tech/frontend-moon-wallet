@@ -11,7 +11,8 @@ const WalletsControls = (props) => (
   <div className={s.buttons}>
     {/* <Button iconName="import" text="Import wallet"
       onClick={() => props.openImportWalletPopup()}/> */}
-    <Button iconName="add" text="Create new wallet" onClick={() => props.openCreateWalletPopup()}/>
+    <Button iconName="add" text="Create new wallet"
+      onClick={() => props.openCreateWalletPopup()}/>
   </div>
 );
 

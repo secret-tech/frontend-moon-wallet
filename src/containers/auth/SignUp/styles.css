@@ -7,6 +7,10 @@
 .form {
   width: 300px;
   margin: 0 auto 40px;
+
+  @media only screen and (max-width: 360px) {
+    width: 100%;
+  }
 }
 
 .bottomLink {
