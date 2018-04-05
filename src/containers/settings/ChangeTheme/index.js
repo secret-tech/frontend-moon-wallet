@@ -16,13 +16,13 @@ const ChangeTheme = (props) => {
     <div>
       <ButtonGroup large={false}>
         <Button
-          iconName="moon"
+          icon="moon"
           text="Dark theme"
           className={theme === THEMES.dark ? 'pt-active' : null}
           onClick={() => changeTheme(THEMES.dark)}/>
 
         <Button
-          iconName="flash"
+          icon="flash"
           text="Light theme"
           className={theme === THEMES.light ? 'pt-active' : null}
           onClick={() => changeTheme(THEMES.light)}/>

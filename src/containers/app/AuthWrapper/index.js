@@ -33,13 +33,13 @@ class AuthWrapper extends Component {
           <div>
             <ButtonGroup large={false}>
               <Button
-                iconName="moon"
+                icon="moon"
                 text="Dark theme"
                 className={classnames(theme === THEMES.dark ? 'pt-active' : null, 'pt-minimal')}
                 onClick={() => changeTheme(THEMES.dark)}/>
 
               <Button
-                iconName="flash"
+                icon="flash"
                 text="Light theme"
                 className={classnames(theme === THEMES.light ? 'pt-active' : null, 'pt-minimal')}
                 onClick={() => changeTheme(THEMES.light)}/>

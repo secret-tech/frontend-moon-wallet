@@ -9,9 +9,9 @@ import s from './styles.css';
 
 const WalletsControls = (props) => (
   <div className={s.buttons}>
-    {/* <Button iconName="import" text="Import wallet"
+    {/* <Button icon="import" text="Import wallet"
       onClick={() => props.openImportWalletPopup()}/> */}
-    <Button iconName="add" text="Create new wallet"
+    <Button icon="add" text="Create new wallet"
       onClick={() => props.openCreateWalletPopup()}/>
   </div>
 );

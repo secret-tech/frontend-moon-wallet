@@ -5,11 +5,11 @@ import { NavLink } from 'react-router-dom';
 const NavMenuDropdown = ({ openRegisterTokenPopup, logout }) => (
   <Menu>
     {/* <MenuItem
-      iconName="duplicate"
+      icon="duplicate"
       text="Copy address"/> */}
 
     <MenuItem
-      iconName="add"
+      icon="add"
       text="Register token"
       onClick={() => openRegisterTokenPopup()}/>
 
@@ -36,7 +36,7 @@ const NavMenuDropdown = ({ openRegisterTokenPopup, logout }) => (
     <MenuDivider />
 
     <MenuItem
-      iconName="pt-icon-log-out"
+      icon="log-out"
       text="Logout"
       onClick={() => logout()}/>
   </Menu>
