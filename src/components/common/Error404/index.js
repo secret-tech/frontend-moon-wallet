@@ -1,14 +1,8 @@
 import React from 'react';
-import { Icon } from '@blueprintjs/core';
-import { IconNames } from '@blueprintjs/icons';
+import { NonIdealState } from '@blueprintjs/core';
 
 const Error404 = () => (
-  <div className="pt-non-ideal-state">
-    <div className="pt-non-ideal-state-visual pt-non-ideal-state-icon">
-      <Icon icon={IconNames.ERROR} iconSize={60} />
-    </div>
-    <h4 className="pt-non-ideal-state-title">This is 404</h4>
-  </div>
+  <NonIdealState title="This is 404" visual="error"/>
 );
 
 export default Error404;
