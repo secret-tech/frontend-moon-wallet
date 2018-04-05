@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
-import { ButtonGroup, Button } from '@blueprintjs/core';
+import { ButtonGroup, Button, Icon } from '@blueprintjs/core';
+import { IconNames } from '@blueprintjs/icons';
 import classnames from 'classnames/bind';
 
 import { changeTheme } from '../../../redux/modules/app/theme';
@@ -26,8 +27,11 @@ class AuthWrapper extends Component {
           <div>
             <a
               href="https://moonwallet.tech"
-              className="pt-button pt-minimal pt-icon-chevron-left"
-              tabindex="0">Back to landing page</a>
+              className="pt-button pt-minimal"
+              tabIndex="0">
+              <Icon icon={IconNames.CHEVRON_LEFT} />
+              <span>Back to landing page</span>
+            </a>
           </div>
 
           <div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Menu, MenuItem, MenuDivider } from '@blueprintjs/core';
+import { Menu, MenuItem, MenuDivider, Icon } from '@blueprintjs/core';
+import { IconNames } from '@blueprintjs/icons';
 import { NavLink } from 'react-router-dom';
 
 const NavMenuDropdown = ({ openRegisterTokenPopup, logout }) => (
@@ -27,9 +28,10 @@ const NavMenuDropdown = ({ openRegisterTokenPopup, logout }) => (
     <li>
       <NavLink
         to="/settings"
-        className="pt-popover-dismiss pt-menu-item pt-icon-cog"
+        className="pt-popover-dismiss pt-menu-item"
         tabIndex="0">
-        Settings...
+        <Icon icon={IconNames.COG}/>
+        <span>Settings...</span>
       </NavLink>
     </li>
 
