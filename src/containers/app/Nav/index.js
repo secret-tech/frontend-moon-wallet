@@ -39,7 +39,7 @@ const Nav = (props) => {
               selectWallet={selectWallet}/>
           }
           position={Position.BOTTOM_RIGHT}>
-          <Button className="pt-minimal" iconName="expand-all" text={windowWidth < 500 ? null : text} />
+          <Button className="pt-minimal" icon="expand-all" text={windowWidth < 500 ? null : text} />
         </Popover>
       );
     }
@@ -67,7 +67,7 @@ const Nav = (props) => {
               logout={logout}/>
           }
           position={Position.BOTTOM_RIGHT}>
-          <Button className="pt-minimal" iconName="cog" />
+          <Button className="pt-minimal" icon="cog" />
         </Popover>
       </NavbarGroup>
     </Navbar>

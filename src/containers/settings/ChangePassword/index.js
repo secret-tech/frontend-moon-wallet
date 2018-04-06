@@ -16,7 +16,7 @@ const ChangePassword = (props) => {
   return (
     <div>
       <Button
-        iconName="lock"
+        icon="lock"
         text="Change password..."
         onClick={() => openChangePasswordPopup()}/>
 

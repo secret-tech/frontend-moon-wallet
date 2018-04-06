@@ -46,7 +46,7 @@ class Txs extends Component {
       <EmptyState
         title="No transactions here"
         description="Let's try to create new one"
-        visual="pt-icon-cross"/>
+        visual="cross"/>
     );
   }
 }

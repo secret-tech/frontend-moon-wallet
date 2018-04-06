@@ -58,7 +58,7 @@ class RenderPassword extends Component {
         return (
           <Button
             className={buttonClassName}
-            iconName="pt-icon-eye-open"
+            icon="eye-open"
             onClick={() => this.setState({ type: 'text' })}/>
         );
       }
@@ -66,7 +66,7 @@ class RenderPassword extends Component {
       return (
         <Button
           className={buttonClassName}
-          iconName="pt-icon-eye-off"
+          icon="eye-off"
           onClick={() => this.setState({ type: 'password' })}/>
       );
     };
