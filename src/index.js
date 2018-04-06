@@ -6,7 +6,7 @@ import { AppContainer } from 'react-hot-loader';
 import { FocusStyleManager } from '@blueprintjs/core';
 
 import 'normalize.css';
-import '@blueprintjs/core/dist/blueprint.css';
+import '@blueprintjs/core/lib/css/blueprint.css';
 import './assets/main.css';
 import './assets/fonts/Roboto/stylesheet.css';
 

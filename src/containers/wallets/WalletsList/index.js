@@ -29,7 +29,7 @@ class WalletsList extends Component {
     return <EmptyState
       title="No wallets here"
       description="Let's try to create or import new one"
-      visual="pt-icon-cross"/>;
+      visual="cross"/>;
   }
 }
 

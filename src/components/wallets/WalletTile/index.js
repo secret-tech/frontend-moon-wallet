@@ -76,8 +76,8 @@ const WalletTile = (props) => {
         </div> */}
 
         {/* <div className={s.control}>
-          <Button type="button" className="pt-minimal" iconName="export" onClick={exportFn}/>
-          <Button type="button" className="pt-minimal" iconName="cog" onClick={settingsFn}/>
+          <Button type="button" className="pt-minimal" icon="export" onClick={exportFn}/>
+          <Button type="button" className="pt-minimal" icon="cog" onClick={settingsFn}/>
         </div> */}
       </div>
     </Link>

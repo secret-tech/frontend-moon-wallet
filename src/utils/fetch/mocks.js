@@ -1,5 +1,37 @@
 import { setTimeout } from 'timers';
 
+const me = {
+  wallets: [
+    {
+      ticker: 'ETH',
+      address: '0xdb369b56BA7b07cF287f611Fbf0DAA4A8a4C2751',
+      tokens: [
+        {
+          contractAddress: '0xc31382ef54b77be67605980197b76a40417b5a74',
+          name: 'My Token',
+          symbol: 'SAV',
+          decimals: 18
+        }
+      ]
+    }
+  ],
+  preferences: {
+    notifications: {
+      user_signin: false,
+      user_change_password: false,
+      user_reset_password: true
+    },
+    verifications: {
+      user_signin: false,
+      user_change_password: false,
+      transaction_send: true
+    }
+  },
+  email: 'existing@test.com',
+  name: 'John Smith',
+  defaultVerificationMethod: 'email'
+};
+
 const walletsList = [
   {
     id: '0x001',
@@ -244,6 +276,8 @@ const verifySignUp = {
 const getMock = (path) => {
   console.log(`[GET] ${path}`);
   switch (path) {
+    case '/user/me':
+      return me;
     case '/user/wallets':
       return walletsList;
     case '/wallet/transactions/0xa27d9c3959db67a4f608650b491C0c157e627091':
