@@ -2,10 +2,12 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Button, Intent } from '@blueprintjs/core';
 
-import { required } from '../../../utils/validators';
+import { fullNameValidate, emailValidate, passwordValidate, paymentPasswordValidate, required } from '../../../utils/validators';
 
 import RenderInput from '../../_forms/RenderInput';
 import RenderPassword from '../../_forms/RenderPassword';
+import RenderPaymentPassword from '../../_forms/RenderPaymentPassword';
+import RenderCheckbox from '../../_forms/RenderCheckbox';
 
 const SignUpForm = (props) => {
   const {
@@ -22,25 +24,46 @@ const SignUpForm = (props) => {
         placeholder="Name"
         name="name"
         type="text"
-        className="pt-input pt-large pt-fill"
-        validate={required}/>
+        large
+        fill
+        validate={fullNameValidate}/>
 
       <Field
         component={RenderInput}
         placeholder="Email"
         name="email"
         type="email"
-        className="pt-input pt-large pt-fill"
-        validate={required}/>
+        large
+        fill
+        validate={emailValidate}/>
 
       <Field
         component={RenderPassword}
         placeholder="Password"
         name="password"
         type="password"
-        className="pt-input pt-large pt-fill"
-        size="pt-large"
-        tip={true}
+        large
+        fill
+        tip
+        validate={passwordValidate}/>
+
+      <Field
+        component={RenderPaymentPassword}
+        placeholder="Payment password"
+        name="paymentPassword"
+        type="password"
+        large
+        fill
+        tip
+        validate={paymentPasswordValidate}/>
+
+      <Field
+        component={RenderCheckbox}
+        label="Agree terms and conditions"
+        large={true}
+        name="agreeTos"
+        large
+        fill
         validate={required}/>
 
       <div>
@@ -61,7 +84,9 @@ const FormComponent = reduxForm({
   initialValues: {
     name: '',
     email: '',
-    password: ''
+    password: '',
+    paymentPassword: '',
+    agreeTos: false
   }
 })(SignUpForm);
 

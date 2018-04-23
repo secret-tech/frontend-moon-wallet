@@ -20,7 +20,7 @@ const RegisterTokenAddressForm = (props) => {
         component={RenderInput}
         placeholder="Contact address"
         name="contractAddress"
-        className="pt-input pt-fill"
+        fill
         validate={required}/>
 
       <div>

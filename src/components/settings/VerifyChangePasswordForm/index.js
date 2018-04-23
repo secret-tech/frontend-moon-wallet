@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm, Field, FormSection } from 'redux-form';
 import { Button, Intent } from '@blueprintjs/core';
 
-import { required } from '../../../utils/validators';
+import { twoFactorCode } from '../../../utils/validators';
 
 import RenderInput from '../../_forms/RenderInput';
 
@@ -44,8 +44,8 @@ const VerifyChangePasswordForm = (props) => {
           placeholder="Verification code"
           name="code"
           type="text"
-          className="pt-input pt-fill"
-          validate={required}/>
+          fill
+          validate={twoFactorCode}/>
       </FormSection>
 
       <div>

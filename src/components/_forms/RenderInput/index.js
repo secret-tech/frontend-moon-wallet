@@ -7,6 +7,8 @@ const RenderInput = (props) => {
     input,
     meta,
     icon,
+    large,
+    fill,
     ...restProps
   } = props;
 
@@ -26,7 +28,8 @@ const RenderInput = (props) => {
 
   const inputClassName = classnames(
     'pt-input',
-    'pt-fill',
+    large ? 'pt-large' : null,
+    fill ? 'pt-fill' : null,
     isInvalid() ? 'pt-intent-danger' : null
   );
 
@@ -43,7 +46,7 @@ const RenderInput = (props) => {
         </label>)
         : null}
       <div className="pt-form-content">
-        <input className={inputClassName} {...input} {...restProps}/>
+        <input {...input} {...restProps} className={inputClassName}/>
         {isInvalid() ? <div className="pt-form-helper-text">{error}</div> : null}
       </div>
     </div>

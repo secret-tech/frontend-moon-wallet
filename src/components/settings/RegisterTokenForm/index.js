@@ -30,7 +30,7 @@ const RegisterTokenForm = (props) => {
         label="Contract address"
         placeholder="Contact address"
         name="contractAddress"
-        className="pt-input pt-fill"
+        fill
         disabled
         validate={required}/>
 
@@ -39,7 +39,7 @@ const RegisterTokenForm = (props) => {
         label="name"
         placeholder="Name"
         name="name"
-        className="pt-input pt-fill"
+        fill
         validate={required}/>
 
       <Field
@@ -47,7 +47,7 @@ const RegisterTokenForm = (props) => {
         label="symbol"
         placeholder="Symbol"
         name="symbol"
-        className="pt-input pt-fill"
+        fill
         validate={required}/>
 
       <Field
@@ -55,7 +55,7 @@ const RegisterTokenForm = (props) => {
         label="decimals"
         placeholder="Decimals"
         name="decimals"
-        className="pt-input pt-fill"
+        fill
         validate={required}/>
 
       <div>

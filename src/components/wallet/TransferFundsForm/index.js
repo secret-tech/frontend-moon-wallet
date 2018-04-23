@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Button, Intent } from '@blueprintjs/core';
 
-import { required } from '../../../utils/validators';
+import { paymentPasswordValidate, required } from '../../../utils/validators';
 
 import RenderInput from '../../_forms/RenderInput';
 import RenderSelect from '../../_forms/RenderSelect';
+import RenderPaymentPassword from '../../_forms/RenderPaymentPassword';
 import RenderNumber from '../../_forms/RenderNumber';
 import RenderSlider from '../../_forms/RenderSlider';
 
@@ -38,6 +39,7 @@ class TransferFundsForm extends Component {
           label="Recepient address"
           name="to"
           type="text"
+          fill
           validate={required}/>
 
         <Field
@@ -45,6 +47,7 @@ class TransferFundsForm extends Component {
           label="Amount"
           name="amount"
           type="text"
+          fill
           validate={required}/>
 
         <Field
@@ -53,6 +56,14 @@ class TransferFundsForm extends Component {
           name="currency"
           options={currencies}
           validate={required}/>
+
+        <Field
+          component={RenderPaymentPassword}
+          label="Payment password"
+          name="paymentPassword"
+          type="password"
+          fill
+          validate={paymentPasswordValidate}/>
 
         {extend
           ? (

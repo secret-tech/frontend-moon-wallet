@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Button, Intent } from '@blueprintjs/core';
 
-import { required } from '../../../utils/validators';
+import { passwordValidate } from '../../../utils/validators';
 
 import RenderPassword from '../../_forms/RenderPassword';
 
@@ -20,9 +20,10 @@ const ResetPasswordNewPasswordForm = (props) => {
         component={RenderPassword}
         placeholder="New password"
         name="password"
-        className="pt-input pt-large pt-fill"
-        tip={true}
-        validate={required}/>
+        large
+        fill
+        tip
+        validate={passwordValidate}/>
 
       <div>
         <Button

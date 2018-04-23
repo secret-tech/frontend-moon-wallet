@@ -9,12 +9,7 @@ import Toast from '../../utils/toaster';
 
 function* initSignUpIterator({ payload }) {
   try {
-    const body = {
-      agreeTos: true,
-      paymentPassword: '12345678', // TODO dont forget delete that shit :)
-      ...payload
-    };
-    const data = yield call(post, '/user', body);
+    const data = yield call(post, '/user', payload);
     yield put(initSignUp.success(data.verification));
     yield put(changeStep('verifySignUp'));
   } catch (e) {
