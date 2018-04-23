@@ -41,6 +41,7 @@ export const emailValidate = [
 export const passwordValidate = [
   requiredValidator('Password required'),
   minLength(8, 'Minimum 8 characters'),
+  maxLength(20, 'Maximum 20 characters'),
   password('Invalid password')
 ];
 
@@ -54,7 +55,15 @@ export const required = [
   requiredValidator('This field is required')
 ];
 
+export const paymentPasswordValidate = [
+  requiredValidator('Password required'),
+  minLength(8, 'Minimum 8 characters'),
+  maxLength(20, 'Maximum 20 characters'),
+  password('Invalid password')
+];
+
 export const twoFactorCode = [
+  requiredValidator('Verification code is required'),
   minLength(6, 'Require 6 digits'),
   maxLength(6, 'Require 6 digits')
 ];

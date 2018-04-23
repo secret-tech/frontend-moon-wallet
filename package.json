@@ -22,7 +22,7 @@
     "run": "lint:all, test"
   },
   "dependencies": {
-    "@blueprintjs/core": "^2.0.1",
+    "@blueprintjs/core": "^2.2.1",
     "@blueprintjs/icons": "^2.0.0",
     "classnames": "^2.2.5",
     "date-fns": "^1.29.0",

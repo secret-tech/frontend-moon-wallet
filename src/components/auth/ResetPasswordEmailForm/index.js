@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Button, Intent } from '@blueprintjs/core';
 
-import { required } from '../../../utils/validators';
+import { emailValidate } from '../../../utils/validators';
 
 import RenderInput from '../../_forms/RenderInput';
 
@@ -21,8 +21,9 @@ const ResetPasswordEmailForm = (props) => {
         placeholder="Email"
         name="email"
         type="email"
-        className="pt-input pt-large pt-fill"
-        validate={required}/>
+        large
+        fill
+        validate={emailValidate}/>
 
       <div>
         <Button
