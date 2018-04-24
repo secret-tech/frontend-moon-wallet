@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Switch, withRouter } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
 import { checkThemeState } from '../../../redux/modules/app/theme';
 
 import AuthWrapper from '../AuthWrapper';
 import AppWrapper from '../AppWrapper';
+import AuthRoute from '../../../components/app/AuthRoute';
+import AppRoute from '../../../components/app/AppRoute';
 
 import s from './styles.css';
 
@@ -35,8 +37,8 @@ class Main extends Component {
     return (
       <div className={cx(s.app, theme)}>
         <Switch>
-          <Route path="/auth" component={AuthWrapper}/>
-          <Route component={AppWrapper}/>
+          <AuthRoute path="/auth" component={AuthWrapper}/>
+          <AppRoute component={AppWrapper}/>
         </Switch>
       </div>
     );

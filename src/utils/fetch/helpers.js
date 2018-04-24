@@ -1,4 +1,4 @@
-import { isAuth, getToken } from '../auth';
+import { isAuth, getToken, removeToken } from '../auth';
 
 const { API_HOST } = process.env;
 
@@ -7,7 +7,7 @@ export class RequestError extends Error {
     super(error.error);
 
     this.error = error.error;
-    this.status = error.status;
+    this.status = error.statusCode;
   }
 }
 
@@ -25,8 +25,16 @@ export function pathCreator(path) {
  * @return            http Response object
  */
 
-export const checkHttpStatus = (res) =>
-  (res.ok ? res : res.json());
+// export const checkHttpStatus = (res) =>
+//   (res.ok ? res : res.json());
+
+export const checkHttpStatus = (res) => {
+  if (res.ok) {
+    return res;
+  }
+
+  return res.json();
+};
 
 /**
  * Parse response body to json
@@ -38,6 +46,11 @@ export const checkHttpStatus = (res) =>
 export const parseJSON = (res) => {
   if (res instanceof Response) {
     return res.json();
+  }
+
+  if (res.statusCode === 401) {
+    removeToken();
+    window.location = '/auth/sign-in';
   }
 
   throw new RequestError(res);
