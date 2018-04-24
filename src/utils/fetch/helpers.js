@@ -1,4 +1,5 @@
 import { isAuth, getToken, removeToken } from '../auth';
+import * as routes from '../../routes';
 
 const { API_HOST } = process.env;
 
@@ -50,7 +51,7 @@ export const parseJSON = (res) => {
 
   if (res.statusCode === 401) {
     removeToken();
-    window.location = '/auth/sign-in';
+    window.location = routes.SIGN_IN;
   }
 
   throw new RequestError(res);

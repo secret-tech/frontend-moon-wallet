@@ -14,7 +14,7 @@ import s from './styles.css';
 
 class Wallet extends Component {
   componentDidMount() {
-    this.props.selectWallet(this.props.match.params.walletId);
+    this.props.selectWallet(this.props.match.params.walletAddress);
   }
 
   componentWillUnmount() {

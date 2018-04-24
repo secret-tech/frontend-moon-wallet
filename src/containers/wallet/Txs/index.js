@@ -11,13 +11,13 @@ import EmptyState from '../../../components/common/EmptyState';
 
 class Txs extends Component {
   componentDidMount() {
-    this.props.fetchTxs(this.props.match.params.walletId);
+    this.props.fetchTxs(this.props.match.params.walletAddress);
     this.props.startTxsPoll();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.walletId !== nextProps.match.params.walletId) {
-      this.props.fetchTxs(nextProps.match.params.walletId);
+    if (this.props.match.params.walletAddress !== nextProps.match.params.walletAddress) {
+      this.props.fetchTxs(nextProps.match.params.walletAddress);
     }
   }
 

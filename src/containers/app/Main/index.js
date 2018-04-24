@@ -10,6 +10,7 @@ import AppWrapper from '../AppWrapper';
 import AuthRoute from '../../../components/app/AuthRoute';
 import AppRoute from '../../../components/app/AppRoute';
 
+import * as routes from '../../../routes';
 import s from './styles.css';
 
 const cx = classnames.bind(s);
@@ -37,7 +38,7 @@ class Main extends Component {
     return (
       <div className={cx(s.app, theme)}>
         <Switch>
-          <AuthRoute path="/auth" component={AuthWrapper}/>
+          <AuthRoute path={routes.AUTH} component={AuthWrapper}/>
           <AppRoute component={AppWrapper}/>
         </Switch>
       </div>

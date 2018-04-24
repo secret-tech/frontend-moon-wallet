@@ -2,8 +2,8 @@ import { all, takeLatest, call, put, fork } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 import { post } from '../../utils/fetch';
-import { namedRoutes } from '../../routes';
 import Toast from '../../utils/toaster';
+import * as routes from '../../routes';
 
 import {
   initResetPassword,
@@ -68,7 +68,7 @@ function* setNewPasswordIterator({ payload }) {
     yield call(post, '/user/resetPassword/enter', payload);
     yield put(setNewPassword.success());
     yield put(resetStore());
-    yield put(push(namedRoutes.signIn));
+    yield put(push(routes.SIGN_IN));
     yield call([Toast, Toast.green], { message: 'Password was changed successfully!' });
   } catch (e) {
     if (e.error.isJoi) {

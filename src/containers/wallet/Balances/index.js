@@ -14,13 +14,13 @@ import s from './styles.css';
 
 class Balances extends Component {
   componentDidMount() {
-    this.props.fetchBalances(this.props.match.params.walletId);
+    this.props.fetchBalances(this.props.match.params.walletAddress);
     this.props.startBalancesPoll();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.walletId !== nextProps.match.params.walletId) {
-      this.props.fetchBalances(nextProps.match.params.walletId);
+    if (this.props.match.params.walletAddress !== nextProps.match.params.walletAddress) {
+      this.props.fetchBalances(nextProps.match.params.walletAddress);
     }
   }
 

@@ -38,6 +38,7 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-router-named-routes": "^0.0.23",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-transition-group": "^2.3.0",
     "react-window-size": "^1.0.1",

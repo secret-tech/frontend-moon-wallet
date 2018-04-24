@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, MenuDivider } from '@blueprintjs/core';
 import { shortAddress } from '../../../utils/numbers';
+import * as routes from '../../../routes';
 
 const NavWalletDropdown = (props) => {
   const renderMenu = () => props.wallets.map(({ address }) => {
@@ -22,7 +23,7 @@ const NavWalletDropdown = (props) => {
       <Link
         key={address}
         onClick={() => props.selectWallet(address)}
-        to={`/wallet/${address}`}
+        to={routes.formatRoute(routes.WALLET, { walletAddress: address })}
         className="pt-menu-item">
         {text}
       </Link>
@@ -33,7 +34,7 @@ const NavWalletDropdown = (props) => {
     <Menu className="pt-popover-dismiss">
       {renderMenu()}
       <MenuDivider />
-      <Link to="/wallets" className="pt-menu-item">Wallets...</Link>
+      <Link to={routes.WALLETS} className="pt-menu-item">Wallets...</Link>
     </Menu>
   );
 };
