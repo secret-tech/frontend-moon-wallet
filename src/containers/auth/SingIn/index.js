@@ -8,7 +8,7 @@ import { initSignIn, verifySignIn } from '../../../redux/modules/auth/signIn';
 import SignInForm from '../../../components/auth/SignInForm';
 import VerifySignInForm from '../../../components/auth/VerifySignInForm';
 
-import namedRoutes from '../../../routes';
+import * as routes from '../../../routes';
 import s from './styles.css';
 
 const SignIn = (props) => {
@@ -63,11 +63,11 @@ const SignIn = (props) => {
         {renderStep(step)}
       </div>
       <div className={s.fp}>
-        <Link to={namedRoutes.resetPassword}>Forgot password?</Link>
+        <Link to={routes.RESET_PASSWORD}>Forgot password?</Link>
       </div>
       <div className={s.bottomLink}>
         Not have an account?{' '}
-        <Link to={namedRoutes.signUp}>Sign up!</Link>
+        <Link to={routes.SIGN_UP}>Sign up!</Link>
       </div>
     </div>
   );

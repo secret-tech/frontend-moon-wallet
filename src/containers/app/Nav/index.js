@@ -12,6 +12,7 @@ import NavMenuDropdown from '../../../components/app/NavMenuDropdown';
 import NavWalletDropdown from '../../../components/app/NavWalletDropdown';
 
 import { shortAddress } from '../../../utils/numbers';
+import * as routes from '../../../routes';
 import s from './styles.css';
 
 const Nav = (props) => {
@@ -51,7 +52,7 @@ const Nav = (props) => {
     <Navbar className={theme}>
       <NavbarGroup>
         <NavbarHeading>
-          <Link to="/wallets" className={s.logo}>
+          <Link to={routes.WALLETS} className={s.logo}>
             <img src={require('../../../assets/images/logo.svg')}/>
             <span>MOON Wallet</span>
           </Link>

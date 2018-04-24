@@ -8,7 +8,7 @@ import { initSignUp, verifySignUp } from '../../../redux/modules/auth/signUp';
 import SignUpForm from '../../../components/auth/SignUpForm';
 import VerifySignUpForm from '../../../components/auth/VerifySignUpForm';
 
-import namedRoutes from '../../../routes';
+import * as routes from '../../../routes';
 import s from './styles.css';
 
 const SignUp = (props) => {
@@ -64,7 +64,7 @@ const SignUp = (props) => {
       </div>
       <div className={s.bottomLink}>
         Already have account?{' '}
-        <Link to={namedRoutes.signIn}>Sign in!</Link>
+        <Link to={routes.SIGN_IN}>Sign in!</Link>
       </div>
     </div>
   );

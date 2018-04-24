@@ -9,7 +9,7 @@ import ResetPasswordEmailForm from '../../../components/auth/ResetPasswordEmailF
 import VerifyResetPasswordForm from '../../../components/auth/VerifyResetPasswordForm';
 import ResetPasswordNewPasswordForm from '../../../components/auth/ResetPasswordNewPasswordForm';
 
-import namedRoutes from '../../../routes';
+import * as routes from '../../../routes';
 import s from './styles.css';
 
 const ResetPassword = (props) => {
@@ -81,11 +81,11 @@ const ResetPassword = (props) => {
         {renderStep(step)}
       </div>
       <div className={s.fp}>
-        <Link to={namedRoutes.signIn}>Sign in</Link>
+        <Link to={routes.SIGN_IN}>Sign in</Link>
       </div>
       <div className={s.bottomLink}>
         Not have an account?{' '}
-        <Link to={namedRoutes.signUp}>Sign up!</Link>
+        <Link to={routes.SIGN_UP}>Sign up!</Link>
       </div>
     </div>
   );

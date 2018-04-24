@@ -8,6 +8,7 @@ import hexToRgb from 'hex-to-rgb';
 import { getWalletColorPair, getWalletIcon } from './variants';
 // import getBalances from './balances';
 import { shortAddress } from '../../../utils/numbers';
+import * as routes from '../../../routes';
 import s from './styles.css';
 
 const WalletTile = (props) => {
@@ -53,7 +54,7 @@ const WalletTile = (props) => {
   const identionBase64 = new Identicon(address, identiconOptions).toString();
 
   return (
-    <Link to={`/wallet/${address}`} className={s.wallet}>
+    <Link to={routes.formatRoute(routes.WALLET, { walletAddress: address })} className={s.wallet}>
       <div className="pt-card pt-interactive" style={{ backgroundColor: getWalletColorPair(color).bg }}>
         <div className={s.top}>
           <div className={s.pic} style={{ backgroundColor: getWalletColorPair(color).icon }}>

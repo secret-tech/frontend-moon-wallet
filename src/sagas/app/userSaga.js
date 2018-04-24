@@ -12,7 +12,6 @@ function* fetchUserIterator() {
     yield put(fetchUser.success(data));
   } catch (e) {
     yield call([Toast, Toast.red], { message: 'Looks like server is down. Try again later' });
-    yield call(console.log, e);
     yield put(fetchUser.failure());
   }
 }

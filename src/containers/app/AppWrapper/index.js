@@ -15,6 +15,7 @@ import Error404 from '../../../components/common/Error404';
 
 import RegisterCustomTokenPopup from '../../settings/RegisterCustomTokenPopup';
 
+import * as routes from '../../../routes';
 import s from './styles.css';
 
 class AppWrapper extends Component {
@@ -35,11 +36,11 @@ class AppWrapper extends Component {
           <Alert/>
         </div>
         <Switch>
-          <Route exact path="/wallets" component={Wallets}/>
-          <Route path="/wallet/:walletId" component={Wallet}/>
-          <Route exact path="/settings" component={Settings}/>
-          <Route path="/help" component={Help}/>
-          <Redirect exact from="/" to="/wallets"/>
+          <Route exact path={routes.WALLETS} component={Wallets}/>
+          <Route path={routes.WALLET} component={Wallet}/>
+          <Route exact path={routes.SETTINGS} component={Settings}/>
+          <Route exact path={routes.HELP} component={Help}/>
+          <Redirect exact from={routes.BASE} to={routes.WALLETS}/>
           <Route component={Error404}/>
         </Switch>
 

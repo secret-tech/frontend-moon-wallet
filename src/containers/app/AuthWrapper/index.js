@@ -11,8 +11,9 @@ import SignIn from '../../auth/SingIn';
 import SignUp from '../../auth/SignUp';
 import ResetPassword from '../../auth/ResetPassword';
 
-import s from './styles.css';
+import * as routes from '../../../routes';
 import { THEMES } from '../../../utils/theme';
+import s from './styles.css';
 
 class AuthWrapper extends Component {
   render() {
@@ -54,10 +55,10 @@ class AuthWrapper extends Component {
           <img src={require('../../../assets/images/logo.svg')}/>
         </div>
         <Switch>
-          <Route exact path="/auth/sign-in" component={SignIn}/>
-          <Route exact path="/auth/sign-up" component={SignUp}/>
-          <Route exact path="/auth/reset-password" component={ResetPassword}/>
-          <Redirect from="*" to="/auth/sign-in"/>
+          <Route exact path={routes.SIGN_IN} component={SignIn}/>
+          <Route exact path={routes.SIGN_UP} component={SignUp}/>
+          <Route exact path={routes.RESET_PASSWORD} component={ResetPassword}/>
+          <Redirect from="*" to={routes.SIGN_IN}/>
         </Switch>
       </div>
     );

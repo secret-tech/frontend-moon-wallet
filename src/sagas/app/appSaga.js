@@ -3,6 +3,7 @@ import { push } from 'react-router-redux';
 import { removeToken, setToken, getToken, isAuth } from '../../utils/auth';
 import { get } from '../../utils/fetch';
 import Toast from '../../utils/toaster';
+import * as routes from '../../routes';
 
 import {
   login,
@@ -50,7 +51,7 @@ function* checkAuthSaga() {
 function* logoutIterator() {
   yield call(removeToken);
   yield put(setAuthState({ authorized: false, token: '' }));
-  yield put(push('/auth/sign-in'));
+  yield put(push(routes.SIGN_IN));
 }
 
 function* logoutSaga() {

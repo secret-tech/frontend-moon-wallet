@@ -25,7 +25,7 @@ const DepositFunds = (props) => {
       <div className="pt-dialog-body">
         <div className={s.description}>TODO description about depositting</div>
 
-        <h3 className={s.address}>{props.match.params.walletId}</h3>
+        <h3 className={s.address}>{props.match.params.walletAddress}</h3>
       </div>
     </Dialog>
   );

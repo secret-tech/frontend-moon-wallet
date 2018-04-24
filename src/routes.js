@@ -1,16 +1,13 @@
-const namedRoutes = {
-  base: '/',
+export { formatRoute } from 'react-router-named-routes';
 
-  app: '/app/',
-  wallets: '/app/wallets',
-  wallet: '/app/wallet',
-  settings: '/app/settings',
-  help: '/app/help',
+export const BASE = '/';
 
-  auth: '/auth/',
-  signIn: '/auth/sign-in',
-  signUp: '/auth/sign-up',
-  resetPassword: '/auth/reset-password'
-};
+export const WALLETS = '/wallets';
+export const WALLET = '/wallet/:walletAddress';
+export const SETTINGS = '/settings';
+export const HELP = '/help';
 
-export default namedRoutes;
+export const AUTH = '/auth/';
+export const SIGN_IN = '/auth/sign-in';
+export const SIGN_UP = '/auth/sign-up';
+export const RESET_PASSWORD = '/auth/reset-password';
