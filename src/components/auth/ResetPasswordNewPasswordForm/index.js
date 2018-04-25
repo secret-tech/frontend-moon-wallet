@@ -1,4 +1,5 @@
 import React from 'react';
+import { translate } from 'react-i18next';
 import { reduxForm, Field } from 'redux-form';
 import { Button, Intent } from '@blueprintjs/core';
 
@@ -8,6 +9,7 @@ import RenderPassword from '../../_forms/RenderPassword';
 
 const ResetPasswordNewPasswordForm = (props) => {
   const {
+    t,
     handleSubmit,
     invalid,
     fetching
@@ -18,7 +20,7 @@ const ResetPasswordNewPasswordForm = (props) => {
 
       <Field
         component={RenderPassword}
-        placeholder="New password"
+        placeholder={t('auth:resetPassword.form.newPassword')}
         name="password"
         large
         fill
@@ -30,7 +32,7 @@ const ResetPasswordNewPasswordForm = (props) => {
           type="submit"
           className="pt-large pt-fill"
           intent={Intent.PRIMARY}
-          text="Reset password"
+          text={t('auth:resetPassword.form.setNewPassword')}
           disabled={invalid}
           loading={fetching}/>
       </div>
@@ -46,5 +48,5 @@ const FormComponent = reduxForm({
     resetId: ''
   }
 })(ResetPasswordNewPasswordForm);
-
-export default FormComponent;
+const TranslatedComponent = translate(['auth'])(FormComponent);
+export default TranslatedComponent;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import { withRouter, Link } from 'react-router-dom';
 import queryString from 'query-string';
 
@@ -14,6 +15,7 @@ import s from './styles.css';
 
 const ResetPassword = (props) => {
   const {
+    t,
     step,
     fetching,
     email,
@@ -81,17 +83,18 @@ const ResetPassword = (props) => {
         {renderStep(step)}
       </div>
       <div className={s.fp}>
-        <Link to={routes.SIGN_IN}>Sign in</Link>
+        <Link to={routes.SIGN_IN}>{t('auth:resetPassword.signIn')}</Link>
       </div>
       <div className={s.bottomLink}>
-        Not have an account?{' '}
-        <Link to={routes.SIGN_UP}>Sign up!</Link>
+        {t('auth:resetPassword.notHaveAnAccount')}{' '}
+        <Link to={routes.SIGN_UP}>{t('auth:resetPassword.signUp')}</Link>
       </div>
     </div>
   );
 };
 
 const ComponentWithRouter = withRouter(ResetPassword);
+const TranslatedComponent = translate(['auth'])(ComponentWithRouter);
 export default connect((state) => ({
   ...state.auth.resetPassword
-}))(ComponentWithRouter);
+}))(TranslatedComponent);

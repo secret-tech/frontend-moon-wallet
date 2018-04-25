@@ -1,4 +1,5 @@
 import React from 'react';
+import { translate } from 'react-i18next';
 import { reduxForm, Field, FormSection } from 'redux-form';
 import { Button, Intent } from '@blueprintjs/core';
 
@@ -10,6 +11,7 @@ import s from './styles.css';
 
 const VerifySignInForm = (props) => {
   const {
+    t,
     handleSubmit,
     invalid,
     fetching,
@@ -41,7 +43,7 @@ const VerifySignInForm = (props) => {
       <FormSection name="verification">
         <Field
           component={RenderInput}
-          placeholder="Verification code"
+          placeholder={t('auth:signIn.form.verificationCode')}
           name="code"
           type="text"
           large
@@ -54,7 +56,7 @@ const VerifySignInForm = (props) => {
           type="submit"
           className="pt-large pt-fill"
           intent={Intent.PRIMARY}
-          text="Verify sign in"
+          text={t('auth:signIn.form.verifySignIn')}
           disabled={invalid}
           loading={fetching}/>
       </div>
@@ -71,5 +73,5 @@ const FormComponent = reduxForm({
     }
   }
 })(VerifySignInForm);
-
-export default FormComponent;
+const TranslatedComponent = translate()(FormComponent);
+export default TranslatedComponent;

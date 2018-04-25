@@ -1,4 +1,5 @@
 import React from 'react';
+import { translate } from 'react-i18next';
 import { reduxForm, Field } from 'redux-form';
 import { Button, Intent } from '@blueprintjs/core';
 
@@ -11,6 +12,7 @@ import RenderCheckbox from '../../_forms/RenderCheckbox';
 
 const SignUpForm = (props) => {
   const {
+    t,
     handleSubmit,
     invalid,
     fetching
@@ -21,7 +23,7 @@ const SignUpForm = (props) => {
 
       <Field
         component={RenderInput}
-        placeholder="Name"
+        placeholder={t('auth:signUp.form.name')}
         name="name"
         type="text"
         large
@@ -30,7 +32,7 @@ const SignUpForm = (props) => {
 
       <Field
         component={RenderInput}
-        placeholder="Email"
+        placeholder={t('auth:signUp.form.email')}
         name="email"
         type="email"
         large
@@ -39,7 +41,7 @@ const SignUpForm = (props) => {
 
       <Field
         component={RenderPassword}
-        placeholder="Password"
+        placeholder={t('auth:signUp.form.password')}
         name="password"
         type="password"
         large
@@ -49,7 +51,7 @@ const SignUpForm = (props) => {
 
       <Field
         component={RenderPaymentPassword}
-        placeholder="Payment password"
+        placeholder={t('auth:signUp.form.paymentPassword')}
         name="paymentPassword"
         type="password"
         large
@@ -59,7 +61,7 @@ const SignUpForm = (props) => {
 
       <Field
         component={RenderCheckbox}
-        label="Agree terms and conditions"
+        label={t('auth:signUp.form.agreement')}
         large={true}
         name="agreeTos"
         large
@@ -71,7 +73,7 @@ const SignUpForm = (props) => {
           type="submit"
           className="pt-large pt-fill"
           intent={Intent.PRIMARY}
-          text="Sign up"
+          text={t('auth:signUp.form.signUp')}
           disabled={invalid}
           loading={fetching}/>
       </div>
@@ -89,5 +91,5 @@ const FormComponent = reduxForm({
     agreeTos: false
   }
 })(SignUpForm);
-
-export default FormComponent;
+const TranslatedComponent = translate(['auth'])(FormComponent);
+export default TranslatedComponent;
