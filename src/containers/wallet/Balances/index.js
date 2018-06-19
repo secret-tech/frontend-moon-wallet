@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { translate } from 'react-i18next';
 import { Card, Button } from '@blueprintjs/core';
 
 import { fetchBalances, startBalancesPoll, endBalancesPoll } from '../../../redux/modules/wallet/balances';
@@ -30,6 +31,7 @@ class Balances extends Component {
 
   render() {
     const {
+      t,
       fetching,
       ethBalance,
       erc20TokensBalance,
@@ -46,12 +48,12 @@ class Balances extends Component {
         <div>
           <div className={s.item}>
             <h2>{ethBalance}</h2>
-            <div className="pt-text-muted">ETH balance</div>
+            <div className="pt-text-muted">ETH {t('balances.balance')}</div>
           </div>
           {erc20TokensBalance.map(({ balance, symbol }) => (
             <div key={symbol} className={s.item}>
               <h2>{bigNum(balance)}</h2>
-              <div className="pt-text-muted">{symbol} balance</div>
+              <div className="pt-text-muted">{symbol} {t('balances.balance')}</div>
             </div>
           ))}
         </div>
@@ -69,7 +71,7 @@ class Balances extends Component {
       <div>
         <div className={s.transferButton}>
           <Button
-            text="Transfer tokens"
+            text={t('balances.transferButton')}
             className="pt-intent-primary pt-large pt-fill"
             onClick={() => openTransferFundsPopup()}/>
         </div>
@@ -81,7 +83,7 @@ class Balances extends Component {
 
           <div className={s.depositButton}>
             <Button
-              text="Deposit funds"
+              text={t('balances.depositButton')}
               className="pt-intent-primary"
               onClick={() => openDepositFundsPopup()}/>
           </div>
@@ -91,6 +93,7 @@ class Balances extends Component {
   }
 }
 
+const TranslatedComponent = translate('wallet')(Balances);
 const ConnectedComponent = connect(
   (state) => ({ ...state.wallet.balances }),
   {
@@ -100,6 +103,6 @@ const ConnectedComponent = connect(
     startBalancesPoll,
     endBalancesPoll
   }
-)(Balances);
+)(TranslatedComponent);
 const ComponentWithRouter = withRouter(ConnectedComponent);
 export default ComponentWithRouter;

@@ -1,0 +1,18 @@
+{
+  "title": "Wallets",
+  "walletsList": {
+    "notFound": {
+      "title": "No wallets here",
+      "text": "Let's try to create or import new one"
+    }
+  },
+  "walletsControls": {
+    "createButton": "Create new wallet"
+  },
+  "createWalletPopup": {
+    "title": "Create wallet"
+  },
+  "createWalletForm": {
+    "submit": "Create"
+  }
+}

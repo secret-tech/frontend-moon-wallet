@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import { openExportWalletPopup } from '../../../redux/modules/wallets/exportWallet';
@@ -11,6 +12,7 @@ import EmptyState from '../../../components/common/EmptyState';
 class WalletsList extends Component {
   render() {
     const {
+      t,
       wallets,
       fetching
     } = this.props;
@@ -26,13 +28,16 @@ class WalletsList extends Component {
           onClickEdit={this.props.openEditWalletPopup}/>);
     }
 
-    return <EmptyState
-      title="No wallets here"
-      description="Let's try to create or import new one"
-      visual="cross"/>;
+    return (
+      <EmptyState
+        title={t('walletsList.notFound.title')}
+        description={t('walletsList.notFound.text')}
+        visual="cross"/>
+    );
   }
 }
 
+const TranslatedComponent = translate('wallets')(WalletsList);
 const ConnectedComponent = connect(
   (state) => ({
     ...state.app.user
@@ -41,5 +46,5 @@ const ConnectedComponent = connect(
     openExportWalletPopup,
     openEditWalletPopup
   }
-)(WalletsList);
+)(TranslatedComponent);
 export default ConnectedComponent;

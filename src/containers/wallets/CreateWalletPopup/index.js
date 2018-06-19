@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import windowSize from 'react-window-size';
 import { Dialog } from '@blueprintjs/core';
 
@@ -9,6 +10,7 @@ import CreateWalletForm from '../../../components/wallets/CreateWalletForm';
 
 const CreateWalletPopup = (props) => {
   const {
+    t,
     windowWidth
   } = props;
 
@@ -17,7 +19,7 @@ const CreateWalletPopup = (props) => {
   return (
     <Dialog
       style={{ width, paddingBottom: '0px' }}
-      title="Create wallet"
+      title={t('createWalletPopup.title')}
       {...props}>
 
       <div className="pt-dialog-body">
@@ -29,9 +31,10 @@ const CreateWalletPopup = (props) => {
   );
 };
 
+const TranslatedComponent = translate('wallets')(CreateWalletPopup);
 const ConnectedComponent = connect((state) => ({
   fetching: state.wallets.createWallet.fetching,
   ...state.app.theme
-}))(CreateWalletPopup);
+}))(TranslatedComponent);
 const ComponentWithSize = windowSize(ConnectedComponent);
 export default ComponentWithSize;
