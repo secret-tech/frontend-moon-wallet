@@ -1,5 +1,5 @@
 import React from 'react';
-import windowSize from 'react-window-size';
+import windowDimensions from 'react-window-dimensions';
 // import { Button } from '@blueprintjs/core';
 import { Link } from 'react-router-dom';
 import Identicon from 'identicon.js';
@@ -16,7 +16,7 @@ const WalletTile = (props) => {
     // name,
     address,
     // color,
-    windowWidth,
+    width,
 
     // onClickExport,
     // onClickEdit
@@ -62,7 +62,7 @@ const WalletTile = (props) => {
           </div>
           <div className={s.info}>
             {/* <h3>Very long name untitled wallet raz dva tree</h3> */}
-            <div className={s.address}>{windowWidth < 500 ? shortAddress(address) : address}</div>
+            <div className={s.address}>{width < 500 ? shortAddress(address) : address}</div>
           </div>
         </div>
 
@@ -85,4 +85,4 @@ const WalletTile = (props) => {
   );
 };
 
-export default windowSize(WalletTile);
+export default windowDimensions(WalletTile);

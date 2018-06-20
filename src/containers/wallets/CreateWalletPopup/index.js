@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import windowSize from 'react-window-size';
+import windowDimensions from 'react-window-dimensions';
 import { Dialog } from '@blueprintjs/core';
 
 import { initCreateWallet } from '../../../redux/modules/wallets/createWallet';
@@ -11,14 +11,14 @@ import CreateWalletForm from '../../../components/wallets/CreateWalletForm';
 const CreateWalletPopup = (props) => {
   const {
     t,
-    windowWidth
+    width
   } = props;
 
-  const width = windowWidth > 400 ? '400px' : windowWidth - 40;
+  const calcWidth = width > 400 ? '400px' : width - 40;
 
   return (
     <Dialog
-      style={{ width, paddingBottom: '0px' }}
+      style={{ width: calcWidth, paddingBottom: '0px' }}
       title={t('createWalletPopup.title')}
       {...props}>
 
@@ -36,5 +36,5 @@ const ConnectedComponent = connect((state) => ({
   fetching: state.wallets.createWallet.fetching,
   ...state.app.theme
 }))(TranslatedComponent);
-const ComponentWithSize = windowSize(ConnectedComponent);
+const ComponentWithSize = windowDimensions(ConnectedComponent);
 export default ComponentWithSize;

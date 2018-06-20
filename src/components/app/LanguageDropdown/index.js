@@ -1,22 +1,24 @@
 import React from 'react';
+import { translate } from 'react-i18next';
 import { Menu, MenuItem } from '@blueprintjs/core';
 
-const LanguageDropdown = ({ changeLanguage }) => (
+const LanguageDropdown = ({ i18n }) => (
   <Menu>
     <MenuItem
-      icon={
-        <img style={{ width: '16px' }} src={require('../../../assets/images/icons/flags/en.svg')}/>
-      }
+      icon={<img
+        style={{ width: '16px' }}
+        src={require('../../../assets/images/icons/flags/en.svg')}/>}
       text="English"
-      onClick={() => changeLanguage('en')}/>
+      onClick={() => i18n.changeLanguage('en')}/>
 
     <MenuItem
-      icon={
-        <img style={{ width: '16px' }} src={require('../../../assets/images/icons/flags/ru.svg')}/>
-      }
+      icon={<img
+        style={{ width: '16px' }}
+        src={require('../../../assets/images/icons/flags/ru.svg')}/>}
       text="Russian"
-      onClick={() => changeLanguage('ru')}/>
+      onClick={() => i18n.changeLanguage('ru')}/>
   </Menu>
 );
 
-export default LanguageDropdown;
+const TranslatedComponent = translate()(LanguageDropdown);
+export default TranslatedComponent;

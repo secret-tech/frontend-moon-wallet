@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import { ButtonGroup, Button, Icon, Popover, Position } from '@blueprintjs/core';
+import windowDimensions from 'react-window-dimensions';
+import { ButtonGroup, Button, AnchorButton, Popover, Position } from '@blueprintjs/core';
 import { IconNames } from '@blueprintjs/icons';
 import classnames from 'classnames/bind';
 
@@ -15,67 +16,47 @@ import s from './styles.css';
 const Topbar = (props) => {
   const {
     t,
+    width,
     i18n,
     changeTheme,
     theme
   } = props;
 
-  const changeLanguage = (language) => i18n.changeLanguage(language);
-
   const renderLanguageButton = () => {
     switch (i18n.language) {
-      case 'en':
-        return (
-          <Button
-            className="pt-minimal"
-            icon={<img style={{ width: '16px' }} src={require('../../../assets/images/icons/flags/en.svg')}/>}
-            text="EN"/>
-        );
-      case 'ru':
-        return (
-          <Button
-            className="pt-minimal"
-            icon={<img style={{ width: '16px' }} src={require('../../../assets/images/icons/flags/ru.svg')}/>}
-            text="RU"/>
-        );
-      default:
-        return null;
+      case 'ru': return <Button minimal icon={<img style={{ width: '16px' }} src={require('../../../assets/images/icons/flags/ru.svg')}/>}/>;
+      default: return <Button minimal icon={<img style={{ width: '16px' }} src={require('../../../assets/images/icons/flags/en.svg')}/>}/>;
     }
   };
 
   return (
     <div className={s.topbar}>
       <div>
-        <a
+        <AnchorButton
           href="https://moonwallet.tech"
-          className="pt-button pt-minimal"
-          tabIndex="0">
-          <Icon icon={IconNames.CHEVRON_LEFT} />
-          <span>{t('auth:backToLandingPage')}</span>
-        </a>
+          minimal
+          icon={IconNames.CHEVRON_LEFT}>
+          {width > 800 && t('auth:backToLandingPage')}
+        </AnchorButton>
       </div>
 
       <div>
         <ButtonGroup large={false}>
           <Button
             icon="moon"
-            text={t('common:themes.dark')}
+            text={width > 800 && t('common:themes.dark')}
             className={classnames(theme === THEMES.dark ? 'pt-active' : null, 'pt-minimal')}
             onClick={() => changeTheme(THEMES.dark)}/>
 
           <Button
             icon="flash"
-            text={t('common:themes.light')}
+            text={width > 800 && t('common:themes.light')}
             className={classnames(theme === THEMES.light ? 'pt-active' : null, 'pt-minimal')}
             onClick={() => changeTheme(THEMES.light)}/>
         </ButtonGroup>
 
         <Popover
-          content={
-            <LanguageDropdown
-              language={i18n.language}
-              changeLanguage={changeLanguage}/>
-          }
+          content={<LanguageDropdown/>}
           position={Position.TOP_RIGHT}>
           {renderLanguageButton()}
         </Popover>
@@ -90,5 +71,6 @@ const ConnectedComponent = connect(
     changeTheme
   }
 )(Topbar);
-const TranslatedComponent = translate(['common', 'auth'])(ConnectedComponent);
+const ComponentWithDemensions = windowDimensions()(ConnectedComponent);
+const TranslatedComponent = translate(['common', 'auth'])(ComponentWithDemensions);
 export default TranslatedComponent;
