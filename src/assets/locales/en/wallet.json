@@ -1,6 +1,7 @@
 {
   "title": "Transactions",
   "balances": {
+    "title": "Balances",
     "transferButton": "Transfer tokens",
     "depositButton": "Deposit funds",
     "balance": "balance"
