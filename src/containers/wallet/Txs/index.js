@@ -27,15 +27,15 @@ class Txs extends Component {
 
   render() {
     const {
-      txs,
+      data,
       fetching,
       openTxDetailsPopup
     } = this.props;
 
     if (fetching) return <Preloader/>;
 
-    if (txs.length > 0) {
-      return txs.map((tx) =>
+    if (data.length > 0) {
+      return data.map((tx) =>
         <Tx
           key={tx.transactionHash}
           openTxDetailsPopup={openTxDetailsPopup}

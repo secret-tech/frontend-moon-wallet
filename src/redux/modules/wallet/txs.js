@@ -12,7 +12,10 @@ export const endTxsPoll = createAction(END_TXS_POLL);
 const initialState = from({
   fetching: false,
   polling: false,
-  txs: []
+  count: 0,
+  limit: 50,
+  page: 0,
+  data: []
 });
 
 export default createReducer({
@@ -25,7 +28,7 @@ export default createReducer({
   [fetchTxs.SUCCESS]: (state, { payload }) => (
     state.merge({
       fetching: false,
-      txs: payload
+      ...payload
     })
   ),
 
