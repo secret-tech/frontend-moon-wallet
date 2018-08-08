@@ -16,14 +16,8 @@ function* fetchTokenInfoIterator({ payload }) {
       yield put(fetchTokenInfo.success(payload));
       yield put(changeStep('registerToken'));
     } else {
-      // eslint-disable-next-line
-      if (e.error.isJoi) {
-        yield call([Toast, Toast.red], { message: e.error.details[0].message });
-        yield put(fetchTokenInfo.failure());
-      } else {
-        yield call([Toast, Toast.red], { message: e.message });
-        yield put(fetchTokenInfo.failure());
-      }
+      yield call([Toast, Toast.red], { message: e.message });
+      yield put(fetchTokenInfo.failure());
     }
   }
 }
@@ -44,13 +38,8 @@ function* registerTokenIterator({ payload }) {
     yield put(fetchBalances(payload.walletAddress));
     yield call([Toast, Toast.green], { message: 'Token registered' });
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(registerToken.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(registerToken.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(registerToken.failure());
   }
 }
 

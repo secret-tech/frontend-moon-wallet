@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import { withRouter, Link } from 'react-router-dom';
 import queryString from 'query-string';
 
@@ -13,6 +14,7 @@ import s from './styles.css';
 
 const SignUp = (props) => {
   const {
+    t,
     step,
     fetching,
     verification: {
@@ -63,14 +65,15 @@ const SignUp = (props) => {
         {renderStep(step)}
       </div>
       <div className={s.bottomLink}>
-        Already have account?{' '}
-        <Link to={routes.SIGN_IN}>Sign in!</Link>
+        {t('auth:signUp.alreadyHaveAccount')}{' '}
+        <Link to={routes.SIGN_IN}>{t('auth:signUp.signIn')}</Link>
       </div>
     </div>
   );
 };
 
 const ComponentWithRouter = withRouter(SignUp);
+const TranslatedComponent = translate(['auth'])(ComponentWithRouter);
 export default connect((state) => ({
   ...state.auth.signUp
-}))(ComponentWithRouter);
+}))(TranslatedComponent);

@@ -14,13 +14,8 @@ function* initSignUpIterator({ payload }) {
     yield put(initSignUp.success(data.verification));
     yield put(changeStep('verifySignUp'));
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(initSignUp.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(initSignUp.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(initSignUp.failure());
   }
 }
 
@@ -40,13 +35,8 @@ function* verifySignUpIterator({ payload }) {
     yield put(resetStore());
     yield put(push(routes.WALLETS));
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(verifySignUp.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(verifySignUp.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(initSignUp.failure());
   }
 }
 

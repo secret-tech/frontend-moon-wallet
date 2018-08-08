@@ -37,13 +37,8 @@ function* initTransferFundsIterator({ payload }) {
     yield put(initTransferFunds.success(data));
     yield put(changeStep('verifyTransferFunds'));
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(initTransferFunds.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(initTransferFunds.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(initTransferFunds.failure());
   }
 }
 
@@ -62,13 +57,8 @@ function* verifyTransferFundsIterator({ payload }) {
     yield call([Toast, Toast.green], { message: 'Transaction successfully created!' });
     yield put(resetStore());
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(verifyTransferFunds.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(verifyTransferFunds.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(verifyTransferFunds.failure());
   }
 }
 

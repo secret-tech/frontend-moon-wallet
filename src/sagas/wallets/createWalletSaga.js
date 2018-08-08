@@ -11,13 +11,8 @@ function* initCreateWalletIterator({ payload }) {
     yield put(initCreateWallet.success());
     yield call([Toast, Toast.green], { message: 'Wallet created!' });
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(initCreateWallet.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(initCreateWallet.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(initCreateWallet.failure());
   }
 }
 

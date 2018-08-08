@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { translate } from 'react-i18next';
 
 import { selectWallet } from '../../../redux/modules/wallet/selectedWallet';
 
@@ -22,11 +23,15 @@ class Wallet extends Component {
   }
 
   render() {
+    const {
+      t
+    } = this.props;
+
     return (
       <div className={s.container}>
         <div className={s.body}>
           <main className={s.main}>
-            <h1>Transactions</h1>
+            <h1>{t('title')}</h1>
             <Txs/>
           </main>
           <aside className={s.sidebar}>
@@ -42,6 +47,7 @@ class Wallet extends Component {
   }
 }
 
+const TranslatedComponent = translate('wallet')(Wallet);
 const ConnectedComponent = connect(
   (state) => ({
     ...state.wallets.walletsList
@@ -49,6 +55,6 @@ const ConnectedComponent = connect(
   {
     selectWallet
   }
-)(Wallet);
+)(TranslatedComponent);
 const ComponentWithRouter = withRouter(ConnectedComponent);
 export default ComponentWithRouter;

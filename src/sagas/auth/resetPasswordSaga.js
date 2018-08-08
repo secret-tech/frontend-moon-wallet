@@ -21,13 +21,8 @@ function* initResetPasswordIterator({ payload }) {
     yield put(initResetPassword.success(body));
     yield put(changeStep('verifyResetPassword'));
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(initResetPassword.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(initResetPassword.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(initResetPassword.failure());
   }
 }
 
@@ -45,13 +40,8 @@ function* verifyResetPasswordIterator({ payload }) {
     yield put(verifyResetPassword.success(resetId));
     yield put(changeStep('setNewPassword'));
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(verifyResetPassword.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(verifyResetPassword.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(verifyResetPassword.failure());
   }
 }
 
@@ -71,13 +61,8 @@ function* setNewPasswordIterator({ payload }) {
     yield put(push(routes.SIGN_IN));
     yield call([Toast, Toast.green], { message: 'Password was changed successfully!' });
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(setNewPassword.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(setNewPassword.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(setNewPassword.failure());
   }
 }
 

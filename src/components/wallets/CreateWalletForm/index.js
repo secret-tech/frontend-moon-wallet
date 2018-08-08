@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
+import { translate } from 'react-i18next';
 import { Button, Intent } from '@blueprintjs/core';
 
 // import { required } from '../../../utils/validators';
@@ -10,6 +11,7 @@ import s from './styles.css';
 
 const CreateWalletForm = (props) => {
   const {
+    t,
     handleSubmit,
     invalid,
     fetching
@@ -21,7 +23,7 @@ const CreateWalletForm = (props) => {
         <Button
           type="submit"
           intent={Intent.PRIMARY}
-          text="Create"
+          text={t('createWalletForm.submit')}
           disabled={invalid}
           loading={fetching}/>
       </div>
@@ -29,12 +31,13 @@ const CreateWalletForm = (props) => {
   );
 };
 
+const TranslatedComponent = translate('wallets')(CreateWalletForm);
 const FormComponent = reduxForm({
   form: 'createWallet',
   initialValues: {
     type: 'ETH',
     paymentPassword: '12345678'
   }
-})(CreateWalletForm);
+})(TranslatedComponent);
 
 export default FormComponent;
