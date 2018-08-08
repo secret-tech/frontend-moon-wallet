@@ -36,7 +36,7 @@ const Topbar = (props) => {
           href="https://moonwallet.tech"
           minimal
           icon={IconNames.CHEVRON_LEFT}>
-          {width > 800 && t('auth:backToLandingPage')}
+          {windowWidth > 800 && t('auth:backToLandingPage')}
         </AnchorButton>
       </div>
 
