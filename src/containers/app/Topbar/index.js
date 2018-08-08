@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import windowDimensions from 'react-window-dimensions';
+import windowSize from 'react-window-size';
 import { ButtonGroup, Button, AnchorButton, Popover, Position } from '@blueprintjs/core';
 import { IconNames } from '@blueprintjs/icons';
 import classnames from 'classnames/bind';
@@ -16,7 +16,7 @@ import s from './styles.css';
 const Topbar = (props) => {
   const {
     t,
-    width,
+    windowWidth,
     i18n,
     changeTheme,
     theme
@@ -44,13 +44,13 @@ const Topbar = (props) => {
         <ButtonGroup large={false}>
           <Button
             icon="moon"
-            text={width > 800 && t('common:themes.dark')}
+            text={windowWidth > 800 && t('common:themes.dark')}
             className={classnames(theme === THEMES.dark ? 'pt-active' : null, 'pt-minimal')}
             onClick={() => changeTheme(THEMES.dark)}/>
 
           <Button
             icon="flash"
-            text={width > 800 && t('common:themes.light')}
+            text={windowWidth > 800 && t('common:themes.light')}
             className={classnames(theme === THEMES.light ? 'pt-active' : null, 'pt-minimal')}
             onClick={() => changeTheme(THEMES.light)}/>
         </ButtonGroup>
@@ -71,6 +71,6 @@ const ConnectedComponent = connect(
     changeTheme
   }
 )(Topbar);
-const ComponentWithDemensions = windowDimensions()(ConnectedComponent);
+const ComponentWithDemensions = windowSize(ConnectedComponent);
 const TranslatedComponent = translate(['common', 'auth'])(ComponentWithDemensions);
 export default TranslatedComponent;

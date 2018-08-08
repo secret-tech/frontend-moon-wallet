@@ -11,13 +11,8 @@ function* initChangePasswordIterator({ payload }) {
     yield put(initChangePassword.success(data.verification));
     yield put(changeStep('verifyChangePassword'));
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(initChangePassword.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(initChangePassword.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(initChangePassword.failure());
   }
 }
 
@@ -36,13 +31,8 @@ function* verifyChangePasswordIterator({ payload }) {
     yield call([Toast, Toast.green], { message: 'Password successfully changed!' });
     yield put(resetStore());
   } catch (e) {
-    if (e.error.isJoi) {
-      yield call([Toast, Toast.red], { message: e.error.details[0].message });
-      yield put(verifyChangePassword.failure());
-    } else {
-      yield call([Toast, Toast.red], { message: e.message });
-      yield put(verifyChangePassword.failure());
-    }
+    yield call([Toast, Toast.red], { message: e.message });
+    yield put(verifyChangePassword.failure());
   }
 }
 

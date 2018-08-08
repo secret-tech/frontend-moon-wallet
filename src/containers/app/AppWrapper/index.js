@@ -5,7 +5,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { fetchUser } from '../../../redux/modules/app/user';
 import { closeRegisterTokenPopup } from '../../../redux/modules/settings/registerCustomToken';
 
-import Nav from '../Nav';
+import NavigationBar from '../NavigationBar';
 import Alert from '../../../components/common/Alert';
 import Wallets from '../../../components/wallets/Wallets';
 import Wallet from '../../wallet/Wallet';
@@ -32,7 +32,7 @@ class AppWrapper extends Component {
     return (
       <div className={s.wrapper}>
         <div className={s.nav}>
-          <Nav/>
+          <NavigationBar/>
           <Alert/>
         </div>
         <Switch>

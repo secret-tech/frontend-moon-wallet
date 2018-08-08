@@ -17,15 +17,18 @@ class WalletsList extends Component {
       fetching
     } = this.props;
 
+    console.log(this.props);
+
     if (fetching) return <Preloader/>;
 
     if (wallets.length > 0) {
       return wallets.map((wallet) =>
-        <WalletTile
+        (<WalletTile
           key={wallet.address}
           {...wallet}
           onClickExport={this.props.openExportWalletPopup}
-          onClickEdit={this.props.openEditWalletPopup}/>);
+          onClickEdit={this.props.openEditWalletPopup}/>
+        ));
     }
 
     return (
